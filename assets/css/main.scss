@@ -3,23 +3,36 @@
 ---
 @charset "utf-8";
 
+@use "sass:math";
+
 // Dimensions
 $max-content-width: {{ site.max_width }};
 
-@import
-  "variables",
-  "themes",
-  "layout",
-  "base",
-  "distill",
-  "cv",
-  "tabs",
-  "typograms",
-  "font-awesome/fontawesome",
-  "font-awesome/brands",
-  "font-awesome/solid",
-  "font-awesome/regular",
-  "tabler-icons/tabler-icons.scss",
-  "tabler-icons/tabler-icons-filled.scss",
-  "tabler-icons/tabler-icons-outline.scss"
-;
+@use "variables" as vars;
+@use "themes" as themes;
+@use "layout" as layout;
+@use "base" as base;
+@use "distill" as distill;
+@use "cv" as cv;
+@use "tabs" as tabs;
+@use "typograms" as typograms;
+@use "font-awesome/fontawesome" as fa;
+@use "font-awesome/brands" as fa-brands;
+@use "font-awesome/solid" as fa-solid;
+@use "font-awesome/regular" as fa-regular;
+@use "tabler-icons/tabler-icons.scss" as tabler;
+@use "tabler-icons/tabler-icons-filled.scss" as tabler-filled;
+@use "tabler-icons/tabler-icons-outline.scss" as tabler-outline;
+
+@forward "variables";
+@forward "themes";
+@forward "layout";
+@forward "base";
+@forward "distill";
+@forward "cv";
+@forward "tabs";
+@forward "typograms";
+
+:root {
+  --max-content-width: #{$max-content-width};
+}
