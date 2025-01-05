@@ -1,5 +1,7 @@
 {
   "devDependencies": {
+    "@babel/plugin-transform-private-methods": "^7.25.9",
+    "@babel/plugin-transform-private-property-in-object": "^7.25.9",
     "@shopify/prettier-plugin-liquid": "1.4.0",
     "prettier": "3.1.1"
   }
