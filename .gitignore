@@ -166,7 +166,6 @@ Temporary Items
 .apdisk
 
 ### Jekyll template
-_site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
@@ -179,7 +178,6 @@ vendor/
 # a Gemfile as specified at https://github.com/github/pages-gem#conventional
 
 # Basic Jekyll gitignores (synchronize to Jekyll.gitignore)
-_site/
 .sass-cache/
 .jekyll-cache/
 .jekyll-metadata
