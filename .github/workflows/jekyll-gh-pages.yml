@@ -26,6 +26,14 @@ jobs:
         with:
           ruby-version: '3.0'
 
+      - name: Install Python for Jupyter
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install Jupyter
+        run: pip install jupyter
+
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
