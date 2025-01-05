@@ -1,10 +1,12 @@
 ---
 layout: post
-title: A long announcement with details
-date: 2015-11-07 16:11:00-0400
+title: 119차 세미나(08.14)-[집중코스 1차] 표준프레임워크 GitHub 컨트리뷰션 도전하기!
+date: 2024-08-10 19:00:00
 inline: false
 related_posts: false
 ---
+
+119차 세미나(08.14)-[집중코스 1차] 표준프레임워크 GitHub 컨트리뷰션 도전하기!
 
 Announcements and news can be much longer than just quick inline posts. In fact, they can have all the features available for the standard blog posts. See below.
 
