@@ -5,7 +5,7 @@
  * License - https://github.com/tabler/tabler-icons/blob/master/LICENSE
  */
 $ti-font-family: 'tabler-icons-filled' !default;
-$ti-font-path: './fonts' !default;
+$ti-font-path: '../fonts' !default;
 $ti-font-display: null !default;
 $ti-prefix: 'ti' !default;
 
@@ -20,7 +20,7 @@ $ti-prefix: 'ti' !default;
 }
 
 .#{$ti-prefix} {
-  font-family: $ti-font-family !important;
+  font-family: $ti-font-family;
   speak: none;
   font-style: normal;
   font-weight: normal;

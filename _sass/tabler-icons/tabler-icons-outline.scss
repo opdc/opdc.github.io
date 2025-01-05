@@ -20,7 +20,7 @@ $ti-prefix: 'ti' !default;
 }
 
 .#{$ti-prefix} {
-  font-family: $ti-font-family !important;
+  font-family: $ti-font-family;
   speak: none;
   font-style: normal;
   font-weight: normal;
