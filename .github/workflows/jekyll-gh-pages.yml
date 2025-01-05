@@ -21,8 +21,8 @@ jobs:
       - name: Install Dependencies
         run: bundle install
 
-      - name: Build Site
-        run: bundle exec jekyll build
+#      - name: Build Site
+#        run: bundle exec jekyll build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
