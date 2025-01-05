@@ -22,11 +22,15 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0'
-          bundler-cache: true
+          bundler-cache: false
       - uses: actions/setup-python@v4
         with:
           python-version: "3.9"
       - run: pip install jupyter
+      - name: Unset frozen mode
+        run: bundle config set --local frozen false
+      - name: Install dependencies
+        run: bundle install
       - uses: actions/configure-pages@v5
       - name: Build site
         run: bundle exec jekyll build
