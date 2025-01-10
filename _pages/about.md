@@ -18,8 +18,6 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-## 설립목적
-
 (사)오픈플랫폼 개발자커뮤니티는 오픈플랫폼 및 이와 관련된 서비스의 개발 생산성과 품질을 향상시키고 관련 소프트웨어 개발자의 역량 강화와 상호 교류에 헌신하며, 오픈 소스 소프트웨어 개발과 확산을 위한 활동 지원을 통해 오픈 소스 기술참상에 기여함을 그 설립목적으로 활동을 수행 합니다
 
 ## 주요사업
