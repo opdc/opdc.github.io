@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /repositories/
-title: repositories
+title: OPDC Repo
 description: OPDC에서 개발 중인 repository
 nav: true
 nav_order: 4
