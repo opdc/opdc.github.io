@@ -25,6 +25,17 @@ hr {
   border-top: 1px solid var(--global-divider-color);
 }
 
+/* 모든 표에 테두리 적용 */
+table, th, td {
+  border: 1px solid #333 !important;
+  border-collapse: collapse;
+}
+
+/* 다크 모드에서 Bootstrap 테이블 테두리 복원 */
+.table-dark, .table-dark.table-bordered {
+  border: 1px solid var(--global-divider-color) !important;
+}
+
 table {
   td,
   th {

@@ -3,8 +3,9 @@ github_users:
   - dasomel
   - switchover
 
-repo_description_lines_max: 2
+repo_description_lines_max: 3
 
 github_repos:
   - dasomel/k-paas
+  - dasomel-eGovFramework/egovframe-simple-homepage-template
   - switchover/eGovFrameChecker
