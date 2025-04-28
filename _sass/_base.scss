@@ -4,6 +4,34 @@
 
 @use "variables" as vars;
 
+/* 1. 전체 본문 폰트, 색상, 줄 간격, 폭 최적화 */
+body {
+  font-family: 'Noto Sans KR', 'Source Sans Pro', Arial, sans-serif;
+  line-height: 1.6;       /* 줄 간격 1.5~1.7 추천[9][10][12] */
+}
+
+/* 2. 본문 컨테이너 폭 제한 (600~800px) */
+.main-content, .post-content, .page-content {
+//   max-width: 720px;       /* 600~800px 범위 내에서 선택[6] */
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* 3. 본문 텍스트 추가 스타일 */
+p, li {
+  line-height: 1.6;
+  font-size: 1.15rem;
+}
+
+/* 4. 모바일 대응 (반응형) */
+@media (max-width: 800px) {
+  .main-content, .post-content, .page-content {
+    max-width: 95vw;
+    padding: 0 0.5rem;
+  }
+}
+
+
 // Typography
 
 p,
@@ -242,7 +270,7 @@ ul.task-list input[type="checkbox"] {
 
 .post-description {
   margin-bottom: 2rem;
-  font-size: 0.875rem;
+  font-size: 1.1rem;
 
   a {
     color: inherit;
