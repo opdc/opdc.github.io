@@ -25,6 +25,7 @@ group :jekyll_plugins do
     gem "csv"
     gem "base64"
     gem 'jekyll-seo-tag'
+    gem 'ostruct'
 end
 group :other_plugins do
     gem 'css_parser'
