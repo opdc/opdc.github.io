@@ -154,6 +154,11 @@ ninja.data = [{
           description: "Evangelist",
           section: "Leaders",handler: () => {
               window.location.href = "/leaders/evangelist06/";
+            },},{id: "leaders-권태성",
+          title: '권태성',
+          description: "Evangelist",
+          section: "Leaders",handler: () => {
+              window.location.href = "/leaders/evangelist07/";
             },},{id: "news-119차-세미나-08-14-집중코스-1차-표준프레임워크-github-컨트리뷰션-도전하기",
           title: '119차 세미나(08.14)-[집중코스 1차] 표준프레임워크 GitHub 컨트리뷰션 도전하기!',
           description: "",

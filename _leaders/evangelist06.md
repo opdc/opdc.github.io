@@ -34,7 +34,6 @@ related_publications: false
 ---
 
 ### 📂 주요 경력
-
 - 現 kt cloud
 - 前 카페24
 - 공공기관 프로젝트 구축 수행
