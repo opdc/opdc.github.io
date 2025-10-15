@@ -1,12 +1,61 @@
-/*******************************************************************************
- * Styles for the base elements of the theme.
- ******************************************************************************/
-
 @use "variables" as vars;
+/*
+Copyright (c) 2021-2023 Kil Hyung-jin, with Reserved Font Name Pretendard.
+https://github.com/orioncactus/pretendard
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+*/
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 900;
+	font-display: swap;
+	src: local('Pretendard Black'), url('../fonts/Pretendard-Black.woff2') format('woff2'), url('../fonts/Pretendard-Black.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 800;
+	font-display: swap;
+	src: local('Pretendard ExtraBold'), url('../fonts/Pretendard-ExtraBold.woff2') format('woff2'), url('../fonts/Pretendard-ExtraBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 700;
+	font-display: swap;
+	src: local('Pretendard Bold'), url('../fonts/Pretendard-Bold.woff2') format('woff2'), url('../fonts/Pretendard-Bold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 600;
+	font-display: swap;
+	src: local('Pretendard SemiBold'), url('../fonts/Pretendard-SemiBold.woff2') format('woff2'), url('../fonts/Pretendard-SemiBold.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 500;
+	font-display: swap;
+	src: local('Pretendard Medium'), url('../fonts/Pretendard-Medium.woff2') format('woff2'), url('../fonts/Pretendard-Medium.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 400;
+	font-display: swap;
+	src: local('Pretendard Regular'), url('../fonts/Pretendard-Regular.woff2') format('woff2'), url('../fonts/Pretendard-Regular.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'Pretendard';
+	font-weight: 300;
+	font-display: swap;
+	src: local('Pretendard Light'), url('../fonts/Pretendard-Light.woff2') format('woff2'), url('../fonts/Pretendard-Light.woff') format('woff');
+}
 
 /* 1. 전체 본문 폰트, 색상, 줄 간격, 폭 최적화 */
 body {
-  font-family: 'Noto Sans KR', 'Source Sans Pro', Arial, sans-serif;
+  font-family: 'Pretendard', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, 'Apple SD Gothic Neo', 'Noto Sans KR', Arial, sans-serif;
   line-height: 1.6;       /* 줄 간격 1.5~1.7 추천[9][10][12] */
 }
 
