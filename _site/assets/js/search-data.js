@@ -9,171 +9,122 @@ ninja.data = [{
     handler: () => {
       window.location.href = "/";
     },
-  },{id: "nav-notice",
-          title: "notice",
+  },{id: "nav-소개",
+          title: "소개",
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/notice/index.html";
+            window.location.href = "/introduce/";
           },
-        },{id: "nav-history",
-          title: "history",
+        },{id: "nav-연혁",
+          title: "연혁",
           description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/history/";
           },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "A growing collection of your cool projects.",
+        },{id: "nav-소식-공지",
+          title: "소식/공지",
+          description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/projects/";
+            window.location.href = "/notice/index.html";
           },
-        },{id: "nav-leaders",
-          title: "Leaders",
-          description: "표준프레임워크의 기능개선과 대외전파를 위해 커미터와 에반젤리스트로 활동하시는 12인의 공개SW 전문가 여러분을 소개합니다.",
+        },{id: "nav-리더",
+          title: "리더",
+          description: "전자정부 표준프레임워크와 K-PaaS 오픈 플랫폼 전문가로 개발자 커뮤니티를 이끄는 리더 여러분을 소개합니다.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/leaders/";
           },
-        },{id: "nav-opdc-repo",
-          title: "OPDC Repo",
-          description: "OPDC에서 개발 중인 repository",
+        },{id: "nav-정관",
+          title: "정관",
+          description: "규정(정관)",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/repositories/";
+            window.location.href = "/constitution/";
           },
-        },{id: "nav-compatibility",
-          title: "Compatibility",
-          description: "표준프레임워크 호환성 확인",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/compatibility/";
-          },
-        },{id: "dropdown-notice",
-              title: "notice",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "";
-              },
-            },{id: "dropdown-projects",
-              title: "projects",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "";
-              },
-            },{id: "dropdown-seminar",
-              title: "seminar",
-              description: "",
-              section: "Dropdown",
-              handler: () => {
-                window.location.href = "";
-              },
-            },{id: "post-제주항공-여객기-사고-희생자와-유가족분들께-깊은-애도를-표합니다",
+        },{id: "post-opdc-홈페이지-개설-준비-중",
       
-        title: "제주항공 여객기 사고 희생자와 유가족분들께 깊은 애도를 표합니다.",
+        title: "OPDC 홈페이지 개설 준비 중",
       
-      description: "",
+      description: "2025/10/16.일.00:00",
       section: "Posts",
       handler: () => {
         
-          window.location.href = "/blog/2024/notice/";
-        
-      },
-    },{id: "post-2024-전자정부-표준프레임워크-신규버전-v4-3-발표회-개최",
-      
-        title: "2024 전자정부 표준프레임워크 신규버전(v4.3) 발표회 개최!",
-      
-      description: "12/16.월.14:00,온라인생중계",
-      section: "Posts",
-      handler: () => {
-        
-          window.location.href = "/blog/2024/egov-new-4.3/";
+          window.location.href = "/blog/2025/notice/";
         
       },
     },{id: "leaders-고재도",
           title: '고재도',
-          description: "Committer",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/committer01/";
+              window.location.href = "/leaders/01-go-Jaedo/";
             },},{id: "leaders-김경하",
           title: '김경하',
-          description: "Committer",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/committer02/";
-            },},{id: "leaders-이기하",
-          title: '이기하',
-          description: "Committer",
-          section: "Leaders",handler: () => {
-              window.location.href = "/leaders/committer03/";
+              window.location.href = "/leaders/02-kim-kyungha/";
             },},{id: "leaders-이승룡",
           title: '이승룡',
-          description: "Committer",
+          description: "eGovFrame / OPA Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/committer04/";
+              window.location.href = "/leaders/03-lee-seungryong/";
             },},{id: "leaders-한성곤",
           title: '한성곤',
-          description: "Committer",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/committer05/";
+              window.location.href = "/leaders/04-han-seonggon/";
+            },},{id: "leaders-이기하",
+          title: '이기하',
+          description: "eGovFrame / OPA Leader",
+          section: "Leaders",handler: () => {
+              window.location.href = "/leaders/05-lee-kiha/";
             },},{id: "leaders-정호열",
           title: '정호열',
-          description: "Committer",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/committer06/";
+              window.location.href = "/leaders/06-jeong-hoyeol/";
             },},{id: "leaders-장미영",
           title: '장미영',
-          description: "좋은 시스템을 만들고 나누고 싶은 아키쟁이",
+          description: "GovFrame / OPA Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/evangelist01/";
+              window.location.href = "/leaders/07-jang-miyoung/";
             },},{id: "leaders-허광남",
           title: '허광남',
-          description: "Evangelist",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/evangelist02/";
+              window.location.href = "/leaders/08-heo-gwangnam/";
             },},{id: "leaders-임철홍",
           title: '임철홍',
-          description: "Evangelist",
+          description: "Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/evangelist03/";
+              window.location.href = "/leaders/09-lim-cheolhong/";
             },},{id: "leaders-옥상훈",
           title: '옥상훈',
-          description: "Evangelist",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/evangelist04/";
+              window.location.href = "/leaders/10-ok-sanghoon/";
             },},{id: "leaders-양수열",
           title: '양수열',
-          description: "Evangelist",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/evangelist05/";
+              window.location.href = "/leaders/11-yang-suyeol/";
             },},{id: "leaders-이충렬",
           title: '이충렬',
-          description: "Evangelist",
+          description: "eGovFrame / OPA Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/evangelist06/";
+              window.location.href = "/leaders/12-lee-chungryeol/";
             },},{id: "leaders-권태성",
           title: '권태성',
-          description: "Evangelist",
+          description: "eGovFrame / OPA Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/evangelist07/";
-            },},{id: "news-119차-세미나-08-14-집중코스-1차-표준프레임워크-github-컨트리뷰션-도전하기",
-          title: '119차 세미나(08.14)-[집중코스 1차] 표준프레임워크 GitHub 컨트리뷰션 도전하기!',
+              window.location.href = "/leaders/13-kwon-taeseong/";
+            },},{id: "news-준비-중",
+          title: '준비 중',
           description: "",
           section: "News",handler: () => {
-              window.location.href = "/news/opencommunity_119/";
-            },},{id: "news-120차-세미나-집중코스-2차-컨트리뷰션-실전-개발환경-실행환경-템플릿-프로젝트-해보기",
-          title: '120차 세미나-[집중코스 2차] 컨트리뷰션 실전 개발환경/실행환경/템플릿 프로젝트 해보기!',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/opencommunity_120/";
-            },},{id: "news-121차-세미나-집중코스-3차-컨트리뷰션-실전-공통컴포넌트-개발가이드-해보기",
-          title: '121차 세미나-[집중코스 3차] 컨트리뷰션 실전 공통컴포넌트/개발가이드 해보기!',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/opencommunity_121/";
+              window.location.href = "/news/opencommunity_pre/";
             },},{id: "projects-k-paas-경량화",
           title: 'K-PaaS 경량화',
           description: "K-PaaS를 Local(PC) 설치를 위한 SandBox 프로젝트",
