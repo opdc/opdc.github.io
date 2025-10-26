@@ -1,9 +1,9 @@
 ---
 layout: default
 permalink: /notice/
-title: notice
+title: 소식/공지
 nav: true
-nav_order: 1
+nav_order: 3
 pagination:
   enabled: true
   collection: posts

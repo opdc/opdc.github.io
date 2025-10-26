@@ -1,6 +1,6 @@
 ---
 layout: page
-title: history
+title: 연혁
 permalink: /history/
 nav: true
 nav_order: 2

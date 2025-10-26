@@ -1,12 +1,12 @@
 ---
-layout: page
-title: projects
-permalink: /projects/
-description: A growing collection of your cool projects.
-nav: true
-nav_order: 3
-display_categories: [k-paas, egovframe]
-horizontal: false
+#layout: page
+#title: projects
+#permalink: /projects/
+#description: A growing collection of your cool projects.
+#nav: true
+#nav_order: 6
+#display_categories: [k-paas, egovframe]
+#horizontal: false
 ---
 
 <!-- pages/projects.md -->

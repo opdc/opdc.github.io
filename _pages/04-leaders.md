@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Leaders
+title: 리더
 permalink: /leaders/
 description: 전자정부 표준프레임워크와 K-PaaS 오픈 플랫폼 전문가로 개발자 커뮤니티를 이끄는 리더 여러분을 소개합니다.
 nav: true

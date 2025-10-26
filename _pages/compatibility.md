@@ -1,10 +1,10 @@
 ---
-layout: page
-permalink: /compatibility/
-title: Compatibility
-description: 표준프레임워크 호환성 확인
-nav: true
-nav_order: 6
+#layout: page
+#permalink: /compatibility/
+#title: Compatibility
+#description: 표준프레임워크 호환성 확인
+#nav: true
+#nav_order: 6
 ---
 
 # 호환성확인 개요
