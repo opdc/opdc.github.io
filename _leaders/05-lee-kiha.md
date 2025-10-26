@@ -1,19 +1,19 @@
 ---
 layout: page
 title: 이기하
-description: Committer
-img: assets/img/leader/people03.png
-importance: 3
-category: Committer
+description: eGovFrame / OPA Leader
+img: assets/img/leader/05-lee-kiha.png
+importance: 5
+category: Leader
 related_publications: false
 ---
 
 <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="/assets/img/leader/people03.png" alt="이기하 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  <img src="/assets/img/leader/05-lee-kiha.png" alt="이기하 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
   <div>
     <h2 style="margin-bottom: 0.5rem;">이기하</h2>
     <p style="margin: 0;">
-      <a href="mailto:dasomell@gmail.com"><i class="fas fa-envelope"></i> dasomell@gmail.com</a> <br>
+      <a href="mailto:dasomell@gmail.com"><i class="fas fa-envelope"></i>dasomell@gmail.com</a> <br>
       <a href="https://github.com/dasomel" target="_blank"><i class="fab fa-github"></i> GitHub</a> &nbsp;|&nbsp;
       <a href="https://www.linkedin.com/in/%EA%B8%B0%ED%95%98-%EC%9D%B4-ba909924/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </p>
@@ -38,8 +38,7 @@ related_publications: false
 ---
 
 ### 📂 주요 경력
-
-- <b>現</b> 한화시스템 차장
+- <b>前</b> 한화시스템 차장
 - <b>前</b> SK 주식회사 수석
 - Data Platform 개발
 - Cloud Project 기술지원
@@ -47,6 +46,7 @@ related_publications: false
 - 전자정부 표준프레임워크 구축, 유지보수
 
 ### 🏆 수상
-- 🥇 OPA Awards OPA 우수기여자 부문
-- 🏆 행정안정부장관 표창장
-- 🥉 슈퍼개발자K 시즌3 동상 수상
+- 🥇 2025 OPA Awards - OPA 커뮤니티 히어로 부문
+- 🥇 2024 OPA Awards - OPA 우수기여자 부문
+- 🏆 2021 행정안정부장관 표창장
+- 🥉 2014 슈퍼개발자K 시즌3 동상

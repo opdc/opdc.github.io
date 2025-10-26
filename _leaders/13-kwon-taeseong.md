@@ -1,15 +1,15 @@
 ---
 layout: page
 title: 권태성
-description: Evangelist
-img: assets/img/leader/people13.png
-importance: 7
-category: Evangelist
+description: eGovFrame / OPA Leader
+img: assets/img/leader/13-kwon-taeseong.png
+importance: 13
+category: Leader
 related_publications: false
 ---
 
 <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="/assets/img/leader/people13.png" alt="권태성 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  <img src="/assets/img/leader/13-kwon-taeseong.png" alt="권태성 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
   <div>
     <h2 style="margin-bottom: 0.5rem;">권태성</h2>
     <p style="margin: 0;">

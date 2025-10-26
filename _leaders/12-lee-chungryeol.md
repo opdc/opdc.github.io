@@ -1,15 +1,15 @@
 ---
 layout: page
 title: 이충렬
-description: Evangelist
-img: assets/img/leader/people12.png
-importance: 6
-category: Evangelist
+description: eGovFrame / OPA Leader
+img: assets/img/leader/12-lee-chungryeol.png
+importance: 12
+category: Leader
 related_publications: false
 ---
 
 <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="/assets/img/leader/people12.png" alt="이충렬 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  <img src="/assets/img/leader/12-lee-chungryeol.png" alt="이충렬 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
   <div>
     <h2 style="margin-bottom: 0.5rem;">이충렬</h2>
     <p style="margin: 0;">

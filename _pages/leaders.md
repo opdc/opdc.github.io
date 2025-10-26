@@ -2,10 +2,10 @@
 layout: page
 title: Leaders
 permalink: /leaders/
-description: 표준프레임워크의 기능개선과 대외전파를 위해 커미터와 에반젤리스트로 활동하시는 12인의 공개SW 전문가 여러분을 소개합니다.
+description: 전자정부 표준프레임워크와 K-PaaS 오픈 플랫폼 전문가로 개발자 커뮤니티를 이끄는 리더 여러분을 소개합니다.
 nav: true
 nav_order: 4
-display_categories: [Committer, Evangelist]
+display_categories: [Leader]
 horizontal: false
 ---
 
