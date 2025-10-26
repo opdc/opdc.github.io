@@ -87,8 +87,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name: 공지사항 # blog_name will be displayed in your blog page
-blog_description: 공지사항 및 새소식을 알려드립니다.
+blog_name: 소식/공지 # blog_name will be displayed in your blog page
+blog_description: 소식 및 공지사항을 알려드립니다.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
@@ -275,7 +275,7 @@ jekyll-archives:
     tag: "/blog/tag/:name/"
     category: "/blog/category/:name/"
 
-display_tags: ["formatting", "images", "links", "math", "code", "blockquotes"] # these tags will be displayed on the front page of your blog
+display_tags: ["images", "links", "code", "notebook", "video", "tutorial", "review", "presentation"] # these tags will be displayed on the front page of your blog
 display_categories: ["external-services"] # these categories will be displayed on the front page of your blog
 
 # -----------------------------------------------------------------------------
