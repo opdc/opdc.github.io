@@ -1,10 +1,10 @@
 ---
 layout: page
 title: 임철홍
-description: Leader
+description: eGovFrame Leader
 img: assets/img/leader/09-lim-cheolhong.jpg
 importance: 9
-category: eGovFrame Leader
+category: Leader
 related_publications: false
 ---
 

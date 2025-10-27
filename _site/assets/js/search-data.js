@@ -97,7 +97,7 @@ ninja.data = [{
               window.location.href = "/leaders/08-heo-gwangnam/";
             },},{id: "leaders-임철홍",
           title: '임철홍',
-          description: "Leader",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
               window.location.href = "/leaders/09-lim-cheolhong/";
             },},{id: "leaders-옥상훈",
