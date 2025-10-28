@@ -1,12 +1,12 @@
 ---
-#layout: page
-#title: projects
-#permalink: /projects/
-#description: A growing collection of your cool projects.
-#nav: true
-#nav_order: 6
-#display_categories: [k-paas, egovframe]
-#horizontal: false
+layout: page
+title: 프로젝트
+permalink: /projects/
+description: OPDC는 다양한 오픈소스 프로젝트를 통해 개발자의 성장을 지원하고, 협력적 커뮤니티 문화를 조성합니다.
+nav: true
+nav_order: 5
+display_categories: [k-paas, egovframe]
+horizontal: false
 ---
 
 <!-- pages/projects.md -->

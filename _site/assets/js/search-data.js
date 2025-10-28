@@ -37,6 +37,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/leaders/";
           },
+        },{id: "nav-프로젝트",
+          title: "프로젝트",
+          description: "OPDC 프로젝트",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
         },{id: "nav-정관",
           title: "정관",
           description: "규정(정관)",

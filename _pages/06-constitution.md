@@ -4,7 +4,7 @@ permalink: /constitution/
 title: 정관
 description: 규정(정관)
 nav: true
-nav_order: 5
+nav_order: 6
 ---
 
 # 정관
