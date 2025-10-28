@@ -2,14 +2,14 @@
 layout: page
 title: 이승룡
 description: eGovFrame / OPA Leader
-img: assets/img/leader/03-lee-seungryong.jpg
+img: assets/img/leader/03-lee-seungryong.png
 importance: 3
 category: Leader
 related_publications: false
 ---
 
 <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="/assets/img/leader/03-lee-seungryong.jpg" alt="이승룡 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  <img src="/assets/img/leader/03-lee-seungryong.png" alt="이승룡 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
   <div>
     <h2 style="margin-bottom: 0.5rem;">이승룡</h2>
     <p style="margin: 0;">

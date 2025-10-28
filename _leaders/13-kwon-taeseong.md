@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 권태성
-description: eGovFrame / OPA Leader
+description: eGovFrame Leader
 img: assets/img/leader/13-kwon-taeseong.png
 importance: 13
 category: Leader

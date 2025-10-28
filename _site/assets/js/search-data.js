@@ -117,9 +117,29 @@ ninja.data = [{
               window.location.href = "/leaders/12-lee-chungryeol/";
             },},{id: "leaders-권태성",
           title: '권태성',
-          description: "eGovFrame / OPA Leader",
+          description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
               window.location.href = "/leaders/13-kwon-taeseong/";
+            },},{id: "leaders-이석곤",
+          title: '이석곤',
+          description: "OPA Leader",
+          section: "Leaders",handler: () => {
+              window.location.href = "/leaders/14-lee-seokgon/";
+            },},{id: "leaders-이승윤",
+          title: '이승윤',
+          description: "OPA Leader",
+          section: "Leaders",handler: () => {
+              window.location.href = "/leaders/15-lee-seungyoon/";
+            },},{id: "leaders-권순률",
+          title: '권순률',
+          description: "OPA Leader",
+          section: "Leaders",handler: () => {
+              window.location.href = "/leaders/16-kwon-soonryu/";
+            },},{id: "leaders-전여진",
+          title: '전여진',
+          description: "OPA Leader",
+          section: "Leaders",handler: () => {
+              window.location.href = "/leaders/17-jeon-yeojin/";
             },},{id: "news-준비-중",
           title: '준비 중',
           description: "",
