@@ -4,6 +4,6 @@ github_username: opdc
 rss_icon: true
 youtube_id: open-egovframe
 custom_social:
-  logo: https://open.egovframe.org/images/oc/logo.jpg
+  logo: /assets/img/opencommunity_logo_black.png
   title: Open Community
   url: https://open.egovframe.org

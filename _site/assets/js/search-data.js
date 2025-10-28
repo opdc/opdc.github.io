@@ -39,7 +39,7 @@ ninja.data = [{
           },
         },{id: "nav-프로젝트",
           title: "프로젝트",
-          description: "OPDC 프로젝트",
+          description: "OPDC는 다양한 오픈소스 프로젝트를 통해 개발자의 성장을 지원하고, 협력적 커뮤니티 문화를 조성합니다.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
