@@ -21,14 +21,17 @@ related_publications: false
 ---
 
 ### 🛠️ 전문분야
-- Node.js 기반의 웹 개발, 협업 및 이커머스 개발 방법론
+- AI 기반의 개발 프로세스, 협업 및 이커머스 개발 방법론
 
 ### 🤝 활동 커뮤니티
-- [표준프레임워크 오픈커뮤니티](https://open.egovframe.org)
-- [OKKY.kr](https://okky.kr)
-- Elasticsearch Korea
+- [표준프레임워크 오픈커뮤니티](https://open.egovframe.org/)
+- [OKKY.kr](https://okky.kr/)
+- [개발 유튜브](https://youtube.com/@KenuHeo)
 
 ---
+### 🧑🏻‍💻 오픈 소스 프로젝트
+- https://github.com/kenu/odevtube
+- https://mp4.okdevtv.com
 
 ### 📂 주요 경력
 - OKKY공동대표(현재)

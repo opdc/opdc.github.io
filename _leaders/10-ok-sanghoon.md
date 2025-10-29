@@ -29,7 +29,7 @@ related_publications: false
 ---
 
 ### 📂 주요 경력
-- (현) 네이버 Clova Tech Leader
+- (현) 네이버클라우드 AI 케어콜 사업 Leader
 - (전) 네이버 개발자센터 PM
 - (전) 어도비 시스템즈 컨설턴트
 - (전) 한국자바개발자 커뮤니티 회장
