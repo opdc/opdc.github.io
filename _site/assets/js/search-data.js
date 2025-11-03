@@ -44,12 +44,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-정관",
-          title: "정관",
-          description: "규정(정관)",
+        },{id: "nav-협력-업체-및-기관",
+          title: "협력 업체 및 기관",
+          description: "mou(업무 협약) 관련 기관·업체 리스트",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/constitution/";
+            window.location.href = "/partners/";
           },
         },{id: "post-opdc-홈페이지-개설-준비-중",
       
