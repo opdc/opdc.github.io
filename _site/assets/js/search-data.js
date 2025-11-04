@@ -46,7 +46,7 @@ ninja.data = [{
           },
         },{id: "nav-협력-업체-및-기관",
           title: "협력 업체 및 기관",
-          description: "mou(업무 협약) 관련 기관·업체 리스트",
+          description: "MOU(업무 협약) 관련 기관·업체 리스트",
           section: "Navigation",
           handler: () => {
             window.location.href = "/partners/";
@@ -127,26 +127,31 @@ ninja.data = [{
           description: "eGovFrame Leader",
           section: "Leaders",handler: () => {
               window.location.href = "/leaders/13-kwon-taeseong/";
+            },},{id: "leaders-이백행",
+          title: '이백행',
+          description: "eGovFrame Leader",
+          section: "Leaders",handler: () => {
+              window.location.href = "/leaders/14-lee-baekhaeng/";
             },},{id: "leaders-이석곤",
           title: '이석곤',
           description: "OPA Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/14-lee-seokgon/";
+              window.location.href = "/leaders/31-lee-seokgon/";
             },},{id: "leaders-이승윤",
           title: '이승윤',
           description: "OPA Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/15-lee-seungyoon/";
+              window.location.href = "/leaders/32-lee-seungyoon/";
             },},{id: "leaders-권순률",
           title: '권순률',
           description: "OPA Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/16-kwon-soonryu/";
+              window.location.href = "/leaders/33-kwon-soonryu/";
             },},{id: "leaders-전여진",
           title: '전여진',
           description: "OPA Leader",
           section: "Leaders",handler: () => {
-              window.location.href = "/leaders/17-jeon-yeojin/";
+              window.location.href = "/leaders/34-jeon-yeojin/";
             },},{id: "news-준비-중",
           title: '준비 중',
           description: "",
