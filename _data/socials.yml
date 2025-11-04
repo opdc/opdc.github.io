@@ -3,7 +3,9 @@ facebook_id: egovframe.open
 github_username: opdc
 rss_icon: true
 youtube_id: open-egovframe
+
 custom_social:
-  logo: /assets/img/opencommunity_logo_black.png
+  logo_dark:  /assets/img/opencommunity_logo_dark.png
+  logo_light: /assets/img/opencommunity_logo_light.png
   title: Open Community
   url: https://open.egovframe.org
