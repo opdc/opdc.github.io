@@ -2,14 +2,14 @@
 layout: page
 title: 이승윤
 description: OPA Leader
-img: assets/img/leader/15-lee-seungyoon.png
-importance: 15
+img: assets/img/leader/32-lee-seungyoon.png
+importance: 32
 category: Leader
 related_publications: false
 ---
 
 <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="/assets/img/leader/15-lee-seungyoon.png" alt="이승윤 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  <img src="/assets/img/leader/32-lee-seungyoon.png" alt="이승윤 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
   <div>
     <h2 style="margin-bottom: 0.5rem;">이승윤</h2>
     <p style="margin: 0;">

@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">이기하</h2>
     <p style="margin: 0;">
-      <a href="mailto:dasomell@gmail.com"><i class="fas fa-envelope"></i>dasomell@gmail.com</a> <br>
+      <a href="mailto:dasomell@gmail.com"><i class="fas fa-envelope"></i> dasomell@gmail.com</a> <br>
       <a href="https://github.com/dasomel" target="_blank"><i class="fab fa-github"></i> GitHub</a> &nbsp;|&nbsp;
       <a href="https://www.linkedin.com/in/%EA%B8%B0%ED%95%98-%EC%9D%B4-ba909924/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </p>

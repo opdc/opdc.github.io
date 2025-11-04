@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">옥상훈</h2>
     <p style="margin: 0;">
-      <a href="mailto:okgosu@gmail.com"><i class="fas fa-envelope"></i>okgosu@gmail.com</a>
+      <a href="mailto:okgosu@gmail.com"><i class="fas fa-envelope"></i> okgosu@gmail.com</a>
     </p>
   </div>
 </div>

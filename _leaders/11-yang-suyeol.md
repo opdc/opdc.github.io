@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">양수열</h2>
     <p style="margin: 0;">
-      <a href="mailto:javaoracle1@outlook.com"><i class="fas fa-envelope"></i>javaoracle1@outlook.com</a>
+      <a href="mailto:javaoracle1@outlook.com"><i class="fas fa-envelope"></i> javaoracle1@outlook.com</a>
     </p>
   </div>
 </div>

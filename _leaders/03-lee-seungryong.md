@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">이승룡</h2>
     <p style="margin: 0;">
-      <a href="mailto:sleepred@gmail.com"><i class="fas fa-envelope"></i>sleepred@gmail.com</a> <br>
+      <a href="mailto:sleepred@gmail.com"><i class="fas fa-envelope"></i> sleepred@gmail.com</a> <br>
     </p>
   </div>
 </div>

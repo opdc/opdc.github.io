@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">한성곤</h2>
     <p style="margin: 0;">
-      <a href="mailto:switchover@gmail.com"><i class="fas fa-envelope"></i>switchover@gmail.com</a>
+      <a href="mailto:switchover@gmail.com"><i class="fas fa-envelope"></i> switchover@gmail.com</a>
     </p>
   </div>
 </div>

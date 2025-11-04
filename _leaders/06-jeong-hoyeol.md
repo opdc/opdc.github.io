@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">정호열</h2>
     <p style="margin: 0;">
-      <a href="mailto:wesung777@naver.com"><i class="fas fa-envelope"></i>wesung777@naver.com</a> <br>
+      <a href="mailto:wesung777@naver.com"><i class="fas fa-envelope"></i> wesung777@naver.com</a> <br>
     </p>
   </div>
 </div>

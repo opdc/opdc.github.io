@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">김경하</h2>
     <p style="margin: 0;">
-      <a href="mailto:gstarclub@gmail.com"><i class="fas fa-envelope"></i>gstarclub@gmail.com</a>
+      <a href="mailto:gstarclub@gmail.com"><i class="fas fa-envelope"></i> gstarclub@gmail.com</a>
     </p>
   </div>
 </div>

@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">장미영</h2>
     <p style="margin: 0;">
-      <a href="mailto:samediyam@gmail.com"><i class="fas fa-envelope"></i>samediyam@gmail.com</a> <br>
+      <a href="mailto:samediyam@gmail.com"><i class="fas fa-envelope"></i> samediyam@gmail.com</a> <br>
       <a href="https://github.com/iamroseyoung" target="_blank"><i class="fab fa-github"></i> GitHub</a>
     </p>
   </div>

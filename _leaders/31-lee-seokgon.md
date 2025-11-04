@@ -2,18 +2,18 @@
 layout: page
 title: 이석곤
 description: OPA Leader
-img: assets/img/leader/14-lee-seokgon.png
-importance: 14
+img: assets/img/leader/31-lee-seokgon.png
+importance: 31
 category: Leader
 related_publications: false
 ---
 
 <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="/assets/img/leader/14-lee-seokgon.png" alt="이석곤 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  <img src="/assets/img/leader/31-lee-seokgon.png" alt="이석곤 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
   <div>
     <h2 style="margin-bottom: 0.5rem;">이석곤</h2>
     <p style="margin: 0;">
-      <a href="mailto:leesk55@gmail.com"><i class="fas fa-envelope"></i>leesk55@gmail.com</a> <br>
+      <a href="mailto:leesk55@gmail.com"><i class="fas fa-envelope"></i> leesk55@gmail.com</a> <br>
       <a href="https://github.com/EricSeokgon" target="_blank"><i class="fab fa-github"></i> GitHub</a> &nbsp;|&nbsp;
       <a href="https://www.linkedin.com/in/eric-seokgon-lee-312991aa/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
     </p>

@@ -13,7 +13,7 @@ related_publications: false
   <div>
     <h2 style="margin-bottom: 0.5rem;">고재도</h2>
     <p style="margin: 0;">
-      <a href="mailto:haibane84@gmail.com"><i class="fas fa-envelope"></i>haibane84@gmail.com</a>
+      <a href="mailto:haibane84@gmail.com"><i class="fas fa-envelope"></i> haibane84@gmail.com</a>
     </p>
   </div>
 </div>
