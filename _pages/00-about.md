@@ -27,6 +27,5 @@ social: true # includes social icons at the bottom of the page
 - 기타 우리 법인의 목적을 달성하기 위해 필요한 사업
 
 <br>
-<img src="../assets/img/about/organization.png" width="100%" height="auto">
 <br>
 <br>

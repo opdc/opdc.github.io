@@ -27,7 +27,7 @@ nav_order: 1
 ---
 
 ## <i class="fas fa-sitemap"></i> 조직도  
-_조직도 이미지를 여기에 첨부 혹은 노출_
+<img src="../assets/img/about/organization.png" width="100%" height="auto">
 
 ---
 
