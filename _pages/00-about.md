@@ -6,7 +6,7 @@ subtitle: Open Platform Developer Community
 
 profile:
   align: right
-  image: about/keyboard.jpg
+  image: about/opdc_img.png
   image_circular: false # crops the image to make it circular
 #  more_info: >
 #    <p>555 your office number</p>
