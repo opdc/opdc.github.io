@@ -2,14 +2,14 @@
 layout: page
 title: 장미영
 description: GovFrame / OPA Leader
-img: assets/img/leader/07-jang-miyoung.jpg
+img: assets/img/leader/07-jang-miyoung.png
 importance: 7
 category: Leader
 related_publications: false
 ---
 
 <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="/assets/img/leader/07-jang-miyoung.jpg" alt="장미영 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  <img src="/assets/img/leader/07-jang-miyoung.png" alt="장미영 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
   <div>
     <h2 style="margin-bottom: 0.5rem;">장미영</h2>
     <p style="margin: 0;">
