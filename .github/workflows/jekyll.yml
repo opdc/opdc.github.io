@@ -19,15 +19,32 @@ jobs:
           ruby-version: '3.4'
           bundler-cache: true
 
-      - name: Install dependencies
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'  # or your preferred version
+
+      - name: Create Python venv & install jupyter
+        run: |
+          python -m venv jupyter_env
+          source jupyter_env/bin/activate
+          pip install --upgrade pip
+          pip install jupyter
+
+      - name: Install Imagemagick
+        run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+      - name: Install dependencies (ruby)
         run: bundle install
 
       - name: Build site
-        run: bundle exec jekyll build
+        run: |
+          source jupyter_env/bin/activate
+          bundle exec jekyll build --incremental
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./_site     # 언더바 반드시 포함!
+          publish_dir: ./_site
           publish_branch: gh-pages
