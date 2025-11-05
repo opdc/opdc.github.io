@@ -35,13 +35,12 @@ nav_order: 1
 
 - 이메일: [opdc.kr@gmail.com](mailto:opdc.kr@gmail.com)
 - 전화: 070-4778-2673  
-- 주소: 04513 서울시 중구 세종대로 39  
-&nbsp; &nbsp; 서울상공회의소 본관 7F, 개방형클라우드플랫폼센터 OPDC 사무국
 
 ---
 
 ## <i class="fas fa-map-marker-alt"></i> 위치 안내  
-_위치 지도 이미지 혹은 iframe 삽입_
+- 주소: 04513 서울시 중구 세종대로 39  
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 서울상공회의소 본관 7F, 개방형클라우드플랫폼센터 OPDC 사무국
 
 ---
 
