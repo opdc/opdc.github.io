@@ -6,38 +6,19 @@ nav: true
 nav_order: 2
 ---
 
+<img src="/assets/img/history/history.png" alt="history" style="width=100%; max-width:100%; border-radius:8px;">
+
 ### 2025
 - <b>07</b> 토비 이일민 리더와 함께하는! 오프라인 세미나 개최(센터필드, 90명 참여)
-<div class="row justify-content-sm-center">
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="/assets/img/history/2025_history_01.png" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="/assets/img/history/2025_history_02.png" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
 - <b>03</b> 리더 신규 임명(표준프레임워크 컨트리뷰션 수상자 권태성 리더)
 
 ### 2024
 - <b>11</b> K-PaaS x eGovFrame 콜라보 세미나 개최
 - <b>08</b> 전자정부 표준프레임워크 컨트리뷰션 멘토링 프로그램 운영
-<div class="row justify-content-sm-center">
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="/assets/img/history/2024_history_01.png" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="/assets/img/history/2024_history_02.png" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
 - <b>03</b> 리더 신규 임명(표준프레임워크 컨트리뷰션 수상자 이충렬 리더)
 
 ### 2023
 - <b>12</b> 표준프레임워크 컨트리뷰션 “다음 주인공은 누구?” 영상 제작
-<div class="row justify-content-sm-center">
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="/assets/img/history/2023_history_01.png" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
 - <b>11</b> K-PaaS x eGovFrame 콜라보 세미나 개최
 - <b>09</b> 글로벌 커뮤니티와의 협력을 위한 MOU(우분투코리아 & OPDC)
 - <b>08</b> 전자정부 표준프레임워크 컨트리뷰션 멘토링 프로그램 운영
