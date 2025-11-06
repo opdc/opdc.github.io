@@ -6,7 +6,7 @@ subtitle: Open Platform Developer Community
 
 profile:
   align: right
-  image: about/opdc_img.png
+#  image: about/opdc_img.png
   image_circular: false # crops the image to make it circular
 #  more_info: >
 #    <p>555 your office number</p>
@@ -18,14 +18,11 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-(사)오픈플랫폼 개발자커뮤니티는 오픈플랫폼 및 이와 관련된 서비스의 개발 생산성과 품질을 향상시키고 관련 소프트웨어 개발자의 역량 강화와 상호 교류에 헌신하며, 오픈 소스 소프트웨어 개발과 확산을 위한 활동 지원을 통해 오픈 소스 기술참상에 기여함을 그 설립목적으로 활동을 수행 합니다
+<img src="/assets/img/about/opdc_img.png" width="100%" height="auto">
 
-- 오픈플랫폼 개발과 발전에 관한 사업
-- 오픈플랫폼 관련 교육 및 국내외 확산에 관한 사업
-- 오픈플랫폼 관련 소프트웨어 및 서비스 활성화에 관한 사업
-- 개발자 간의 상호 교류와 유대 강화를 위한 사업
-- 기타 우리 법인의 목적을 달성하기 위해 필요한 사업
+> (사)오픈플랫폼 개발자커뮤니티는 오픈플랫폼과 관련 서비스의 품질과 생산성을 높이고,  
+> 개발자들이 함께 배우고 성장할 수 있도록 다양한 교류와 지원을 이어가고 있습니다.  
+> 오픈소스 개발과 확산을 통해 더 열린 기술 생태계를 만들어가고자 합니다.  
+>  
+> **개발자들이 함께 배우고 성장하는 열린 커뮤니티, 오픈플랫폼 개발자커뮤니티입니다.**
 
-<br>
-<br>
-<br>
