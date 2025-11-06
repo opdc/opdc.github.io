@@ -2,14 +2,14 @@
 layout: page
 title: 권순률
 description: OPA Leader
-img: assets/img/leader/33-kwon-soonryu.jpg
+img: assets/img/leader/33-kwon-soonryu.png
 importance: 33
 category: Leader
 related_publications: false
 ---
 
 <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 2rem;">
-  <img src="/assets/img/leader/33-kwon-soonryu.jpg" alt="권순률 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
+  <img src="/assets/img/leader/33-kwon-soonryu.png" alt="권순률 프로필 사진" style="width: 160px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);" />
   <div>
     <h2 style="margin-bottom: 0.5rem;">권순률</h2>
     <p style="margin: 0;">
