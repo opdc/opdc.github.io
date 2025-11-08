@@ -13,7 +13,7 @@ nav_order: 6
     <div style="text-align: center;">
       <a href="https://ubuntu-kr.org/" target="_blank">
         <img src="/assets/img/partners/logo_ubuntu_korea.png" alt="Ubuntu Korea Logo" width="240"/><br>
-        <span style="display: inline-block; margin-top: 8px; font-weight: bold;">우분트 코리아</span>
+        <span style="display: inline-block; margin-top: 8px; font-weight: bold;">우분투 코리아</span>
       </a>
     </div>
     <div style="text-align: center;">
