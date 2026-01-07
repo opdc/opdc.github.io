@@ -1,0 +1,92 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="페이지를 찾을 수 없습니다" description="요청하신 페이지를 찾을 수 없습니다">
+  <div class="min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
+    <div class="container mx-auto px-4 text-center">
+      <div class="max-w-2xl mx-auto">
+        <!-- 404 Icon -->
+        <div class="mb-8">
+          <i class="fas fa-exclamation-triangle text-8xl text-brand-600 dark:text-brand-500" aria-hidden="true"></i>
+        </div>
+
+        <!-- Error Message -->
+        <h1 class="text-6xl md:text-8xl font-bold mb-4 text-gray-900 dark:text-white">404</h1>
+        <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-800 dark:text-gray-200">
+          페이지를 찾을 수 없습니다
+        </h2>
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-12">
+          요청하신 페이지가 존재하지 않거나 이동되었을 수 있습니다.<br />
+          아래 링크를 통해 원하시는 페이지로 이동해 보세요.
+        </p>
+
+        <!-- Navigation Links -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+          <a
+            href="/"
+            class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow group"
+          >
+            <i class="fas fa-home text-3xl text-brand-600 dark:text-brand-500 mb-3 group-hover:scale-110 transition-transform inline-block" aria-hidden="true"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">홈으로</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">메인 페이지로 이동</p>
+          </a>
+
+          <a
+            href="/blog"
+            class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow group"
+          >
+            <i class="fas fa-newspaper text-3xl text-brand-600 dark:text-brand-500 mb-3 group-hover:scale-110 transition-transform inline-block" aria-hidden="true"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">소식</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">최신 소식 보기</p>
+          </a>
+
+          <a
+            href="/about"
+            class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow group"
+          >
+            <i class="fas fa-info-circle text-3xl text-brand-600 dark:text-brand-500 mb-3 group-hover:scale-110 transition-transform inline-block" aria-hidden="true"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">소개</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">커뮤니티 소개</p>
+          </a>
+
+          <a
+            href="/leaders"
+            class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow group"
+          >
+            <i class="fas fa-users text-3xl text-brand-600 dark:text-brand-500 mb-3 group-hover:scale-110 transition-transform inline-block" aria-hidden="true"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">리더</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">리더 소개</p>
+          </a>
+
+          <a
+            href="/projects"
+            class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow group"
+          >
+            <i class="fas fa-folder-open text-3xl text-brand-600 dark:text-brand-500 mb-3 group-hover:scale-110 transition-transform inline-block" aria-hidden="true"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">프로젝트</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">진행 프로젝트</p>
+          </a>
+
+          <a
+            href="/partners"
+            class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow group"
+          >
+            <i class="fas fa-handshake text-3xl text-brand-600 dark:text-brand-500 mb-3 group-hover:scale-110 transition-transform inline-block" aria-hidden="true"></i>
+            <h3 class="font-bold text-gray-900 dark:text-white mb-1">협력기관</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">협력기관 안내</p>
+          </a>
+        </div>
+
+        <!-- Back Button -->
+        <button
+          onclick="history.back()"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 transition-colors"
+        >
+          <i class="fas fa-arrow-left" aria-hidden="true"></i>
+          이전 페이지로 돌아가기
+        </button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

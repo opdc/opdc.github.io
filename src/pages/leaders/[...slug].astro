@@ -1,0 +1,130 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const leaders = await getCollection('leaders')
+  return leaders.map((leader) => ({
+    params: { slug: leader.slug },
+    props: { leader },
+  }))
+}
+
+const { leader } = Astro.props
+const { Content } = await leader.render()
+---
+
+<BaseLayout title={leader.data.name} description={`${leader.data.name} - ${leader.data.role}`}>
+  <div class="py-12">
+    <!-- Header -->
+    <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-16">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="mb-6">
+          <a
+            href="/leaders"
+            class="inline-flex items-center text-brand-600 hover:text-brand-700 dark:text-brand-500 dark:hover:text-brand-400 font-medium"
+          >
+            ← 리더 목록
+          </a>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-8 items-start">
+          <!-- Profile Image -->
+          <div class="w-full md:w-64 flex-shrink-0">
+            {leader.data.image ? (
+              <img
+                src={leader.data.image}
+                alt={leader.data.name}
+                class="w-full rounded-2xl shadow-xl object-cover aspect-square"
+              />
+            ) : (
+              <div class="w-full aspect-square rounded-2xl shadow-xl bg-gradient-to-br from-brand-100 to-blue-100 dark:from-brand-900 dark:to-blue-900 flex items-center justify-center">
+                <span class="text-8xl font-bold text-brand-600 dark:text-brand-400">
+                  {leader.data.name.charAt(0)}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <!-- Profile Info -->
+          <div class="flex-1">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+              {leader.data.name}
+            </h1>
+            <p class="text-xl text-brand-600 dark:text-brand-500 font-medium mb-6">
+              {leader.data.role}
+            </p>
+
+            <!-- Contact Info -->
+            {(leader.data.email || leader.data.github || leader.data.linkedin) && (
+              <div class="mb-6 flex flex-wrap gap-4 text-gray-700 dark:text-gray-300">
+                {leader.data.email && (
+                  <a
+                    href={`mailto:${leader.data.email}`}
+                    class="inline-flex items-center gap-2 hover:text-brand-600 dark:hover:text-brand-500 transition-colors"
+                  >
+                    <i class="fas fa-envelope"></i>
+                    <span>{leader.data.email}</span>
+                  </a>
+                )}
+                {leader.data.github && (
+                  <a
+                    href={leader.data.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 hover:text-brand-600 dark:hover:text-brand-500 transition-colors"
+                  >
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                  </a>
+                )}
+                {leader.data.linkedin && (
+                  <a
+                    href={leader.data.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 hover:text-brand-600 dark:hover:text-brand-500 transition-colors"
+                  >
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                  </a>
+                )}
+              </div>
+            )}
+
+            {leader.data.bio && (
+              <p class="text-lg text-gray-700 dark:text-gray-300">
+                {leader.data.bio}
+              </p>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 max-w-5xl py-12">
+      <div class="prose prose-lg dark:prose-invert max-w-none
+                  prose-headings:font-bold
+                  prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-gray-200 dark:prose-h2:border-gray-800
+                  prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+                  prose-p:text-gray-700 dark:prose-p:text-gray-300
+                  prose-a:text-brand-600 dark:prose-a:text-brand-500 prose-a:no-underline hover:prose-a:underline
+                  prose-strong:text-gray-900 dark:prose-strong:text-white
+                  prose-ul:list-disc prose-ul:pl-6
+                  prose-li:text-gray-700 dark:prose-li:text-gray-300">
+        <Content />
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <a
+          href="/leaders"
+          class="inline-flex items-center px-6 py-3 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium"
+        >
+          ← 리더 목록으로
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

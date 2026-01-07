@@ -1,0 +1,148 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const timeline = [
+  {
+    year: '2025',
+    events: [
+      '07 토비 이일민 리더와 함께하는! 오프라인 세미나 개최(센터필드, 90명 참여)',
+      '03 리더 신규 임명(표준프레임워크 컨트리뷰션 수상자 권태성 리더)'
+    ]
+  },
+  {
+    year: '2024',
+    events: [
+      '11 K-PaaS x eGovFrame 콜라보 세미나 개최',
+      '08 전자정부 표준프레임워크 컨트리뷰션 멘토링 프로그램 운영',
+      '03 리더 신규 임명(표준프레임워크 컨트리뷰션 수상자 이충렬 리더)'
+    ]
+  },
+  {
+    year: '2023',
+    events: [
+      '12 표준프레임워크 컨트리뷰션 "다음 주인공은 누구?" 영상 제작',
+      '11 K-PaaS x eGovFrame 콜라보 세미나 개최',
+      '09 글로벌 커뮤니티와의 협력을 위한 MOU(우분투코리아 & OPDC)',
+      '08 전자정부 표준프레임워크 컨트리뷰션 멘토링 프로그램 운영',
+      '03 리더 신규 임명(표준프레임워크 컨트리뷰션 수상자 이백행 리더)'
+    ]
+  },
+  {
+    year: '2022',
+    events: [
+      '12 전자정부 표준프레임워크 신규 버전 발표회 기조 연설(송상효 이사장:오픈소스 발전과 미래)',
+      '07 2022 전자정부 표준프레임워크 신규 버전 발표회 개최 협력',
+      '06 Open Platform Alliance(OPA) 설립 준비 위원회 참여 지원',
+      '06 전자정부 표준프레임워크 컨트리뷰션 멘토링 프로그램 운영',
+      '04 표준프레임워크 오픈커뮤니티 100회 기념 세미나 개최'
+    ]
+  },
+  {
+    year: '2021',
+    events: [
+      '06 상용 SW 대상 클라우드 Native화 지원을 위한 업무 협력(MOU)',
+      '02 SW 중심대학 운영에 관한 MOU(광주대학교 & OPDC)'
+    ]
+  },
+  {
+    year: '2020',
+    events: [
+      '12 표준프레임워크 오픈커뮤니티 10주년 기념 세미나 개최(온라인)',
+      '09 개방형 클라우드 플랫폼 확산 위한 MOU(인프라닉스 & OPDC)'
+    ]
+  },
+  {
+    year: '2019',
+    events: [
+      '05 파스-타(PaaS-TA) 전문기업 확인 서비스 (파스-타 레디)협력 운영',
+      '05 파스-타(PaaS-TA) 활성화 지원사업단과 전문가 교육 협력∙운영'
+    ]
+  },
+  {
+    year: '2018',
+    events: [
+      '12 전자정부 표준프레임워크 호환성확인 점검기관 지정(지정기관:한국정보화진흥원)',
+      '06 오픈플랫폼 PaaS-TA Summit 2018 개최(엘타워, 300명 참석)',
+      '02 제3대 송상효 이사장 취임'
+    ]
+  },
+  {
+    year: '2016',
+    events: [
+      '11 제2대 전형철 이사장 취임',
+      '02 (사)오픈플랫폼 개발자커뮤니티 법인설립등기'
+    ]
+  },
+  {
+    year: '2015',
+    events: [
+      '12 비영리법인 설립허가 (허가기관: 과학기술정보통신부)',
+      '07 제1대 한상기 이사장 취임',
+      '06 (사)오픈플랫폼 개발자커뮤니티 창립(발기인)총회',
+      '05 (사)오픈플랫폼 개발자 커뮤니티로 법인명 확정',
+      '04 표준프레임워크 오픈커뮤니티 사단법인 설립 준비위원회 구성'
+    ]
+  },
+  {
+    year: '2011 ~ 2014',
+    events: [
+      '개발자대회 <슈퍼개발자K 시즌 1,2,3,4>개최'
+    ]
+  },
+  {
+    year: '2010 ~ 2014',
+    events: [
+      '리더 1기 임명(임철홍, 한성곤 등 15인)',
+      '리더 2기 임명(이일민, 허광남 등 13인)',
+      '리더 3기 임명(옥상훈, 장선진 등 18인)',
+      '리더 4기 임명(김경하, 양수열 등 15인)'
+    ]
+  },
+  {
+    year: '2010',
+    events: [
+      '10 창립 공모전 개최',
+      '09 첫 정기기술세미나 개최',
+      '08 표준프레임워크 오픈커뮤니티 창립 및 발족식'
+    ]
+  }
+]
+---
+
+<BaseLayout title="연혁" description="OPDC의 성장 과정을 확인하세요">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">연혁</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        OPDC의 성장 과정과 주요 이정표를 확인하세요
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+      <!-- History Image -->
+      <div class="mb-12">
+        <img src="/img/history/history.png" alt="OPDC 연혁" class="w-full h-auto rounded-lg shadow-lg" />
+      </div>
+
+      <!-- Timeline -->
+      {timeline.map((period) => (
+        <div class="mb-12 last:mb-0">
+          <h3 class="text-2xl font-bold mb-4 text-brand-600 dark:text-brand-500">{period.year}</h3>
+          <ul class="space-y-3 pl-6">
+            {period.events.map((event) => (
+              <li class="text-gray-700 dark:text-gray-300">
+                <span class="font-bold" set:html={event.startsWith('0') || event.startsWith('1') ? event.substring(0, 2) : ''} />
+                {event.startsWith('0') || event.startsWith('1') ?
+                  <span set:html={' ' + event.substring(3)} /> :
+                  <span set:html={event} />
+                }
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

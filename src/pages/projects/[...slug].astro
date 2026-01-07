@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects')
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }))
+}
+
+const { project } = Astro.props
+const { Content } = await project.render()
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+  <div class="py-12">
+    <!-- Header -->
+    <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-16">
+      <div class="container mx-auto px-4 max-w-5xl">
+        <div class="mb-6">
+          <a
+            href="/projects"
+            class="inline-flex items-center text-brand-600 hover:text-brand-700 dark:text-brand-500 dark:hover:text-brand-400 font-medium"
+          >
+            ← 프로젝트 목록
+          </a>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          {project.data.title}
+        </h1>
+        <p class="text-xl text-gray-700 dark:text-gray-300 mb-6">
+          {project.data.description}
+        </p>
+
+        {project.data.tags.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {project.data.tags.map((tag) => (
+              <span class="px-3 py-1 bg-brand-600 text-white text-sm rounded-full">
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+
+    <!-- Project Image -->
+    {project.data.image && (
+      <div class="container mx-auto px-4 max-w-5xl -mt-8">
+        <img
+          src={project.data.image}
+          alt={project.data.title}
+          class="w-full rounded-lg shadow-xl"
+        />
+      </div>
+    )}
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 max-w-5xl py-12">
+      <div class="prose prose-lg dark:prose-invert max-w-none
+                  prose-headings:font-bold
+                  prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-gray-200 dark:prose-h2:border-gray-800
+                  prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
+                  prose-p:text-gray-700 dark:prose-p:text-gray-300
+                  prose-a:text-brand-600 dark:prose-a:text-brand-500 prose-a:no-underline hover:prose-a:underline
+                  prose-strong:text-gray-900 dark:prose-strong:text-white
+                  prose-ul:list-disc prose-ul:pl-6
+                  prose-li:text-gray-700 dark:prose-li:text-gray-300
+                  prose-code:text-brand-600 dark:prose-code:text-brand-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+                  prose-pre:bg-gray-900 dark:prose-pre:bg-gray-950 prose-pre:text-gray-100
+                  prose-table:border-collapse
+                  prose-th:border prose-th:border-gray-300 dark:prose-th:border-gray-700 prose-th:bg-gray-100 dark:prose-th:bg-gray-800 prose-th:px-4 prose-th:py-2
+                  prose-td:border prose-td:border-gray-300 dark:prose-td:border-gray-700 prose-td:px-4 prose-td:py-2">
+        <Content />
+      </div>
+
+      <!-- Navigation -->
+      <div class="mt-16 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <a
+          href="/projects"
+          class="inline-flex items-center px-6 py-3 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors font-medium"
+        >
+          ← 프로젝트 목록으로
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

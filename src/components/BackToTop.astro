@@ -1,0 +1,40 @@
+---
+---
+
+<button
+  id="back-to-top"
+  type="button"
+  class="fixed bottom-8 right-8 z-40 w-12 h-12 rounded-full bg-brand-600 text-white shadow-lg hover:bg-brand-700 transition-all duration-300 opacity-0 invisible"
+  aria-label="맨 위로 이동"
+>
+  <i class="fas fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<script>
+  const backToTopButton = document.getElementById('back-to-top')
+
+  // Show/hide button based on scroll position
+  const toggleBackToTopButton = () => {
+    if (window.scrollY > 300) {
+      backToTopButton?.classList.remove('opacity-0', 'invisible')
+      backToTopButton?.classList.add('opacity-100', 'visible')
+    } else {
+      backToTopButton?.classList.remove('opacity-100', 'visible')
+      backToTopButton?.classList.add('opacity-0', 'invisible')
+    }
+  }
+
+  // Scroll to top smoothly
+  backToTopButton?.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  })
+
+  // Listen to scroll events
+  window.addEventListener('scroll', toggleBackToTopButton)
+
+  // Check initial scroll position
+  toggleBackToTopButton()
+</script>

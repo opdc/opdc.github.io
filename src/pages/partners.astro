@@ -1,0 +1,75 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const partners = [
+  {
+    name: '우분투 코리아',
+    logo: '/img/partners/logo_ubuntu_korea.png',
+    website: 'https://ubuntu-kr.org/',
+  },
+  {
+    name: 'OPA (Open cloud Platform Alliance)',
+    logo: '/img/partners/logo_opa.png',
+    website: 'https://opakorea.org/',
+  },
+  {
+    name: '광주대학교',
+    logo: '/img/partners/logo_gwangju.png',
+    website: 'https://www.gwangju.ac.kr/main',
+  },
+  {
+    name: '한국상용소프트웨어협회',
+    logo: '/img/partners/logo_kosw.png',
+    website: 'https://www.kosw.or.kr/',
+  },
+  {
+    name: 'KT',
+    logo: '/img/partners/logo_kt.png',
+    website: 'https://kt.com/',
+  },
+  {
+    name: '인프라닉스',
+    logo: '/img/partners/logo_infranics.png',
+    website: 'https://www.infranics.com/',
+  },
+]
+---
+
+<BaseLayout title="협력 업체 및 기관" description="MOU(업무 협약) 관련 기관·업체 리스트">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">협력 업체 및 기관</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        MOU(업무 협약) 관련 기관·업체 리스트
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {partners.map((partner) => (
+          <div class="text-center">
+            <a
+              href={partner.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group block"
+            >
+              <div class="mb-4 flex items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-2">
+                <img
+                  src={partner.logo}
+                  alt={`${partner.name} Logo`}
+                  class="w-full h-auto object-contain transition-transform group-hover:scale-105"
+                />
+              </div>
+              <span class="inline-block font-bold text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-500 transition-colors">
+                {partner.name}
+              </span>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
