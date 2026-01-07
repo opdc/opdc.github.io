@@ -7,8 +7,6 @@
 
 > 개발자들이 함께 배우고 성장하는 열린 커뮤니티의 공식 웹사이트
 
-[Live Demo](https://opdc.kr) | [기존 Jekyll 버전](https://github.com/opdc/opdc.github.io/tree/jekyll)
-
 ---
 
 ## 📋 목차
@@ -20,13 +18,12 @@
 - [개발 가이드](#-개발-가이드)
 - [주요 기능](#-주요-기능)
 - [배포](#-배포)
-- [마이그레이션 정보](#-마이그레이션-정보)
 
 ---
 
 ## 🎯 소개
 
-(사)오픈플랫폼 개발자커뮤니티(OPDC)의 공식 웹사이트입니다. Jekyll 기반에서 **Astro 5** 기반의 모던 웹 애플리케이션으로 마이그레이션되었습니다.
+(사)오픈플랫폼 개발자커뮤니티(OPDC)의 공식 웹사이트입니다. **Astro 5** 기반의 모던 웹 애플리케이션으로 구축되었습니다.
 
 ### 주요 개선사항
 
@@ -329,33 +326,6 @@ dist
 
 ---
 
-## 🔄 마이그레이션 정보
-
-### Jekyll → Astro 마이그레이션
-
-이 프로젝트는 2025년 1월에 Jekyll 기반에서 Astro 5 기반으로 마이그레이션되었습니다.
-
-#### 마이그레이션 전후 비교
-
-| 항목 | Jekyll (이전) | Astro (현재) |
-|------|--------------|-------------|
-| 빌드 시간 | ~10초 | ~2초 |
-| Lighthouse 점수 | 75-85 | 95-100 |
-| 개발 서버 시작 | ~5초 | ~1초 |
-| Hot Reload | ❌ | ✅ |
-| TypeScript | ❌ | ✅ |
-| React 지원 | ❌ | ✅ |
-
-#### 주요 변경사항
-
-1. **콘텐츠 관리**: Liquid → Content Collections (타입세이프)
-2. **스타일링**: SCSS → TailwindCSS 4.x
-3. **컴포넌트**: Liquid includes → Astro/React 컴포넌트
-4. **검색**: 클라이언트 사이드 검색 추가
-5. **SEO**: 자동 sitemap 및 메타 태그 생성
-
----
-
 ## 📝 라이선스
 
 이 프로젝트는 MIT 라이선스로 배포됩니다.
@@ -369,10 +339,3 @@ dist
 - GitHub: [@opdc](https://github.com/opdc)
 - Facebook: [egovframe.open](https://facebook.com/egovframe.open)
 - YouTube: [@open-egovframe](https://youtube.com/@open-egovframe)
-
----
-
-<p align="center">
-  Made with ❤️ by OPDC<br>
-  🤖 Generated with <a href="https://claude.com/claude-code">Claude Code</a>
-</p>
