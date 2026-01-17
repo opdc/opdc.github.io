@@ -12,7 +12,7 @@ const latestPosts = allPosts
   .slice(0, 3)
 
 // Get all leaders and shuffle them
-const allLeaders = await getCollection('leaders')
+const allLeaders = await getCollection('leaders', ({ data }) => data.locale === 'en')
 // Fisher-Yates shuffle algorithm
 const shuffleArray = <T,>(array: T[]): T[] => {
   const shuffled = [...array]
