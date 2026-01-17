@@ -5,6 +5,7 @@ bio:
 image: /img/leader/33-kwon-soonryu.png
 order: 33
 category: Leader
+locale: ko
 email: sunryul23@naver.com
 ---
 ### 🛠️ 전문분야

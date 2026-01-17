@@ -5,6 +5,7 @@ bio:
 image: /img/leader/06-jeong-hoyeol.png
 order: 6
 category: Leader
+locale: ko
 email: wesung777@naver.com
 ---
 ### 🛠️ 전문분야

@@ -1,0 +1,55 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import BlogSearch from '@/components/BlogSearch'
+
+const allPosts = await getCollection('blog')
+const posts = allPosts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
+// Transform posts for the React component
+const postsData = await Promise.all(
+  posts.map(async (post) => {
+    // Render the post to get the content
+    const { Content } = await post.render()
+    // Extract plain text from body for search
+    const plainTextContent = post.body || ''
+
+    return {
+      slug: post.slug,
+      title: post.data.title,
+      date: post.data.date.toISOString(),
+      description: post.data.description,
+      author: post.data.author,
+      tags: post.data.tags,
+      content: plainTextContent,
+    }
+  })
+)
+---
+
+<BaseLayout title="News" description="Check out the latest news and announcements from OPDC">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">News & Announcements</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        Check out the latest news and announcements from OPDC
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-12">
+    {posts.length === 0 ? (
+      <div class="text-center py-20">
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          No news registered yet.
+        </p>
+      </div>
+    ) : (
+      <div class="max-w-4xl mx-auto">
+        <BlogSearch client:load posts={postsData} postsPerPage={10} locale="en" basePath="/en/blog" />
+      </div>
+    )}
+  </div>
+</BaseLayout>

@@ -1,0 +1,300 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { parse } from 'node-html-parser'
+
+// 외부 페이지에서 게시판 테이블과 페이징 추출
+async function fetchBoardContent(url: string, baseUrl: string) {
+  try {
+    const response = await fetch(url)
+    const html = await response.text()
+    const root = parse(html)
+
+    const boardDiv = root.querySelector('.board_list02')
+    const paginationDiv = root.querySelector('.pagination')
+
+    let tableHtml = ''
+    let paginationHtml = ''
+
+    if (boardDiv) {
+      // 각 행을 순회하며 처리
+      const rows = boardDiv.querySelectorAll('tr.body')
+      rows.forEach(row => {
+        const hasAttach = row.innerHTML.includes('icon_attach')
+        // 깨진 이미지 태그 제거
+        const imgs = row.querySelectorAll('img[src*="icon_attach"]')
+        imgs.forEach(img => img.remove())
+
+        // 첨부파일이 있으면 아이콘 추가
+        if (hasAttach) {
+          const link = row.querySelector('a.go')
+          if (link) {
+            // 링크 뒤에 첨부 아이콘 추가 (링크 없이)
+            link.insertAdjacentHTML('afterend', ` <span class="attach-icon" title="첨부파일"><i class="fas fa-paperclip"></i></span>`)
+          }
+        }
+      })
+
+      tableHtml = boardDiv.innerHTML
+      // 상대 경로 링크를 절대 경로로 변환
+      tableHtml = tableHtml.replace(/href="\/oc\//g, `href="${baseUrl}/oc/`)
+      tableHtml = tableHtml.replace(/href='\/oc\//g, `href='${baseUrl}/oc/`)
+      // 새 창에서 열리도록 target 추가 (이미 있는 것 제외)
+      tableHtml = tableHtml.replace(/<a (?!target)/g, '<a target="_blank" ')
+    }
+
+    if (paginationDiv) {
+      paginationHtml = paginationDiv.innerHTML
+      // 이미지 경로 수정 (jsessionid 제거)
+      paginationHtml = paginationHtml.replace(/src="\/images\/([^"]*?)(?:;jsessionid=[^"]*)?"/g, `src="${baseUrl}/images/$1"`)
+      // onclick 제거
+      paginationHtml = paginationHtml.replace(/onclick="[^"]*"/g, '')
+      // href를 절대 경로로 변경
+      paginationHtml = paginationHtml.replace(/href="\?/g, `href="${url}?`)
+      // 새 창에서 열리도록 target 추가
+      paginationHtml = paginationHtml.replace(/<a /g, '<a target="_blank" ')
+    }
+
+    return { tableHtml, paginationHtml }
+  } catch (error) {
+    console.error('Failed to fetch:', url, error)
+    return {
+      tableHtml: '<p>콘텐츠를 불러오는 중 오류가 발생했습니다.</p>',
+      paginationHtml: ''
+    }
+  }
+}
+
+const baseUrl = 'https://open.egovframe.org'
+const seminar = await fetchBoardContent(`${baseUrl}/oc/products/seminar.do`, baseUrl)
+const resources = await fetchBoardContent(`${baseUrl}/oc/docs/pds.do`, baseUrl)
+const notice = await fetchBoardContent(`${baseUrl}/oc/support/notice.do`, baseUrl)
+---
+
+<BaseLayout title="오픈커뮤니티" description="전자정부 표준프레임워크 오픈커뮤니티">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">오픈커뮤니티</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        전자정부 표준프레임워크 오픈커뮤니티 콘텐츠
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-8">
+    <!-- 탭 네비게이션 -->
+    <div class="mb-6 border-b border-gray-200 dark:border-gray-700">
+      <nav class="flex flex-wrap items-center gap-2 -mb-px" id="tab-nav">
+        <button class="tab-btn active px-6 py-3 text-sm font-medium border-b-2 border-brand-600 text-brand-600" data-tab="notice">
+          <i class="fas fa-bullhorn mr-2"></i>공지사항
+        </button>
+        <button class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="seminar">
+          <i class="fas fa-chalkboard-teacher mr-2"></i>기술세미나
+        </button>
+        <button class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="resources">
+          <i class="fas fa-folder-open mr-2"></i>자료실
+        </button>
+        <a id="external-link" href="https://open.egovframe.org/oc/support/notice.do" target="_blank" class="ml-auto inline-flex items-center gap-2 text-sm text-brand-600 hover:text-brand-700 dark:text-brand-500">
+          <i class="fas fa-external-link-alt"></i>
+          새 창에서 열기
+        </a>
+      </nav>
+    </div>
+
+    <!-- 게시판 컨테이너 -->
+    <div class="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <!-- 공지사항 -->
+      <div id="tab-notice" class="tab-content p-4">
+        <div class="board-table" set:html={notice.tableHtml} />
+      </div>
+
+      <!-- 기술세미나 -->
+      <div id="tab-seminar" class="tab-content hidden p-4">
+        <div class="board-table" set:html={seminar.tableHtml} />
+      </div>
+
+      <!-- 자료실 -->
+      <div id="tab-resources" class="tab-content hidden p-4">
+        <div class="board-table" set:html={resources.tableHtml} />
+      </div>
+    </div>
+
+    <!-- 안내 문구 -->
+    <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center">
+      <i class="fas fa-info-circle mr-1"></i>
+      최근 10개의 게시글을 매일 자동으로 가져옵니다. 더 많은 내용은 <a href="https://open.egovframe.org" target="_blank" class="text-brand-600 hover:underline">전자정부 표준프레임워크 오픈커뮤니티</a>에서 확인하세요.
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  /* 게시판 테이블 스타일 */
+  .board-table :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .board-table :global(tr.head td),
+  .board-table :global(th) {
+    background-color: #f8fafc;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 2px solid #e2e8f0;
+    text-align: center;
+  }
+  .board-table :global(tr.body td),
+  .board-table :global(td) {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: center;
+  }
+  .board-table :global(td.al) {
+    text-align: left;
+  }
+  /* 제목 컬럼 왼쪽 정렬 */
+  .board-table :global(table td:nth-child(2)) {
+    text-align: left !important;
+  }
+  /* 작성일 컬럼 너비 고정 */
+  .board-table :global(table td:nth-child(4)) {
+    white-space: nowrap !important;
+    min-width: 110px;
+  }
+  .board-table :global(colgroup) {
+    display: none;
+  }
+  .board-table :global(a) {
+    color: #374151;
+    text-decoration: none;
+  }
+  .board-table :global(a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  /* 첨부파일 아이콘 */
+  .board-table :global(.attach-icon) {
+    color: #6b7280;
+    margin-left: 6px;
+    font-size: 14px;
+  }
+
+  /* 페이징 스타일 */
+  .pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 20px 0;
+    margin-top: 16px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .pagination-wrapper :global(ul) {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+    margin: 0 8px;
+    padding: 0;
+  }
+  .pagination-wrapper :global(li) {
+    display: inline-block;
+  }
+  .pagination-wrapper :global(a),
+  .pagination-wrapper :global(span) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #374151;
+    text-decoration: none;
+  }
+  .pagination-wrapper :global(a:hover) {
+    background-color: #f3f4f6;
+  }
+  .pagination-wrapper :global(li span) {
+    background-color: #2563eb;
+    color: white;
+    font-weight: 600;
+  }
+  .pagination-wrapper :global(img) {
+    height: 20px;
+    width: auto;
+  }
+
+  /* 다크모드 */
+  :global(.dark) .board-table :global(tr.head td),
+  :global(.dark) .board-table :global(th) {
+    background-color: #1f2937;
+    border-bottom-color: #374151;
+  }
+  :global(.dark) .board-table :global(tr.body td),
+  :global(.dark) .board-table :global(td) {
+    border-bottom-color: #374151;
+  }
+  :global(.dark) .board-table :global(a) {
+    color: #d1d5db;
+  }
+  :global(.dark) .board-table :global(a:hover) {
+    color: #60a5fa;
+  }
+  :global(.dark) .board-table :global(.attach-icon) {
+    color: #9ca3af;
+  }
+  :global(.dark) .pagination-wrapper {
+    border-top-color: #374151;
+  }
+  :global(.dark) .pagination-wrapper :global(a),
+  :global(.dark) .pagination-wrapper :global(span) {
+    color: #d1d5db;
+  }
+  :global(.dark) .pagination-wrapper :global(a:hover) {
+    background-color: #374151;
+  }
+  :global(.dark) .pagination-wrapper :global(li span) {
+    background-color: #2563eb;
+    color: white;
+  }
+</style>
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const externalLink = document.getElementById('external-link');
+
+  const urls: Record<string, string> = {
+    seminar: 'https://open.egovframe.org/oc/products/seminar.do',
+    resources: 'https://open.egovframe.org/oc/docs/pds.do',
+    notice: 'https://open.egovframe.org/oc/support/notice.do',
+  };
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+      if (!tabId) return;
+
+      // 모든 버튼 비활성화
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active', 'border-brand-600', 'text-brand-600');
+        btn.classList.add('border-transparent', 'text-gray-500');
+      });
+
+      // 클릭한 버튼 활성화
+      button.classList.add('active', 'border-brand-600', 'text-brand-600');
+      button.classList.remove('border-transparent', 'text-gray-500');
+
+      // 모든 컨텐츠 숨기기
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      // 해당 컨텐츠 표시
+      document.getElementById(`tab-${tabId}`)?.classList.remove('hidden');
+
+      // 외부 링크 업데이트
+      if (externalLink) {
+        externalLink.setAttribute('href', urls[tabId]);
+      }
+    });
+  });
+</script>

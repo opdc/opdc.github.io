@@ -1,0 +1,105 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const allProjects = await getCollection('projects', ({ data }) => data.locale === 'en')
+const projects = allProjects
+  .filter(p => p.data.status === 'active')
+  .sort((a, b) => a.data.order - b.data.order)
+
+const archivedProjects = allProjects
+  .filter(p => p.data.status === 'archived')
+  .sort((a, b) => a.data.order - b.data.order)
+---
+
+<BaseLayout title="Projects" description="Explore OPDC's projects">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Projects</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        OPDC supports developer growth and fosters a collaborative community culture through various open source projects.
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16">
+    <!-- Active Projects -->
+    {projects.length > 0 && (
+      <div class="mb-16">
+        <h2 class="text-3xl font-bold mb-8">Active Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <a href={`/en/projects/${project.slug}`} class="group">
+              <article class="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-800 overflow-hidden hover:shadow-lg transition-shadow h-full">
+                {project.data.image && (
+                  <div class="aspect-video relative overflow-hidden bg-gray-100 dark:bg-gray-800">
+                    <img
+                      src={project.data.image}
+                      alt={project.data.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                )}
+                <div class="p-6">
+                  <h3 class="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-500 transition-colors">
+                    {project.data.title}
+                  </h3>
+                  <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    {project.data.description}
+                  </p>
+                  {project.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2">
+                      {project.data.tags.map((tag) => (
+                        <span class="text-xs px-3 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 rounded-full">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Archived Projects -->
+    {archivedProjects.length > 0 && (
+      <div>
+        <h2 class="text-3xl font-bold mb-8">Completed Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {archivedProjects.map((project) => (
+            <a href={`/en/projects/${project.slug}`} class="group">
+              <article class="bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 opacity-75 hover:opacity-100 transition-opacity">
+                <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-500 transition-colors">
+                  {project.data.title}
+                </h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm mb-3">
+                  {project.data.description}
+                </p>
+                {project.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-2">
+                    {project.data.tags.map((tag) => (
+                      <span class="text-xs px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-400 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    {projects.length === 0 && archivedProjects.length === 0 && (
+      <div class="text-center py-20">
+        <p class="text-xl text-gray-600 dark:text-gray-400">
+          No projects registered yet.
+        </p>
+      </div>
+    )}
+  </div>
+</BaseLayout>

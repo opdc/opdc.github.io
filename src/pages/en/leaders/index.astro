@@ -1,0 +1,52 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const allLeaders = await getCollection('leaders', ({ data }) => data.locale === 'en')
+const leaders = allLeaders.sort((a, b) => a.data.order - b.data.order)
+---
+
+<BaseLayout title="Leaders" description="Meet the leaders of OPDC">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Leaders</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        Meet the leaders driving OPDC forward
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      {leaders.map((leader) => (
+        <a href={`/en/leaders/${leader.slug}`} class="group">
+          <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 hover:shadow-lg transition-all">
+            <div class="aspect-square relative overflow-hidden bg-gray-100 dark:bg-gray-800">
+              {leader.data.image ? (
+                <img
+                  src={leader.data.image}
+                  alt={leader.data.name}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                />
+              ) : (
+                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-brand-100 to-blue-100 dark:from-brand-900 dark:to-blue-900">
+                  <span class="text-6xl font-bold text-brand-600 dark:text-brand-400">
+                    {leader.data.name.charAt(0)}
+                  </span>
+                </div>
+              )}
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-500 transition-colors">
+                {leader.data.name}
+              </h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {leader.data.role}
+              </p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

@@ -5,6 +5,7 @@ image: /img/project/simple-homepage/portal.png
 tags: ["eGovFrame", "Spring Boot"]
 status: active
 order: 2
+locale: ko
 ---
 
 ### Boot 전환 템플릿

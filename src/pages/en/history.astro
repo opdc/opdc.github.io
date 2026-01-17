@@ -1,0 +1,148 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+
+const timeline = [
+  {
+    year: '2025',
+    events: [
+      '07 Offline seminar with Toby Lee Il-min (Centerfield, 90 participants)',
+      '03 New leader appointed (Standard Framework Contribution Award winner Kwon Tae-sung)'
+    ]
+  },
+  {
+    year: '2024',
+    events: [
+      '11 K-PaaS x eGovFrame Collaboration Seminar',
+      '08 eGovFrame Standard Framework Contribution Mentoring Program',
+      '03 New leader appointed (Standard Framework Contribution Award winner Lee Chung-ryeol)'
+    ]
+  },
+  {
+    year: '2023',
+    events: [
+      '12 Standard Framework Contribution "Who\'s Next?" Video Production',
+      '11 K-PaaS x eGovFrame Collaboration Seminar',
+      '09 MOU for global community cooperation (Ubuntu Korea & OPDC)',
+      '08 eGovFrame Standard Framework Contribution Mentoring Program',
+      '03 New leader appointed (Standard Framework Contribution Award winner Lee Baek-haeng)'
+    ]
+  },
+  {
+    year: '2022',
+    events: [
+      '12 Keynote speech at eGovFrame New Version Announcement (Chairman Song Sang-hyo: Open Source Development and Future)',
+      '07 2022 eGovFrame Standard Framework New Version Announcement Cooperation',
+      '06 Open Platform Alliance (OPA) Steering Committee Participation Support',
+      '06 eGovFrame Standard Framework Contribution Mentoring Program',
+      '04 Standard Framework Open Community 100th Anniversary Seminar'
+    ]
+  },
+  {
+    year: '2021',
+    events: [
+      '06 MOU for Cloud Native Support for Commercial SW',
+      '02 MOU on SW-centered University Operation (Gwangju University & OPDC)'
+    ]
+  },
+  {
+    year: '2020',
+    events: [
+      '12 Standard Framework Open Community 10th Anniversary Seminar (Online)',
+      '09 MOU for Open Cloud Platform Distribution (Infranics & OPDC)'
+    ]
+  },
+  {
+    year: '2019',
+    events: [
+      '05 PaaS-TA Professional Company Verification Service (PaaS-TA Ready) Cooperation',
+      '05 Expert Training Cooperation with PaaS-TA Activation Support Group'
+    ]
+  },
+  {
+    year: '2018',
+    events: [
+      '12 Designated as eGovFrame Standard Framework Compatibility Verification Agency (by NIA)',
+      '06 Open Platform PaaS-TA Summit 2018 (L\'Tower, 300 attendees)',
+      '02 3rd Chairman Song Sang-hyo Inaugurated'
+    ]
+  },
+  {
+    year: '2016',
+    events: [
+      '11 2nd Chairman Jeon Hyung-chul Inaugurated',
+      '02 OPDC Corporation Registration'
+    ]
+  },
+  {
+    year: '2015',
+    events: [
+      '12 Non-profit Corporation Approval (by Ministry of Science and ICT)',
+      '07 1st Chairman Han Sang-ki Inaugurated',
+      '06 OPDC Founding (Inaugural) General Meeting',
+      '05 Corporation Name Confirmed as Open Platform Developer Community',
+      '04 Standard Framework Open Community Corporation Preparation Committee Formed'
+    ]
+  },
+  {
+    year: '2011 ~ 2014',
+    events: [
+      'Developer Competition "Super Developer K" Seasons 1, 2, 3, 4'
+    ]
+  },
+  {
+    year: '2010 ~ 2014',
+    events: [
+      '1st Generation Leaders Appointed (Im Cheol-hong, Han Sung-gon, etc. 15 members)',
+      '2nd Generation Leaders Appointed (Lee Il-min, Heo Gwang-nam, etc. 13 members)',
+      '3rd Generation Leaders Appointed (Ok Sang-hun, Jang Sun-jin, etc. 18 members)',
+      '4th Generation Leaders Appointed (Kim Gyeong-ha, Yang Su-yeol, etc. 15 members)'
+    ]
+  },
+  {
+    year: '2010',
+    events: [
+      '10 Founding Contest',
+      '09 First Regular Technical Seminar',
+      '08 Standard Framework Open Community Founding Ceremony'
+    ]
+  }
+]
+---
+
+<BaseLayout title="History" description="OPDC's growth journey and milestones">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">History</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        OPDC's growth journey and key milestones
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+      <!-- History Image -->
+      <div class="mb-12">
+        <img src="/img/history/history.png" alt="OPDC History" class="w-full h-auto rounded-lg shadow-lg" />
+      </div>
+
+      <!-- Timeline -->
+      {timeline.map((period) => (
+        <div class="mb-12 last:mb-0">
+          <h3 class="text-2xl font-bold mb-4 text-brand-600 dark:text-brand-500">{period.year}</h3>
+          <ul class="space-y-3 pl-6">
+            {period.events.map((event) => (
+              <li class="text-gray-700 dark:text-gray-300">
+                <span class="font-bold" set:html={event.startsWith('0') || event.startsWith('1') ? event.substring(0, 2) : ''} />
+                {event.startsWith('0') || event.startsWith('1') ?
+                  <span set:html={' ' + event.substring(3)} /> :
+                  <span set:html={event} />
+                }
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

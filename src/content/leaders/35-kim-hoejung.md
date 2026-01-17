@@ -5,6 +5,7 @@ bio:
 image: /img/leader/35-kim-hoejung.png
 order: 35
 category: Leader
+locale: ko
 email: cathedral@nate.com
 linkedin: "https://www.linkedin.com/in/회중-김-93804b86/"
 ---

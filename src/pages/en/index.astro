@@ -1,0 +1,230 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import LeadersCarousel from '@/components/LeadersCarousel'
+import { SITE } from '@/config'
+
+// Get latest blog posts
+const allPosts = await getCollection('blog')
+const latestPosts = allPosts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3)
+
+// Get all leaders and shuffle them
+const allLeaders = await getCollection('leaders')
+// Fisher-Yates shuffle algorithm
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array]
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
+  }
+  return shuffled
+}
+const shuffledLeaders = shuffleArray(allLeaders)
+
+// Prepare leaders data for carousel
+const leadersData = shuffledLeaders.map(leader => ({
+  slug: leader.slug,
+  name: leader.data.name,
+  role: leader.data.role,
+  image: leader.data.image || '',
+}))
+---
+
+<BaseLayout title="Home" description="Open Platform Developer Community - An open community where developers learn and grow together">
+  <!-- Main Image -->
+  <section class="bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4 pt-8">
+      <img
+        src="/img/about/opdc_img.png"
+        alt="Open Platform Developer Community Introduction"
+        class="max-w-full h-auto rounded-lg mx-auto"
+        loading="eager"
+      />
+    </div>
+  </section>
+
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-16 md:py-24">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <blockquote class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
+          <p class="mb-4">
+            OPDC enhances the quality and productivity of open platforms.<br class="hidden md:block"/>
+            We support developers to learn and grow together.<br class="hidden md:block"/>
+            We create an open technology ecosystem through open source.
+          </p>
+          <p class="text-2xl md:text-3xl font-bold text-brand-600 dark:text-brand-500">
+            An open community where developers grow together,<br />
+            Open Platform Developer Community.
+          </p>
+        </blockquote>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+          <a
+            href="/en/blog"
+            class="px-8 py-4 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 transition-colors"
+          >
+            View News
+          </a>
+          <a
+            href="/en/about"
+            class="px-8 py-4 border-2 border-brand-600 text-brand-600 dark:text-white dark:border-white rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 transition-colors"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest News -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold">Latest News</h2>
+        <a href="/en/blog" class="text-brand-600 hover:text-brand-700 font-medium">
+          View All →
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {latestPosts.map((post) => (
+          <article class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+            <a href={`/en/blog/${post.slug}`} class="block p-6">
+              <time class="text-sm text-gray-500 dark:text-gray-400">
+                {post.data.date.toLocaleDateString('en-US', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+                })}
+              </time>
+              <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900 dark:text-white">
+                {post.data.title}
+              </h3>
+              {post.data.description && (
+                <p class="text-gray-600 dark:text-gray-400 line-clamp-2">
+                  {post.data.description}
+                </p>
+              )}
+              {post.data.tags.length > 0 && (
+                <div class="flex flex-wrap gap-2 mt-4">
+                  {post.data.tags.slice(0, 3).map((tag) => (
+                    <span class="text-xs px-2 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Leaders Preview -->
+  <section class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-3xl font-bold">Meet Our Leaders</h2>
+        <a href="/en/leaders" class="text-brand-600 hover:text-brand-700 font-medium">
+          View All →
+        </a>
+      </div>
+
+      <LeadersCarousel client:load leaders={leadersData} basePath="/en/leaders" />
+    </div>
+  </section>
+
+  <!-- Contact & Social -->
+  <section class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <!-- Social Icons -->
+        <div class="flex flex-wrap justify-center gap-8 items-center" role="navigation" aria-label="Social Media Links">
+          <a
+            href="mailto:opdc.kr@gmail.com"
+            title="Email Us"
+            class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl"
+            aria-label="Contact via Email"
+          >
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
+          <a
+            href="https://facebook.com/egovframe.open"
+            title="Visit Facebook Page"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl"
+            aria-label="Visit Facebook Page"
+          >
+            <i class="fab fa-facebook" aria-hidden="true"></i>
+          </a>
+          <a
+            href="https://github.com/opdc"
+            title="Visit GitHub Repository"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl"
+            aria-label="Visit GitHub Repository"
+          >
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a
+            href="https://youtube.com/@open-egovframe"
+            title="Visit YouTube Channel"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl"
+            aria-label="Visit YouTube Channel"
+          >
+            <i class="fab fa-youtube" aria-hidden="true"></i>
+          </a>
+          <a
+            href="https://open.egovframe.org"
+            title="Visit Open Community"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center transition-opacity hover:opacity-70"
+            aria-label="Visit Open Community Website"
+          >
+            <img
+              src="/img/opencommunity_logo_light.png"
+              alt="Open Community Logo"
+              class="w-12 h-12 object-contain dark:invert dark:opacity-85"
+              loading="lazy"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-brand-400 dark:bg-brand-600">
+    <div class="container mx-auto px-4 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        A Developer Community Growing Together
+      </h2>
+      <p class="text-xl text-brand-50 mb-8">
+        Learn and share with open platform developers
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/en/projects"
+          class="px-8 py-4 bg-white text-brand-600 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+        >
+          View Projects
+        </a>
+        <a
+          href="/en/partners"
+          class="px-8 py-4 border-2 border-white text-white rounded-lg font-medium hover:bg-brand-500 transition-colors"
+        >
+          Learn About Partners
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

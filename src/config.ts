@@ -9,6 +9,8 @@ export const SITE = {
 export const NAV_ITEMS = [
   { name: '소개', href: '/about' },
   { name: '연혁', href: '/history' },
+  { name: '호환성확인', href: '/compatibility' },
+  { name: '오픈커뮤니티', href: '/community' },
   { name: '소식/공지', href: '/blog' },
   { name: '리더', href: '/leaders' },
   { name: '프로젝트', href: '/projects' },

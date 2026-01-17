@@ -2,6 +2,28 @@
 import { SITE } from '@/config'
 
 const currentYear = new Date().getFullYear()
+const currentPath = Astro.url.pathname
+const isEnglish = currentPath.startsWith('/en')
+
+// 링크 prefix
+const prefix = isEnglish ? '/en' : ''
+
+// 텍스트 번역
+const texts = {
+  description: isEnglish
+    ? 'An open community where developers learn and grow together'
+    : SITE.description,
+  quickLinks: isEnglish ? 'Quick Links' : '빠른 링크',
+  community: isEnglish ? 'Community' : '커뮤니티',
+  openCommunity: isEnglish ? 'Open Community' : '오픈커뮤니티',
+  about: isEnglish ? 'About' : '소개',
+  history: isEnglish ? 'History' : '연혁',
+  news: isEnglish ? 'News' : '소식/공지',
+  leaders: isEnglish ? 'Leaders' : '리더',
+  projects: isEnglish ? 'Projects' : '프로젝트',
+  partners: isEnglish ? 'Partners' : '협력기관',
+  releases: isEnglish ? 'Release Notes' : '릴리즈 노트',
+}
 ---
 
 <footer class="bg-gray-50 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
@@ -11,35 +33,39 @@ const currentYear = new Date().getFullYear()
       <div>
         <h3 class="text-lg font-bold mb-4">{SITE.name}</h3>
         <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
-          {SITE.description}
+          {texts.description}
         </p>
         <p class="text-sm text-gray-600 dark:text-gray-400">
-          Tel: {SITE.phone}
+          <i class="fas fa-phone mr-1"></i> {SITE.phone}
         </p>
+        <a href={`${prefix}/releases`} class="inline-flex items-center gap-1 mt-4 text-sm text-brand-600 hover:text-brand-700 dark:text-brand-500">
+          <i class="fas fa-code-branch"></i>
+          {texts.releases}
+        </a>
       </div>
 
       <!-- Quick Links -->
       <div>
-        <h3 class="text-lg font-bold mb-4">빠른 링크</h3>
+        <h3 class="text-lg font-bold mb-4">{texts.quickLinks}</h3>
         <ul class="space-y-2">
           <li>
-            <a href="/about" class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
-              소개
+            <a href={`${prefix}/about`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-info-circle mr-1"></i> {texts.about}
             </a>
           </li>
           <li>
-            <a href="/history" class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
-              연혁
+            <a href={`${prefix}/history`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-clock mr-1"></i> {texts.history}
             </a>
           </li>
           <li>
-            <a href="/blog" class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
-              소식/공지
+            <a href={`${prefix}/blog`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-newspaper mr-1"></i> {texts.news}
             </a>
           </li>
           <li>
-            <a href="/leaders" class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
-              리더
+            <a href={`${prefix}/leaders`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-users mr-1"></i> {texts.leaders}
             </a>
           </li>
         </ul>
@@ -47,16 +73,21 @@ const currentYear = new Date().getFullYear()
 
       <!-- Community -->
       <div>
-        <h3 class="text-lg font-bold mb-4">커뮤니티</h3>
+        <h3 class="text-lg font-bold mb-4">{texts.community}</h3>
         <ul class="space-y-2">
           <li>
-            <a href="/projects" class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
-              프로젝트
+            <a href={`${prefix}/community`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-comments mr-1"></i> {texts.openCommunity}
             </a>
           </li>
           <li>
-            <a href="/partners" class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
-              협력기관
+            <a href={`${prefix}/projects`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-project-diagram mr-1"></i> {texts.projects}
+            </a>
+          </li>
+          <li>
+            <a href={`${prefix}/partners`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-handshake mr-1"></i> {texts.partners}
             </a>
           </li>
         </ul>

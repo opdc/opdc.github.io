@@ -2,13 +2,56 @@
 import { SITE, NAV_ITEMS } from '@/config'
 
 const currentPath = Astro.url.pathname
+const isEnglish = currentPath.startsWith('/en')
+
+// 메뉴 영문 번역
+const menuTranslations: Record<string, string> = {
+  '소개': 'About',
+  '연혁': 'History',
+  '호환성확인': 'Compatibility',
+  '오픈커뮤니티': 'Community',
+  '소식/공지': 'News',
+  '리더': 'Leaders',
+  '프로젝트': 'Projects',
+  '협력기관': 'Partners',
+}
+
+// 언어 전환 링크 - 현재 페이지의 다른 언어 버전으로 이동
+const langSwitchHref = isEnglish
+  ? currentPath.replace('/en', '') || '/'
+  : `/en${currentPath === '/' ? '' : currentPath}`
+const langLabel = isEnglish ? 'KO' : 'EN'
+
+// 현재 언어에 맞는 링크 생성
+const getLocalizedHref = (href: string) => {
+  if (isEnglish) {
+    return `/en${href}`
+  }
+  return href
+}
+
+// 현재 경로 비교 (영문 경로 포함)
+const isCurrentPath = (href: string) => {
+  if (isEnglish) {
+    return currentPath === `/en${href}` || currentPath === href
+  }
+  return currentPath === href
+}
+
+// 메뉴 이름 가져오기
+const getMenuName = (name: string) => {
+  if (isEnglish) {
+    return menuTranslations[name] || name
+  }
+  return name
+}
 ---
 
 <header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
   <nav class="container mx-auto px-4 py-4">
     <div class="flex items-center justify-between">
       <!-- Logo -->
-      <a href="/" class="text-2xl font-bold text-brand-600 dark:text-brand-500">
+      <a href={isEnglish ? '/en/' : '/'} class="text-2xl font-bold text-brand-600 dark:text-brand-500">
         {SITE.name}
       </a>
 
@@ -17,18 +60,26 @@ const currentPath = Astro.url.pathname
         {NAV_ITEMS.map((item) => (
           <li>
             <a
-              href={item.href}
+              href={getLocalizedHref(item.href)}
               class:list={[
                 'text-sm font-medium transition-colors hover:text-brand-600 dark:hover:text-brand-500',
-                currentPath === item.href
+                isCurrentPath(item.href)
                   ? 'text-brand-600 dark:text-brand-500'
                   : 'text-gray-700 dark:text-gray-300'
               ]}
             >
-              {item.name}
+              {getMenuName(item.name)}
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href={langSwitchHref}
+            class="px-2 py-1 text-xs font-medium border border-gray-300 dark:border-gray-600 rounded text-gray-600 dark:text-gray-400 hover:text-brand-600 hover:border-brand-600 dark:hover:text-brand-500 dark:hover:border-brand-500 transition-colors"
+          >
+            {langLabel}
+          </a>
+        </li>
       </ul>
 
       <!-- Mobile Menu Button -->
@@ -49,18 +100,26 @@ const currentPath = Astro.url.pathname
         {NAV_ITEMS.map((item) => (
           <li>
             <a
-              href={item.href}
+              href={getLocalizedHref(item.href)}
               class:list={[
                 'block px-4 py-2 rounded-lg text-sm font-medium transition-colors',
-                currentPath === item.href
+                isCurrentPath(item.href)
                   ? 'bg-brand-50 text-brand-600 dark:bg-brand-900/20 dark:text-brand-500'
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
               ]}
             >
-              {item.name}
+              {getMenuName(item.name)}
             </a>
           </li>
         ))}
+        <li>
+          <a
+            href={langSwitchHref}
+            class="block px-4 py-2 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+          >
+            {isEnglish ? '한국어' : 'English'}
+          </a>
+        </li>
       </ul>
     </div>
   </nav>

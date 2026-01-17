@@ -5,6 +5,7 @@ bio:
 image: /img/leader/05-lee-kiha.png
 order: 5
 category: Leader
+locale: ko
 email: dasomell@gmail.com
 github: "https://github.com/dasomel"
 linkedin: "https://www.linkedin.com/in/%EA%B8%B0%ED%95%98-%EC%9D%B4-ba909924/"

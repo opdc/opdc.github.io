@@ -16,9 +16,10 @@ interface Leader {
 
 interface LeadersCarouselProps {
   leaders: Leader[]
+  basePath?: string
 }
 
-export default function LeadersCarousel({ leaders }: LeadersCarouselProps) {
+export default function LeadersCarousel({ leaders, basePath = '/leaders' }: LeadersCarouselProps) {
   const [isPlaying, setIsPlaying] = useState(true)
   const swiperRef = useRef<SwiperType | null>(null)
 
@@ -78,9 +79,9 @@ export default function LeadersCarousel({ leaders }: LeadersCarouselProps) {
         {leaders.map((leader) => (
           <SwiperSlide key={leader.slug}>
             <a
-              href={`/leaders/${leader.slug}`}
+              href={`${basePath}/${leader.slug}`}
               className="group block"
-              aria-label={`${leader.name} - ${leader.role} 프로필 보기`}
+              aria-label={`${leader.name} - ${leader.role}`}
             >
               <div className="text-center">
                 {leader.image ? (

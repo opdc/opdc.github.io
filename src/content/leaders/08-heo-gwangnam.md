@@ -5,6 +5,7 @@ bio:
 image: /img/leader/08-heo-gwangnam.png
 order: 8
 category: Leader
+locale: ko
 github: "https://github.com/kenu"
 ---
 ### 🛠️ 전문분야

@@ -1,0 +1,300 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { parse } from 'node-html-parser'
+
+// Fetch board table and pagination from external page
+async function fetchBoardContent(url: string, baseUrl: string) {
+  try {
+    const response = await fetch(url)
+    const html = await response.text()
+    const root = parse(html)
+
+    const boardDiv = root.querySelector('.board_list02')
+    const paginationDiv = root.querySelector('.pagination')
+
+    let tableHtml = ''
+    let paginationHtml = ''
+
+    if (boardDiv) {
+      // Process each row
+      const rows = boardDiv.querySelectorAll('tr.body')
+      rows.forEach(row => {
+        const hasAttach = row.innerHTML.includes('icon_attach')
+        // Remove broken image tags
+        const imgs = row.querySelectorAll('img[src*="icon_attach"]')
+        imgs.forEach(img => img.remove())
+
+        // Add attachment icon if file exists
+        if (hasAttach) {
+          const link = row.querySelector('a.go')
+          if (link) {
+            // Add attachment icon after link (no link)
+            link.insertAdjacentHTML('afterend', ` <span class="attach-icon" title="Attachment"><i class="fas fa-paperclip"></i></span>`)
+          }
+        }
+      })
+
+      tableHtml = boardDiv.innerHTML
+      // Convert relative links to absolute
+      tableHtml = tableHtml.replace(/href="\/oc\//g, `href="${baseUrl}/oc/`)
+      tableHtml = tableHtml.replace(/href='\/oc\//g, `href='${baseUrl}/oc/`)
+      // Open in new tab (except already has target)
+      tableHtml = tableHtml.replace(/<a (?!target)/g, '<a target="_blank" ')
+    }
+
+    if (paginationDiv) {
+      paginationHtml = paginationDiv.innerHTML
+      // Fix image paths (remove jsessionid)
+      paginationHtml = paginationHtml.replace(/src="\/images\/([^"]*?)(?:;jsessionid=[^"]*)?"/g, `src="${baseUrl}/images/$1"`)
+      // Remove onclick
+      paginationHtml = paginationHtml.replace(/onclick="[^"]*"/g, '')
+      // Convert href to absolute
+      paginationHtml = paginationHtml.replace(/href="\?/g, `href="${url}?`)
+      // Open in new tab
+      paginationHtml = paginationHtml.replace(/<a /g, '<a target="_blank" ')
+    }
+
+    return { tableHtml, paginationHtml }
+  } catch (error) {
+    console.error('Failed to fetch:', url, error)
+    return {
+      tableHtml: '<p>An error occurred while loading content.</p>',
+      paginationHtml: ''
+    }
+  }
+}
+
+const baseUrl = 'https://open.egovframe.org'
+const seminar = await fetchBoardContent(`${baseUrl}/oc/products/seminar.do`, baseUrl)
+const resources = await fetchBoardContent(`${baseUrl}/oc/docs/pds.do`, baseUrl)
+const notice = await fetchBoardContent(`${baseUrl}/oc/support/notice.do`, baseUrl)
+---
+
+<BaseLayout title="Open Community" description="eGovFrame Standard Framework Open Community">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Open Community</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        eGovFrame Standard Framework Open Community Content
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-8">
+    <!-- Tab Navigation -->
+    <div class="mb-6 border-b border-gray-200 dark:border-gray-700">
+      <nav class="flex flex-wrap items-center gap-2 -mb-px" id="tab-nav">
+        <button class="tab-btn active px-6 py-3 text-sm font-medium border-b-2 border-brand-600 text-brand-600" data-tab="notice">
+          <i class="fas fa-bullhorn mr-2"></i>Announcements
+        </button>
+        <button class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="seminar">
+          <i class="fas fa-chalkboard-teacher mr-2"></i>Tech Seminars
+        </button>
+        <button class="tab-btn px-6 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="resources">
+          <i class="fas fa-folder-open mr-2"></i>Resources
+        </button>
+        <a id="external-link" href="https://open.egovframe.org/oc/support/notice.do" target="_blank" class="ml-auto inline-flex items-center gap-2 text-sm text-brand-600 hover:text-brand-700 dark:text-brand-500">
+          <i class="fas fa-external-link-alt"></i>
+          Open in new window
+        </a>
+      </nav>
+    </div>
+
+    <!-- Board Container -->
+    <div class="bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <!-- Announcements -->
+      <div id="tab-notice" class="tab-content p-4">
+        <div class="board-table" set:html={notice.tableHtml} />
+      </div>
+
+      <!-- Tech Seminars -->
+      <div id="tab-seminar" class="tab-content hidden p-4">
+        <div class="board-table" set:html={seminar.tableHtml} />
+      </div>
+
+      <!-- Resources -->
+      <div id="tab-resources" class="tab-content hidden p-4">
+        <div class="board-table" set:html={resources.tableHtml} />
+      </div>
+    </div>
+
+    <!-- Info Text -->
+    <p class="mt-4 text-sm text-gray-500 dark:text-gray-400 text-center">
+      <i class="fas fa-info-circle mr-1"></i>
+      Latest 10 posts are fetched daily. For more content, visit <a href="https://open.egovframe.org" target="_blank" class="text-brand-600 hover:underline">eGovFrame Standard Framework Open Community</a>.
+    </p>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Board table styles */
+  .board-table :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .board-table :global(tr.head td),
+  .board-table :global(th) {
+    background-color: #f8fafc;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 2px solid #e2e8f0;
+    text-align: center;
+  }
+  .board-table :global(tr.body td),
+  .board-table :global(td) {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: center;
+  }
+  .board-table :global(td.al) {
+    text-align: left;
+  }
+  /* Title column left align */
+  .board-table :global(table td:nth-child(2)) {
+    text-align: left !important;
+  }
+  /* Date column fixed width */
+  .board-table :global(table td:nth-child(4)) {
+    white-space: nowrap !important;
+    min-width: 110px;
+  }
+  .board-table :global(colgroup) {
+    display: none;
+  }
+  .board-table :global(a) {
+    color: #374151;
+    text-decoration: none;
+  }
+  .board-table :global(a:hover) {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  /* Attachment icon */
+  .board-table :global(.attach-icon) {
+    color: #6b7280;
+    margin-left: 6px;
+    font-size: 14px;
+  }
+
+  /* Pagination styles */
+  .pagination-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    padding: 20px 0;
+    margin-top: 16px;
+    border-top: 1px solid #e2e8f0;
+  }
+  .pagination-wrapper :global(ul) {
+    display: flex;
+    list-style: none;
+    gap: 4px;
+    margin: 0 8px;
+    padding: 0;
+  }
+  .pagination-wrapper :global(li) {
+    display: inline-block;
+  }
+  .pagination-wrapper :global(a),
+  .pagination-wrapper :global(span) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 32px;
+    height: 32px;
+    padding: 0 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #374151;
+    text-decoration: none;
+  }
+  .pagination-wrapper :global(a:hover) {
+    background-color: #f3f4f6;
+  }
+  .pagination-wrapper :global(li span) {
+    background-color: #2563eb;
+    color: white;
+    font-weight: 600;
+  }
+  .pagination-wrapper :global(img) {
+    height: 20px;
+    width: auto;
+  }
+
+  /* Dark mode */
+  :global(.dark) .board-table :global(tr.head td),
+  :global(.dark) .board-table :global(th) {
+    background-color: #1f2937;
+    border-bottom-color: #374151;
+  }
+  :global(.dark) .board-table :global(tr.body td),
+  :global(.dark) .board-table :global(td) {
+    border-bottom-color: #374151;
+  }
+  :global(.dark) .board-table :global(a) {
+    color: #d1d5db;
+  }
+  :global(.dark) .board-table :global(a:hover) {
+    color: #60a5fa;
+  }
+  :global(.dark) .board-table :global(.attach-icon) {
+    color: #9ca3af;
+  }
+  :global(.dark) .pagination-wrapper {
+    border-top-color: #374151;
+  }
+  :global(.dark) .pagination-wrapper :global(a),
+  :global(.dark) .pagination-wrapper :global(span) {
+    color: #d1d5db;
+  }
+  :global(.dark) .pagination-wrapper :global(a:hover) {
+    background-color: #374151;
+  }
+  :global(.dark) .pagination-wrapper :global(li span) {
+    background-color: #2563eb;
+    color: white;
+  }
+</style>
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  const externalLink = document.getElementById('external-link');
+
+  const urls: Record<string, string> = {
+    seminar: 'https://open.egovframe.org/oc/products/seminar.do',
+    resources: 'https://open.egovframe.org/oc/docs/pds.do',
+    notice: 'https://open.egovframe.org/oc/support/notice.do',
+  };
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+      if (!tabId) return;
+
+      // Deactivate all buttons
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active', 'border-brand-600', 'text-brand-600');
+        btn.classList.add('border-transparent', 'text-gray-500');
+      });
+
+      // Activate clicked button
+      button.classList.add('active', 'border-brand-600', 'text-brand-600');
+      button.classList.remove('border-transparent', 'text-gray-500');
+
+      // Hide all contents
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      // Show corresponding content
+      document.getElementById(`tab-${tabId}`)?.classList.remove('hidden');
+
+      // Update external link
+      if (externalLink) {
+        externalLink.setAttribute('href', urls[tabId]);
+      }
+    });
+  });
+</script>

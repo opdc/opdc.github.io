@@ -5,6 +5,7 @@ bio:
 image: /img/leader/12-lee-chungryeol.png
 order: 12
 category: Leader
+locale: ko
 email: coohg93@gmail.com
 github: "https://github.com/Chung10Kr"
 ---

@@ -5,6 +5,7 @@ bio:
 image: /img/leader/03-lee-seungryong.png
 order: 3
 category: Leader
+locale: ko
 email: sleepred@gmail.com
 ---
 ### 🛠️ 전문분야

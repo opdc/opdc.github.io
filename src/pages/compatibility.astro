@@ -1,0 +1,661 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="호환성확인" description="전자정부 표준프레임워크 호환성확인 서비스를 안내합니다">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">호환성확인</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        전자정부 표준프레임워크 호환성확인 서비스를 안내합니다
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- 탭 네비게이션 -->
+      <div class="mb-12 border-b border-gray-200 dark:border-gray-700">
+        <nav class="flex flex-wrap gap-2 -mb-px" id="tab-nav">
+          <button class="tab-btn active px-4 py-3 text-sm font-medium border-b-2 border-brand-600 text-brand-600" data-tab="intro">
+            OPDC 소개
+          </button>
+          <button class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="overview">
+            호환성확인 개요
+          </button>
+          <button class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="apply">
+            호환성확인 신청
+          </button>
+          <button class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="faq">
+            FAQ
+          </button>
+        </nav>
+      </div>
+
+      <!-- OPDC 소개 탭 -->
+      <div id="tab-intro" class="tab-content">
+        <!-- 점검기관 소개 -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-building"></i> 점검기관 소개
+          </h2>
+          <div class="bg-brand-50 dark:bg-brand-900/20 rounded-lg p-6">
+            <p class="text-xl font-semibold text-brand-700 dark:text-brand-400 mb-4">
+              (사)오픈플랫폼 개발자커뮤니티 (OPDC)
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+              2018년 12월, 행정안전부로부터 <strong>전자정부 표준프레임워크 호환성 점검기관</strong>으로 지정받았습니다.
+            </p>
+            <div class="mt-6 pt-6 border-t border-brand-200 dark:border-brand-800">
+              <p class="text-gray-700 dark:text-gray-300 mb-2">
+                <span class="font-medium">담당자:</span> 김현진 사무국장
+              </p>
+              <p class="text-gray-700 dark:text-gray-300 mb-2">
+                <span class="font-medium">이메일:</span>
+                <a href="mailto:opdc.kr@gmail.com" class="text-brand-600 hover:underline">opdc.kr@gmail.com</a>
+              </p>
+              <p class="text-gray-700 dark:text-gray-300">
+                <span class="font-medium">전화:</span> 070-4448-2673
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 호환성확인 개요 탭 -->
+      <div id="tab-overview" class="tab-content hidden">
+        <!-- 서비스 정의 -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-info-circle"></i> 호환성확인 서비스란?
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse min-w-[800px]">
+              <tbody>
+                <tr class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                    호환성확인 서비스는 다양한 민간 분야의 솔루션들이 전자정부 표준프레임워크와 함께 활용이 될 수 있도록 전자정부 표준프레임워크와 상용 솔루션 간에 연동이 가능한지 확인하는 유료 서비스입니다.
+                  </td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                    호환성 신청 솔루션의 기능에 따라 표준프레임워크에서 제공하는 기능들과의 인터페이스 연계 기능점검 테스트 등을 실시하며, 최종 확인 후 호환 레벨에 따른 확인서가 제공됩니다.
+                  </td>
+                </tr>
+                <tr class="bg-blue-50 dark:bg-blue-900/20">
+                  <td class="px-6 py-4 text-blue-800 dark:text-blue-300">
+                    <i class="fas fa-clock mr-2"></i>
+                    <strong>소요기간:</strong> 서비스 신청 후 확인서 발급까지 전 단계에 걸쳐 평균 3~4주 정도의 기간이 소요됩니다.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 호환성 레벨 -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-layer-group"></i> 호환성 확인 레벨
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-brand-600 text-white">
+                  <th class="px-6 py-4 text-left font-semibold w-32">판정구분</th>
+                  <th class="px-6 py-4 text-left font-semibold">판정기준</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                      레벨2
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    표준프레임워크와 호환되는 기능에 대하여 모듈을 수정 없이 사용 가능하며 관련 기능들이 모두 정상 동작함
+                  </td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800">
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                      레벨1
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    표준프레임워크와 호환되는 기능 중 일부는 상용 소프트웨어에서 확장한 라이브러리로 사용해야 관련 기능이 모두 정상 동작함
+                  </td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+                      미호환
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    표준프레임워크와 호환되는 기능이 정상 동작하지 않음
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SW 분야별 구분 -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-cubes"></i> SW 분야별 구분
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-gray-100 dark:bg-gray-800">
+                  <th class="px-6 py-4 text-left font-semibold text-gray-900 dark:text-white w-1/4">구분</th>
+                  <th class="px-6 py-4 text-left font-semibold text-gray-900 dark:text-white">설명</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">기반SW</td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    표준프레임워크 실행환경 및 공통컴포넌트를 활용하여 구축된 SW (패키지 SW 등)
+                  </td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800">
+                  <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">연동SW</td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    표준프레임워크와 연동하여 솔루션이 구축되었을 경우 (DB, WAS, System형 솔루션, RIA 솔루션, SSO, 암호화 솔루션 등)
+                  </td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">지원SW</td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    표준프레임워크 기반의 시스템 구축에 필요한 부가적인 기능을 지원하는 솔루션 (Case Tool, ALM 솔루션 등)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 확인 기준 -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-check-circle"></i> 확인기준
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-gray-100 dark:bg-gray-800">
+                  <th class="px-4 py-4 text-left font-semibold text-gray-900 dark:text-white w-28">구분</th>
+                  <th class="px-4 py-4 text-left font-semibold text-gray-900 dark:text-white w-[40%]">확인기준</th>
+                  <th class="px-4 py-4 text-left font-semibold text-gray-900 dark:text-white w-[40%]">확인항목</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr class="bg-white dark:bg-gray-900 align-top">
+                  <td class="px-4 py-4 font-medium text-gray-900 dark:text-white">아키텍처</td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    소프트웨어 설치 및 환경 구성 시 표준프레임워크에서 제시하는 아키텍처를 준수하는가?
+                  </td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>표준프레임워크가 제시하는 아키텍처 준수 여부</li>
+                      <li>표준프레임워크 환경제약사항 준수 여부</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800 align-top">
+                  <td class="px-4 py-4 font-medium text-gray-900 dark:text-white">가이드</td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    소프트웨어와 표준프레임워크와의 연동을 위해 설치 및 설정을 위한 가이드가 제공하는가?
+                  </td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>소프트웨어 설치 및 표준프레임워크 연동 환경 정상구성 여부</li>
+                      <li>표준프레임워크 적용 가이드 제공여부</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900 align-top">
+                  <td class="px-4 py-4 font-medium text-gray-900 dark:text-white">표준프레임워크 호환성</td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    해당 소프트웨어와 전자정부 표준프레임워크 연동 테스트 환경 구성시 문제점은 없는가? 연동시 실행환경, 개발환경 및 공통컴포넌트와의 충돌 및 치명적인 오류는 없는가? 기반 환경에서 소프트웨어 기능이 모두 정상적으로 동작하는가?
+                  </td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>소프트웨어 설치 및 표준프레임워크 연동 환경 정상구성 여부</li>
+                      <li>실행환경 기능 및 템플릿 정상동작 여부</li>
+                      <li>개발환경 기능 정상동작 여부</li>
+                      <li>공통컴포넌트 기능 정상동작 여부</li>
+                      <li>소프트웨어 기능 정상동작 여부</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- 다운로드 자료 -->
+        <section class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-download"></i> 다운로드 자료
+          </h2>
+          <div class="space-y-4">
+            <a
+              href="/pdf/compatibility-guide.pdf"
+              target="_blank"
+              class="flex items-center gap-3 p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-brand-500 transition-colors"
+            >
+              <i class="fas fa-file-pdf text-red-500 text-2xl"></i>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">호환성확인 안내</p>
+                <p class="text-sm text-gray-500">PDF 문서</p>
+              </div>
+            </a>
+            <a
+              href="/pdf/compatibility-guideline.pdf"
+              target="_blank"
+              class="flex items-center gap-3 p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-brand-500 transition-colors"
+            >
+              <i class="fas fa-file-pdf text-red-500 text-2xl"></i>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">호환성확인 가이드라인</p>
+                <p class="text-sm text-gray-500">PDF 문서</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- 호환성확인 신청 탭 -->
+      <div id="tab-apply" class="tab-content hidden">
+        <!-- 기관 정보 -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-building"></i> 기관 정보
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <h3 class="font-bold text-lg mb-2">점검기관</h3>
+              <p class="text-gray-600 dark:text-gray-400">(사)오픈플랫폼 개발자커뮤니티</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <h3 class="font-bold text-lg mb-2">확인기관</h3>
+              <p class="text-gray-600 dark:text-gray-400">NIA 표준프레임워크센터</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 신청 절차 -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-list-ol"></i> 진행절차
+          </h2>
+          <div class="space-y-6">
+            <!-- 1단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">1</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">신청서 작성</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  호환성확인 신청서를 다운로드하여 솔루션 및 업체 정보 기재
+                </p>
+                <div class="flex flex-wrap gap-3">
+                  <a href="/pdf/compatibility-application-form.hwp" class="inline-flex items-center gap-2 px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors text-sm">
+                    <i class="fas fa-download"></i> 신청서 양식 다운로드
+                  </a>
+                  <a href="/pdf/compatibility-application-example.hwp" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-sm">
+                    <i class="fas fa-file-alt"></i> 신청서 예시 보기
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">2</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">이메일 접수</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  호환성확인 신청 전용 이메일로 접수<br/>
+                  <a href="mailto:egovframecb@gmail.com" class="text-brand-600 hover:underline font-medium">egovframecb@gmail.com</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- 3단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">3</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">신청서 확인 및 사전미팅 일정 협의</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  호환성확인 담당자가 접수된 신청서를 확인 후, 업체와 협의 사전미팅 일정을 확정합니다.
+                </p>
+              </div>
+            </div>
+
+            <!-- 4단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">4</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">사전 미팅</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  신청업체는 호환성확인 점검기관을 방문하여 사전미팅을 진행하며, 미팅 시 솔루션 소개 (솔루션 구조 확인 포함), 비용안내, 소요기간, 진행절차 등 호환성확인에 관련한 전반적인 사항들을 협의합니다.
+                </p>
+              </div>
+            </div>
+
+            <!-- 5단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">5</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">계약체결 및 비용정산</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  상호 간 계약 체결(계약서 작성) 및 업체에 세금계산서가 발행됩니다.
+                </p>
+              </div>
+            </div>
+
+            <!-- 6단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">6</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">호환성 과제제공 및 수행</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  비용 입금 확인 후, 호환성확인 점검기관에서는 솔루션에 맞는 수행과제를 제공하며, 업체는 해당 과제를 호환성 가이드를 준수하여 수행합니다.
+                </p>
+                <a href="/pdf/compatibility-guideline.pdf" target="_blank" class="inline-flex items-center gap-2 text-brand-600 hover:underline text-sm">
+                  <i class="fas fa-book"></i> 전자정부 표준프레임워크 호환성 가이드 보기
+                </a>
+              </div>
+            </div>
+
+            <!-- 7단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">7</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">수행과제 1차 점검</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  과제 산출물, 솔루션 소스, 화면기능 동작(CRUD)을 확인하며 부여된 과제가 맞게 이행되었는지 호환성확인 점검기관에서 1차로 점검을 수행합니다. (방문 또는 원격 실시)
+                </p>
+                <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                  <p class="text-sm text-blue-800 dark:text-blue-300">
+                    <i class="fas fa-desktop mr-2"></i>
+                    원격점검 서비스: <a href="https://113366.com/egovframe" target="_blank" class="underline hover:no-underline">https://113366.com/egovframe</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 8단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">8</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">수행과제 2차 점검(최종)</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  호환성 확인기관에서 점검기관이 실시한 1차 결과를 기반으로 2차로 최종 점검을 수행합니다.
+                </p>
+              </div>
+            </div>
+
+            <!-- 9단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">9</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">확인서 발급</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  호환성 결과서와 확인서를 작성 후 초안 검토 및 최종 검토를 거쳐 인쇄 후 배송합니다.
+                </p>
+              </div>
+            </div>
+
+            <!-- 10단계 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">10</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-lg mb-2">표준프레임워크포털 게시</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-2">
+                  호환성확인 정보는 표준프레임워크 포털(<a href="https://www.egovframe.go.kr" target="_blank" class="text-brand-600 hover:underline">https://www.egovframe.go.kr</a>)에 등재됩니다.
+                </p>
+                <p class="text-sm text-gray-500">* 보안/기타사유 시 미등록 가능</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 문의하기 -->
+        <section class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-envelope"></i> 문의하기
+          </h2>
+          <div class="space-y-3">
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">호환성확인 신청:</span>
+              <a href="mailto:egovframecb@gmail.com" class="text-brand-600 hover:underline">egovframecb@gmail.com</a>
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">일반문의:</span>
+              <a href="mailto:opdc.kr@gmail.com" class="text-brand-600 hover:underline">opdc.kr@gmail.com</a>
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">전화:</span> 070-4448-2673
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- FAQ 탭 -->
+      <div id="tab-faq" class="tab-content hidden">
+        <section>
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-question-circle"></i> 자주 묻는 질문
+          </h2>
+          <div class="space-y-4">
+            <!-- Q1 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q1. 호환성확인을 호환성인증이라고 표현해도 되나요?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  '호환성확인'은 표준프레임워크와 연관된 상용솔루션과 표준프레임워크에서 제공하는 기능이 연동하여 정상 동작하는지 확인하는 서비스로 GS인증과 같이 솔루션 기능을 테스트 하는 인증 서비스와는 구별됩니다.
+                </p>
+                <p>
+                  이에, '표준프레임워크 호환성 인증'이라는 말은 적절한 표현이 아닙니다.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q2 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q2. 호환성확인 소요기간과 비용은 어떻게 되나요?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  호환성확인 서비스는 사전협의일을 기준으로 평균 3주가 소요되나, 업체 과제 수행 기간이 길어질 경우 기간은 4주 이상이 소요될 수 있습니다.
+                </p>
+                <p>
+                  소요비용 신규와 갱신인 경우 다르며, 상세 내용은 사전협의 시 안내드리고 있습니다. 갱신은 호환성확인을 받은 솔루션으로 업체 솔루션 버전 변경 없이, 표준프레임워크 버전만 변경하여 호환성확인 서비스를 신청하는 경우를 말합니다.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q3 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q3. 호환성확인은 레벨2와 레벨1으로 구분되는데요, 우선 순위가 있는 것인가요?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  호환 등급은 레벨 별 순위가 있는 것은 아니며, 소프트웨어의 특성에 따라 레벨이 달라질 수 있습니다.
+                </p>
+                <p>
+                  일반적 적용 시 커스터마이징이 필요한 프레임워크, Portal Solution 등은 레벨1로 확인됩니다.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q4 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q4. 표준프레임워크 3.7로 호환성확인을 받았는데요, 표준프레임워크 3.5 버전도 호환된다고 볼 수 있는지요?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  표준프레임워크 호환성확인 기준은 부버전(ver. X.Y.Z, X:주버전, Y:부버전, Z는 마이너버전)이상을 기준으로 하여 개별적/독립적 호환성인증을 받아야 합니다.
+                </p>
+                <p>
+                  즉, 표준프레임워크 v3.7 호환성확인과 v3.5 호환성확인은 전혀 다른 확인이며 v3.7에 대하여 호환성확인을 받았다고 해서 v3.5과 호환된다고 할 수 없으며 그 반대의 경우도 마찬가지입니다.
+                </p>
+                <p>
+                  단, 마이너버전은 호환된다고 할 수 있습니다. 즉 표준프레임워크 v3.7에 대하여 호환성확인을 받았다면 v3.7.x에 대하여 호환된다고 할 수 있습니다.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q5 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q5. 전자정부 프레임워크 호환성 확인을 받은 프레임워크 제품들 간의 호환성도 보장이 되는 것인지요?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400">
+                <p>
+                  호환성확인을 받은 제품에 대해서만 표준프레임워크와 호환이 되고 있음을 보장하는 것이며, 호환성확인을 받은 제품간의 호환에 대해서는 보장하고 있지 않습니다.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q6 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q6. 호환성확인 가이드라인에 'Controller 클래스들은 전자정부 표준 아키텍처를 준수해야 한다'의 모든 조건을 만족해야 하나요?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  해당 가이드라인은 MVC 아키텍처규칙으로 Controller 클래스가 DAO 클래스(@Repository 등)를 직접 호출하는 것을 막기 위한 규칙으로, 모든 조건이 만족되어야 합니다.
+                </p>
+                <p>
+                  즉, Service 클래스(인터페이스)를 사용하지 않고, 바로 DAO를 호출할 수 없습니다.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q7 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q7. DAO 클래스에서 JdbcTemplate를 사용하고 있는데, 호환성 확인이 가능한가요?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  아쉽게도 JdbcTemplate를 적용하신 경우는 호환성 확인이 불가능합니다.
+                </p>
+                <p>
+                  전자정부 표준프레임워크의 데이터 액세스 아키텍처는 다음과 같은 3가지 방식만을 허용하고 있습니다. iBatis, MyBatis 및 JPA(구현체 상관 없음)이며, 각각에 따라 점검 기준은 호환성 확인 가이드라인을 참고하시면 됩니다.
+                </p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 추가 문의 -->
+        <section class="mt-12 bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <i class="fas fa-headset"></i> 추가 문의
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            FAQ에서 해결되지 않는 질문이 있으시면 아래로 연락해 주세요.
+          </p>
+          <div class="space-y-2">
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">이메일:</span>
+              <a href="mailto:egovframecb@gmail.com" class="text-brand-600 hover:underline">egovframecb@gmail.com</a>
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">전화:</span> 070-4448-2673
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- 외부 링크 -->
+      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <a
+          href="https://open.egovframe.org/oc/compatibility.do"
+          target="_blank"
+          class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700 dark:text-brand-500 dark:hover:text-brand-400 font-medium"
+        >
+          <i class="fas fa-external-link-alt"></i>
+          표준프레임워크 포털에서 자세히 보기
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // 탭 네비게이션
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+
+      // 모든 버튼 비활성화
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active', 'border-brand-600', 'text-brand-600');
+        btn.classList.add('border-transparent', 'text-gray-500');
+      });
+
+      // 클릭한 버튼 활성화
+      button.classList.add('active', 'border-brand-600', 'text-brand-600');
+      button.classList.remove('border-transparent', 'text-gray-500');
+
+      // 모든 컨텐츠 숨기기
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      // 해당 컨텐츠 표시
+      document.getElementById(`tab-${tabId}`)?.classList.remove('hidden');
+    });
+  });
+</script>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

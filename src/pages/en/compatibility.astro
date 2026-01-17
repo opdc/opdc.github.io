@@ -1,0 +1,661 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Compatibility Verification" description="eGovFrame Standard Framework Compatibility Verification Service">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Compatibility Verification</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        eGovFrame Standard Framework Compatibility Verification Service
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Tab Navigation -->
+      <div class="mb-12 border-b border-gray-200 dark:border-gray-700">
+        <nav class="flex flex-wrap gap-2 -mb-px" id="tab-nav">
+          <button class="tab-btn active px-4 py-3 text-sm font-medium border-b-2 border-brand-600 text-brand-600" data-tab="intro">
+            About OPDC
+          </button>
+          <button class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="overview">
+            Overview
+          </button>
+          <button class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="apply">
+            Application
+          </button>
+          <button class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700 dark:text-gray-400" data-tab="faq">
+            FAQ
+          </button>
+        </nav>
+      </div>
+
+      <!-- About OPDC Tab -->
+      <div id="tab-intro" class="tab-content">
+        <!-- Verification Agency Introduction -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-building"></i> Verification Agency
+          </h2>
+          <div class="bg-brand-50 dark:bg-brand-900/20 rounded-lg p-6">
+            <p class="text-xl font-semibold text-brand-700 dark:text-brand-400 mb-4">
+              Open Platform Developer Community (OPDC)
+            </p>
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+              In December 2018, OPDC was designated as the <strong>eGovFrame Standard Framework Compatibility Verification Agency</strong> by the Ministry of the Interior and Safety.
+            </p>
+            <div class="mt-6 pt-6 border-t border-brand-200 dark:border-brand-800">
+              <p class="text-gray-700 dark:text-gray-300 mb-2">
+                <span class="font-medium">Contact Person:</span> Kim Hyun-jin, Secretary General
+              </p>
+              <p class="text-gray-700 dark:text-gray-300 mb-2">
+                <span class="font-medium">Email:</span>
+                <a href="mailto:opdc.kr@gmail.com" class="text-brand-600 hover:underline">opdc.kr@gmail.com</a>
+              </p>
+              <p class="text-gray-700 dark:text-gray-300">
+                <span class="font-medium">Phone:</span> +82-70-4448-2673
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Overview Tab -->
+      <div id="tab-overview" class="tab-content hidden">
+        <!-- Service Definition -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-info-circle"></i> What is Compatibility Verification?
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse min-w-[800px]">
+              <tbody>
+                <tr class="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700">
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Compatibility Verification is a paid service that verifies whether commercial solutions from various private sectors can be integrated with the eGovFrame Standard Framework.
+                  </td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300 leading-relaxed">
+                    Depending on the functionality of the solution being verified, interface integration tests are conducted with the features provided by the Standard Framework. After final verification, a certificate is issued according to the compatibility level.
+                  </td>
+                </tr>
+                <tr class="bg-blue-50 dark:bg-blue-900/20">
+                  <td class="px-6 py-4 text-blue-800 dark:text-blue-300">
+                    <i class="fas fa-clock mr-2"></i>
+                    <strong>Duration:</strong> The entire process from application to certificate issuance takes approximately 3-4 weeks on average.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Compatibility Levels -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-layer-group"></i> Compatibility Levels
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-brand-600 text-white">
+                  <th class="px-6 py-4 text-left font-semibold w-32">Level</th>
+                  <th class="px-6 py-4 text-left font-semibold">Criteria</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">
+                      Level 2
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    Functions compatible with the Standard Framework can be used without module modification, and all related functions operate normally.
+                  </td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800">
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400">
+                      Level 1
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    Some functions compatible with the Standard Framework require using extended libraries from commercial software for all related functions to operate normally.
+                  </td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-6 py-4">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-400">
+                      Incompatible
+                    </span>
+                  </td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    Functions compatible with the Standard Framework do not operate normally.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SW Categories -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-cubes"></i> Software Categories
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-gray-100 dark:bg-gray-800">
+                  <th class="px-6 py-4 text-left font-semibold text-gray-900 dark:text-white w-1/4">Category</th>
+                  <th class="px-6 py-4 text-left font-semibold text-gray-900 dark:text-white">Description</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Base SW</td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    Software built using the Standard Framework runtime environment and common components (e.g., package software)
+                  </td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800">
+                  <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Integration SW</td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    Solutions integrated with the Standard Framework (e.g., DB, WAS, System-type solutions, RIA solutions, SSO, encryption solutions)
+                  </td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900">
+                  <td class="px-6 py-4 font-medium text-gray-900 dark:text-white">Support SW</td>
+                  <td class="px-6 py-4 text-gray-700 dark:text-gray-300">
+                    Solutions that provide additional functions needed to build systems based on the Standard Framework (e.g., Case Tools, ALM solutions)
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Verification Criteria -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-check-circle"></i> Verification Criteria
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full border-collapse">
+              <thead>
+                <tr class="bg-gray-100 dark:bg-gray-800">
+                  <th class="px-4 py-4 text-left font-semibold text-gray-900 dark:text-white w-28">Category</th>
+                  <th class="px-4 py-4 text-left font-semibold text-gray-900 dark:text-white w-[40%]">Criteria</th>
+                  <th class="px-4 py-4 text-left font-semibold text-gray-900 dark:text-white w-[40%]">Checklist</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
+                <tr class="bg-white dark:bg-gray-900 align-top">
+                  <td class="px-4 py-4 font-medium text-gray-900 dark:text-white">Architecture</td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    Does the software installation and environment configuration comply with the architecture presented by the Standard Framework?
+                  </td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>Compliance with Standard Framework architecture</li>
+                      <li>Compliance with Standard Framework environment constraints</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr class="bg-gray-50 dark:bg-gray-800 align-top">
+                  <td class="px-4 py-4 font-medium text-gray-900 dark:text-white">Guide</td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    Is an installation and configuration guide provided for integrating the software with the Standard Framework?
+                  </td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>Proper software installation and Standard Framework integration environment configuration</li>
+                      <li>Provision of Standard Framework application guide</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr class="bg-white dark:bg-gray-900 align-top">
+                  <td class="px-4 py-4 font-medium text-gray-900 dark:text-white">Standard Framework Compatibility</td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    Are there any issues when configuring the integration test environment between the software and the eGovFrame Standard Framework? Are there conflicts or critical errors with the runtime environment, development environment, and common components during integration? Do all software functions operate normally in the base environment?
+                  </td>
+                  <td class="px-4 py-4 text-gray-700 dark:text-gray-300">
+                    <ul class="list-disc list-inside space-y-1">
+                      <li>Proper software installation and Standard Framework integration environment configuration</li>
+                      <li>Normal operation of runtime environment functions and templates</li>
+                      <li>Normal operation of development environment functions</li>
+                      <li>Normal operation of common component functions</li>
+                      <li>Normal operation of software functions</li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Downloads -->
+        <section class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-download"></i> Downloads
+          </h2>
+          <div class="space-y-4">
+            <a
+              href="/pdf/compatibility-guide.pdf"
+              target="_blank"
+              class="flex items-center gap-3 p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-brand-500 transition-colors"
+            >
+              <i class="fas fa-file-pdf text-red-500 text-2xl"></i>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Compatibility Verification Guide</p>
+                <p class="text-sm text-gray-500">PDF Document</p>
+              </div>
+            </a>
+            <a
+              href="/pdf/compatibility-guideline.pdf"
+              target="_blank"
+              class="flex items-center gap-3 p-4 bg-white dark:bg-gray-900 rounded-lg border border-gray-200 dark:border-gray-700 hover:border-brand-500 transition-colors"
+            >
+              <i class="fas fa-file-pdf text-red-500 text-2xl"></i>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">Compatibility Verification Guideline</p>
+                <p class="text-sm text-gray-500">PDF Document</p>
+              </div>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <!-- Application Tab -->
+      <div id="tab-apply" class="tab-content hidden">
+        <!-- Agency Information -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-building"></i> Agency Information
+          </h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <h3 class="font-bold text-lg mb-2">Verification Agency</h3>
+              <p class="text-gray-600 dark:text-gray-400">Open Platform Developer Community (OPDC)</p>
+            </div>
+            <div class="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-6">
+              <h3 class="font-bold text-lg mb-2">Certification Authority</h3>
+              <p class="text-gray-600 dark:text-gray-400">NIA Standard Framework Center</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Application Process -->
+        <section class="mb-12">
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-list-ol"></i> Application Process
+          </h2>
+          <div class="space-y-6">
+            <!-- Step 1 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">1</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">Complete Application Form</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  Download the compatibility verification application form and fill in the solution and company information.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                  <a href="/pdf/compatibility-application-form.hwp" class="inline-flex items-center gap-2 px-4 py-2 bg-brand-600 text-white rounded-lg hover:bg-brand-700 transition-colors text-sm">
+                    <i class="fas fa-download"></i> Download Application Form
+                  </a>
+                  <a href="/pdf/compatibility-application-example.hwp" class="inline-flex items-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-sm">
+                    <i class="fas fa-file-alt"></i> View Application Example
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">2</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">Email Submission</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  Submit via the dedicated compatibility verification email<br/>
+                  <a href="mailto:egovframecb@gmail.com" class="text-brand-600 hover:underline font-medium">egovframecb@gmail.com</a>
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">3</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">Application Review & Pre-meeting Scheduling</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  The compatibility verification manager reviews the submitted application and schedules a pre-meeting with the company.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">4</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">Pre-meeting</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  The applying company visits the verification agency for a pre-meeting. During the meeting, overall matters related to compatibility verification are discussed, including solution introduction (including solution structure review), cost guidance, duration, and process.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">5</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">Contract Signing & Payment</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  A contract is signed between both parties (contract document preparation) and a tax invoice is issued to the company.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">6</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">Task Assignment & Execution</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  After payment confirmation, the verification agency provides tasks appropriate for the solution. The company performs the tasks in compliance with the compatibility guide.
+                </p>
+                <a href="/pdf/compatibility-guideline.pdf" target="_blank" class="inline-flex items-center gap-2 text-brand-600 hover:underline text-sm">
+                  <i class="fas fa-book"></i> View eGovFrame Standard Framework Compatibility Guide
+                </a>
+              </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">7</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">First Review of Task Results</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-4">
+                  The verification agency conducts a first review to verify task deliverables, solution source code, and screen function operations (CRUD). The review checks whether the assigned tasks have been properly implemented. (On-site or remote)
+                </p>
+                <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4">
+                  <p class="text-sm text-blue-800 dark:text-blue-300">
+                    <i class="fas fa-desktop mr-2"></i>
+                    Remote Verification Service: <a href="https://113366.com/egovframe" target="_blank" class="underline hover:no-underline">https://113366.com/egovframe</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">8</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">Second Review (Final)</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  The certification authority performs the final second review based on the first review results conducted by the verification agency.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 9 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">9</span>
+              </div>
+              <div class="flex-1 pb-6 border-b border-gray-200 dark:border-gray-700">
+                <h3 class="font-bold text-lg mb-2">Certificate Issuance</h3>
+                <p class="text-gray-600 dark:text-gray-400">
+                  After preparing the compatibility result report and certificate, draft review and final review are conducted, followed by printing and delivery.
+                </p>
+              </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="flex gap-4">
+              <div class="flex-shrink-0">
+                <span class="w-10 h-10 bg-brand-600 text-white rounded-full flex items-center justify-center font-bold">10</span>
+              </div>
+              <div class="flex-1">
+                <h3 class="font-bold text-lg mb-2">Publication on Standard Framework Portal</h3>
+                <p class="text-gray-600 dark:text-gray-400 mb-2">
+                  Compatibility verification information is published on the Standard Framework Portal (<a href="https://www.egovframe.go.kr" target="_blank" class="text-brand-600 hover:underline">https://www.egovframe.go.kr</a>).
+                </p>
+                <p class="text-sm text-gray-500">* May not be registered due to security/other reasons</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-envelope"></i> Contact Us
+          </h2>
+          <div class="space-y-3">
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">Compatibility Verification Application:</span>
+              <a href="mailto:egovframecb@gmail.com" class="text-brand-600 hover:underline">egovframecb@gmail.com</a>
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">General Inquiries:</span>
+              <a href="mailto:opdc.kr@gmail.com" class="text-brand-600 hover:underline">opdc.kr@gmail.com</a>
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">Phone:</span> +82-70-4448-2673
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- FAQ Tab -->
+      <div id="tab-faq" class="tab-content hidden">
+        <section>
+          <h2 class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 dark:border-gray-800 flex items-center gap-2">
+            <i class="fas fa-question-circle"></i> Frequently Asked Questions
+          </h2>
+          <div class="space-y-4">
+            <!-- Q1 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q1. Can I refer to Compatibility Verification as Compatibility Certification?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  'Compatibility Verification' is a service that verifies whether commercial solutions related to the Standard Framework and the functions provided by the Standard Framework operate normally together. It is distinguished from certification services like GS Certification that test solution functions.
+                </p>
+                <p>
+                  Therefore, the term 'Standard Framework Compatibility Certification' is not an appropriate expression.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q2 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q2. How long does it take and how much does it cost?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  The compatibility verification service takes an average of 3 weeks from the pre-meeting date, but may take more than 4 weeks if the company's task execution period is extended.
+                </p>
+                <p>
+                  Costs differ between new applications and renewals. Detailed information is provided during the pre-meeting. A renewal refers to cases where a solution that has already received compatibility verification applies for the service again with only the Standard Framework version changed, without changing the company's solution version.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q3 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q3. Compatibility is divided into Level 2 and Level 1. Is there a priority?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  Compatibility levels do not have a ranking order. The level may vary depending on the characteristics of the software.
+                </p>
+                <p>
+                  Generally, frameworks that require customization during application, Portal Solutions, etc. are verified as Level 1.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q4 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q4. We received compatibility verification for Standard Framework 3.7. Can we say it's also compatible with version 3.5?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  The Standard Framework compatibility verification standard is based on minor versions (ver. X.Y.Z, X: major version, Y: minor version, Z: patch version) and above, requiring separate/independent compatibility verification.
+                </p>
+                <p>
+                  That is, Standard Framework v3.7 compatibility verification and v3.5 compatibility verification are completely different verifications. Having compatibility verification for v3.7 does not mean compatibility with v3.5, and vice versa.
+                </p>
+                <p>
+                  However, patch versions can be considered compatible. If you received compatibility verification for Standard Framework v3.7, you can say it's compatible with v3.7.x.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q5 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q5. Is compatibility guaranteed between framework products that have received eGovFrame compatibility verification?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400">
+                <p>
+                  Only the compatibility between products that have received compatibility verification and the Standard Framework is guaranteed. Compatibility between products that have both received compatibility verification is not guaranteed.
+                </p>
+              </div>
+            </details>
+
+            <!-- Q6 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q6. Must all conditions of 'Controller classes must comply with eGovFrame standard architecture' in the compatibility guideline be satisfied?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  This guideline is an MVC architecture rule to prevent Controller classes from directly calling DAO classes (@Repository, etc.). All conditions must be satisfied.
+                </p>
+                <p>
+                  That is, you cannot call DAO directly without using a Service class (interface).
+                </p>
+              </div>
+            </details>
+
+            <!-- Q7 -->
+            <details class="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg">
+              <summary class="flex items-center justify-between p-6 cursor-pointer">
+                <span class="font-medium text-gray-900 dark:text-white">Q7. Is compatibility verification possible if using JdbcTemplate in DAO class?</span>
+                <i class="fas fa-chevron-down text-gray-400 group-open:rotate-180 transition-transform"></i>
+              </summary>
+              <div class="px-6 pb-6 text-gray-600 dark:text-gray-400 space-y-3">
+                <p>
+                  Unfortunately, compatibility verification is not possible if JdbcTemplate is applied.
+                </p>
+                <p>
+                  The eGovFrame Standard Framework's data access architecture only allows the following three methods: iBatis, MyBatis, and JPA (regardless of implementation). Please refer to the compatibility verification guideline for the verification criteria for each method.
+                </p>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <!-- Additional Inquiries -->
+        <section class="mt-12 bg-gray-50 dark:bg-gray-800 rounded-lg p-8">
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <i class="fas fa-headset"></i> Additional Inquiries
+          </h2>
+          <p class="text-gray-600 dark:text-gray-400 mb-4">
+            If you have questions not answered in the FAQ, please contact us below.
+          </p>
+          <div class="space-y-2">
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">Email:</span>
+              <a href="mailto:egovframecb@gmail.com" class="text-brand-600 hover:underline">egovframecb@gmail.com</a>
+            </p>
+            <p class="text-gray-700 dark:text-gray-300">
+              <span class="font-medium">Phone:</span> +82-70-4448-2673
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- External Link -->
+      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+        <a
+          href="https://open.egovframe.org/oc/compatibility.do"
+          target="_blank"
+          class="inline-flex items-center gap-2 text-brand-600 hover:text-brand-700 dark:text-brand-500 dark:hover:text-brand-400 font-medium"
+        >
+          <i class="fas fa-external-link-alt"></i>
+          View details on Standard Framework Portal
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Tab Navigation
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const tabId = button.getAttribute('data-tab');
+
+      // Deactivate all buttons
+      tabButtons.forEach(btn => {
+        btn.classList.remove('active', 'border-brand-600', 'text-brand-600');
+        btn.classList.add('border-transparent', 'text-gray-500');
+      });
+
+      // Activate clicked button
+      button.classList.add('active', 'border-brand-600', 'text-brand-600');
+      button.classList.remove('border-transparent', 'text-gray-500');
+
+      // Hide all contents
+      tabContents.forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      // Show corresponding content
+      document.getElementById(`tab-${tabId}`)?.classList.remove('hidden');
+    });
+  });
+</script>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+</style>

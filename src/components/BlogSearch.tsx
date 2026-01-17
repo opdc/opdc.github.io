@@ -13,9 +13,29 @@ interface BlogPost {
 interface BlogSearchProps {
   posts: BlogPost[]
   postsPerPage?: number
+  locale?: 'ko' | 'en'
+  basePath?: string
 }
 
-export default function BlogSearch({ posts, postsPerPage = 10 }: BlogSearchProps) {
+const translations = {
+  ko: {
+    placeholder: '제목, 설명, 본문 내용, 작성자로 검색...',
+    resultsFound: (count: number) => `${count}개의 게시글을 찾았습니다`,
+    noResults: '검색 결과가 없습니다',
+    prev: '이전',
+    next: '다음',
+  },
+  en: {
+    placeholder: 'Search by title, description, content, author...',
+    resultsFound: (count: number) => `${count} post${count !== 1 ? 's' : ''} found`,
+    noResults: 'No results found',
+    prev: 'Prev',
+    next: 'Next',
+  },
+}
+
+export default function BlogSearch({ posts, postsPerPage = 10, locale = 'ko', basePath = '/blog' }: BlogSearchProps) {
+  const t = translations[locale]
   const [searchQuery, setSearchQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -94,7 +114,7 @@ export default function BlogSearch({ posts, postsPerPage = 10 }: BlogSearchProps
         <div className="relative max-w-xl">
           <input
             type="text"
-            placeholder="제목, 설명, 본문 내용, 작성자로 검색..."
+            placeholder={t.placeholder}
             value={searchQuery}
             onChange={handleSearchChange}
             className="w-full px-4 py-3 pl-12 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500 dark:focus:ring-brand-400"
@@ -115,7 +135,7 @@ export default function BlogSearch({ posts, postsPerPage = 10 }: BlogSearchProps
         </div>
         {searchQuery && (
           <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-            {filteredPosts.length}개의 게시글을 찾았습니다
+            {t.resultsFound(filteredPosts.length)}
           </p>
         )}
       </div>
@@ -128,9 +148,9 @@ export default function BlogSearch({ posts, postsPerPage = 10 }: BlogSearchProps
               key={post.slug}
               className="bg-white dark:bg-gray-800 rounded-lg p-6 hover:shadow-lg transition-shadow border border-gray-200 dark:border-gray-700"
             >
-              <a href={`/blog/${post.slug}`} className="block">
+              <a href={`${basePath}/${post.slug}`} className="block">
                 <time className="text-sm text-gray-500 dark:text-gray-400">
-                  {new Date(post.date).toLocaleDateString('ko-KR', {
+                  {new Date(post.date).toLocaleDateString(locale === 'en' ? 'en-US' : 'ko-KR', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric',
@@ -151,7 +171,7 @@ export default function BlogSearch({ posts, postsPerPage = 10 }: BlogSearchProps
       ) : (
         <div className="text-center py-12">
           <p className="text-gray-500 dark:text-gray-400 text-lg">
-            검색 결과가 없습니다
+            {t.noResults}
           </p>
         </div>
       )}
@@ -166,7 +186,7 @@ export default function BlogSearch({ posts, postsPerPage = 10 }: BlogSearchProps
               disabled={currentPage === 1}
               className="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              이전
+              {t.prev}
             </button>
 
             {/* Page Numbers */}
@@ -199,7 +219,7 @@ export default function BlogSearch({ posts, postsPerPage = 10 }: BlogSearchProps
               disabled={currentPage === totalPages}
               className="px-3 py-2 rounded-lg border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              다음
+              {t.next}
             </button>
           </nav>
         </div>

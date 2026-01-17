@@ -5,6 +5,7 @@ image: /img/project/k-paas/portal.png
 tags: ["K-PaaS", "Vagrant", "VirtualBox"]
 status: active
 order: 1
+locale: ko
 ---
 
 ### 프로젝트 개요

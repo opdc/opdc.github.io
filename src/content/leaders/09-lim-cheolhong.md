@@ -5,6 +5,7 @@ bio:
 image: /img/leader/09-lim-cheolhong.png
 order: 9
 category: Leader
+locale: ko
 email: imich@naver.com
 ---
 ### 🛠️ 전문분야

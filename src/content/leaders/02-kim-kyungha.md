@@ -5,6 +5,7 @@ bio:
 image: /img/leader/02-kim-kyungha.png
 order: 2
 category: Leader
+locale: ko
 email: gstarclub@gmail.com
 ---
 ### 🛠️ 전문분야

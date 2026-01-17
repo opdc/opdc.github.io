@@ -1,0 +1,24 @@
+---
+name: Soonryu Kwon
+role: OPA
+bio:
+image: /img/leader/33-kwon-soonryu.png
+order: 33
+category: Leader
+locale: en
+email: sunryul23@naver.com
+---
+### Expertise
+- Big Data Curation, Platform Engineering
+
+### Community Activities
+- [OPA (Open cloud Platform Alliance)](https://opakorea.org)
+
+---
+
+### Career
+- (Current) Naver Corporation Technical Specialist
+- Data Platform, Pipeline Development & Operations
+
+### Awards
+- 2025 Minister of Science and ICT Award (Grand Prize)
