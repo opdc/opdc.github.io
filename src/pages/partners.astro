@@ -6,31 +6,49 @@ const partners = [
     name: '우분투 코리아',
     logo: '/img/partners/logo_ubuntu_korea.png',
     website: 'https://ubuntu-kr.org/',
+    description: '국내 개발자 커뮤니티 협력',
+    mou: '2023 MOU 체결',
+    activities: ['우분투코리아 2024 개최 지원', 'UbuCon Asia 2024 후원', 'LOUCA 2023 후원']
   },
   {
     name: 'OPA (Open cloud Platform Alliance)',
     logo: '/img/partners/logo_opa.png',
     website: 'https://opakorea.org/',
+    description: '개방형 클라우드 플랫폼 생태계 조성',
+    mou: '',
+    activities: ['개발자커뮤니티분과 운영', 'K-PaaS 활용 공모전 멘토링', 'K-PaaS 경량화 프로젝트']
   },
   {
     name: '광주대학교',
     logo: '/img/partners/logo_gwangju.png',
     website: 'https://www.gwangju.ac.kr/main',
+    description: 'SW 중심대학 운영 협력',
+    mou: '2021 MOU 체결',
+    activities: []
   },
   {
     name: '한국상용소프트웨어협회',
     logo: '/img/partners/logo_kosw.png',
     website: 'https://www.kosw.or.kr/',
+    description: '상용 SW 호환성 확인 협력',
+    mou: '',
+    activities: []
   },
   {
     name: 'KT',
     logo: '/img/partners/logo_kt.png',
     website: 'https://kt.com/',
+    description: '클라우드 기술 협력',
+    mou: '',
+    activities: []
   },
   {
     name: '인프라닉스',
     logo: '/img/partners/logo_infranics.png',
     website: 'https://www.infranics.com/',
+    description: '개방형 클라우드 플랫폼 확산 협력',
+    mou: '2020 MOU 체결',
+    activities: []
   },
 ]
 ---
@@ -47,26 +65,44 @@ const partners = [
 
   <div class="container mx-auto px-4 py-16">
     <div class="max-w-6xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {partners.map((partner) => (
-          <div class="text-center">
+          <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-6">
             <a
               href={partner.website}
               target="_blank"
               rel="noopener noreferrer"
               class="group block"
             >
-              <div class="mb-4 flex items-center justify-center bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-lg transition-shadow p-2">
+              <div class="mb-4 flex items-center justify-center h-24">
                 <img
                   src={partner.logo}
                   alt={`${partner.name} Logo`}
-                  class="w-full h-auto object-contain transition-transform group-hover:scale-105"
+                  class="max-h-full w-auto object-contain transition-transform group-hover:scale-105"
                 />
               </div>
-              <span class="inline-block font-bold text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-500 transition-colors">
+              <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-500 transition-colors text-center mb-2">
                 {partner.name}
-              </span>
+              </h3>
             </a>
+            <p class="text-base text-gray-600 dark:text-gray-400 text-center mb-2">
+              {partner.description}
+            </p>
+            {partner.mou && (
+              <p class="text-sm text-brand-600 dark:text-brand-400 text-center mb-4">
+                {partner.mou}
+              </p>
+            )}
+            {partner.activities && partner.activities.length > 0 && (
+              <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-2">
+                {partner.activities.map((activity: string) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-brand-600">•</span>
+                    <span>{activity}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </div>
