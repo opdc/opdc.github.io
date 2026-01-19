@@ -1,10 +1,8 @@
 ---
 name: Seungyoon Lee
 role: OPA
-bio:
 image: /img/leader/32-lee-seungyoon.png
 order: 32
-category: Leader
 locale: en
 github: "https://github.com/RoysyLee"
 ---

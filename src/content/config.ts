@@ -9,6 +9,7 @@ const blog = defineCollection({
     author: z.string().default('OPDC'),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    locale: z.enum(['ko', 'en']).default('ko'),
   }),
 })
 
@@ -17,10 +18,8 @@ const leaders = defineCollection({
   schema: z.object({
     name: z.string(),
     role: z.string(),
-    bio: z.string().nullable().transform(v => v ?? ''),
-    image: z.string().nullable().transform(v => v ?? ''),
+    image: z.string().optional().default(''),
     order: z.number().default(999),
-    category: z.string().optional(),
     email: z.string().optional(),
     github: z.string().optional(),
     linkedin: z.string().optional(),
@@ -51,9 +50,22 @@ const releases = defineCollection({
   }),
 })
 
+const videos = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    videoId: z.string(), // 영상 ID 또는 재생목록 ID
+    date: z.coerce.date(),
+    description: z.string().optional(),
+    thumbnail: z.string().optional(),
+    type: z.enum(['video', 'shorts', 'playlist']).default('video'),
+  }),
+})
+
 export const collections = {
   blog,
   leaders,
   projects,
   releases,
+  videos,
 }

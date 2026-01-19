@@ -1,11 +1,8 @@
 ---
 name: 전여진
 role: OPA
-bio: 
 image: /img/leader/34-jeon-yeojin.png
 order: 34
-category: Leader
-locale: ko
 email: jeonyeojin1993@gmail.com
 ---
 ### 🛠️ 전문분야

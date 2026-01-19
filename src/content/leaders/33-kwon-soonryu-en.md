@@ -1,10 +1,8 @@
 ---
 name: Soonryu Kwon
 role: OPA
-bio:
 image: /img/leader/33-kwon-soonryu.png
 order: 33
-category: Leader
 locale: en
 email: sunryul23@naver.com
 ---

@@ -2,10 +2,11 @@
 import { getCollection } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import BlogSearch from '@/components/BlogSearch'
+import BlogTabsEn from '@/components/blog/BlogTabsEn.astro'
 
 const allPosts = await getCollection('blog')
 const posts = allPosts
-  .filter(post => !post.data.draft)
+  .filter(post => !post.data.draft && post.data.locale === 'en')
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
 // Transform posts for the React component
@@ -17,7 +18,7 @@ const postsData = await Promise.all(
     const plainTextContent = post.body || ''
 
     return {
-      slug: post.slug,
+      slug: post.slug.replace(/-en$/, ''),
       title: post.data.title,
       date: post.data.date.toISOString(),
       description: post.data.description,
@@ -40,16 +41,18 @@ const postsData = await Promise.all(
   </div>
 
   <div class="container mx-auto px-4 py-12">
-    {posts.length === 0 ? (
-      <div class="text-center py-20">
-        <p class="text-xl text-gray-600 dark:text-gray-400">
-          No news registered yet.
-        </p>
-      </div>
-    ) : (
-      <div class="max-w-4xl mx-auto">
+    <div class="max-w-4xl mx-auto">
+      <BlogTabsEn activeTab="posts" />
+
+      {posts.length === 0 ? (
+        <div class="text-center py-20">
+          <p class="text-xl text-gray-600 dark:text-gray-400">
+            No news registered yet.
+          </p>
+        </div>
+      ) : (
         <BlogSearch client:load posts={postsData} postsPerPage={10} locale="en" basePath="/en/blog" />
-      </div>
-    )}
+      )}
+    </div>
   </div>
 </BaseLayout>

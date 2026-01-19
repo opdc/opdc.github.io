@@ -1,10 +1,8 @@
 ---
 name: Sanghoon Ok
 role: eGovFrame
-bio:
 image: /img/leader/10-ok-sanghoon.png
 order: 10
-category: Leader
 locale: en
 email: okgosu@gmail.com
 ---

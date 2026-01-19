@@ -1,10 +1,8 @@
 ---
 name: Kyungha Kim
 role: eGovFrame
-bio:
 image: /img/leader/02-kim-kyungha.png
 order: 2
-category: Leader
 locale: en
 email: gstarclub@gmail.com
 ---

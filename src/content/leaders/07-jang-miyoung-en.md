@@ -1,10 +1,8 @@
 ---
 name: Miyoung Jang
 role: eGovFrame / OPA
-bio:
 image: /img/leader/07-jang-miyoung.png
 order: 7
-category: Leader
 locale: en
 email: samediyam@gmail.com
 github: "https://github.com/iamroseyoung"

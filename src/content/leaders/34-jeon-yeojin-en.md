@@ -1,10 +1,8 @@
 ---
 name: Yeojin Jeon
 role: OPA
-bio:
 image: /img/leader/34-jeon-yeojin.png
 order: 34
-category: Leader
 locale: en
 email: jeonyeojin1993@gmail.com
 ---

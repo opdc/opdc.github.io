@@ -1,11 +1,8 @@
 ---
 name: 이승윤
 role: OPA
-bio: 
 image: /img/leader/32-lee-seungyoon.png
 order: 32
-category: Leader
-locale: ko
 github: "https://github.com/RoysyLee"
 ---
 ### 🛠️ 전문분야

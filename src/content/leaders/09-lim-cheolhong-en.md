@@ -1,10 +1,8 @@
 ---
 name: Cheolhong Lim
 role: eGovFrame
-bio:
 image: /img/leader/09-lim-cheolhong.png
 order: 9
-category: Leader
 locale: en
 email: imich@naver.com
 ---

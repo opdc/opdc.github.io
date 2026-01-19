@@ -1,11 +1,8 @@
 ---
 name: 옥상훈
 role: eGovFrame
-bio: 
 image: /img/leader/10-ok-sanghoon.png
 order: 10
-category: Leader
-locale: ko
 email: okgosu@gmail.com
 ---
 ### 🛠️ 전문분야

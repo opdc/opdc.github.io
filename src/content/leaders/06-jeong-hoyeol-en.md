@@ -1,10 +1,8 @@
 ---
 name: Hoyeol Jeong
 role: eGovFrame
-bio:
 image: /img/leader/06-jeong-hoyeol.png
 order: 6
-category: Leader
 locale: en
 email: wesung777@naver.com
 ---

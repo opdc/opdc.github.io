@@ -1,11 +1,8 @@
 ---
 name: 이백행
 role: eGovFrame
-bio: 
 image: /img/leader/14-lee-baekhang.png
 order: 14
-category: Leader
-locale: ko
 email: dlqorgod@naver.com
 ---
 ### 🛠️ 전문분야

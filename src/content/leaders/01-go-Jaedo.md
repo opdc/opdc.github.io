@@ -1,11 +1,8 @@
 ---
 name: 고재도
 role: eGovFrame
-bio: 
 image: /img/leader/01-go-Jaedo.png
 order: 1
-category: Leader
-locale: ko
 email: haibane84@gmail.com
 ---
 ### 🛠️ 전문분야

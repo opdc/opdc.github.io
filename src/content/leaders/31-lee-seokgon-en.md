@@ -1,10 +1,8 @@
 ---
 name: Seokgon Lee
 role: OPA
-bio:
 image: /img/leader/31-lee-seokgon.png
 order: 31
-category: Leader
 locale: en
 email: leesk55@gmail.com
 github: "https://github.com/EricSeokgon"

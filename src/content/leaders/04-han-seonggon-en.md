@@ -1,10 +1,8 @@
 ---
 name: Seonggon Han
 role: eGovFrame
-bio:
 image: /img/leader/04-han-seonggon.png
 order: 4
-category: Leader
 locale: en
 email: switchover@gmail.com
 ---

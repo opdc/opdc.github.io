@@ -1,10 +1,8 @@
 ---
 name: Chungryeol Lee
 role: eGovFrame / OPA
-bio:
 image: /img/leader/12-lee-chungryeol.png
 order: 12
-category: Leader
 locale: en
 email: coohg93@gmail.com
 github: "https://github.com/Chung10Kr"

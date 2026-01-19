@@ -1,11 +1,8 @@
 ---
 name: 이석곤
 role: OPA
-bio: 
 image: /img/leader/31-lee-seokgon.png
 order: 31
-category: Leader
-locale: ko
 email: leesk55@gmail.com
 github: "https://github.com/EricSeokgon"
 linkedin: "https://www.linkedin.com/in/eric-seokgon-lee-312991aa/"

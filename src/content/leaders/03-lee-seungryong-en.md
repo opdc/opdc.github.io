@@ -1,10 +1,8 @@
 ---
 name: Seungryong Lee
 role: eGovFrame / OPA
-bio:
 image: /img/leader/03-lee-seungryong.png
 order: 3
-category: Leader
 locale: en
 email: sleepred@gmail.com
 ---

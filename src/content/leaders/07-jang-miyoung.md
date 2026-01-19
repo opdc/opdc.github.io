@@ -1,11 +1,8 @@
 ---
 name: 장미영
 role: GovFrame / OPA
-bio: 
 image: /img/leader/07-jang-miyoung.png
 order: 7
-category: Leader
-locale: ko
 email: samediyam@gmail.com
 github: "https://github.com/iamroseyoung"
 ---

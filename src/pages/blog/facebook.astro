@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import BlogTabs from '@/components/blog/BlogTabs.astro'
+
+const FACEBOOK_PAGE_URL = 'https://www.facebook.com/egovframe.open'
+---
+
+<BaseLayout title="Facebook" description="OPDC Facebook 페이지 소식을 확인하세요">
+  <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-12">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">소식 / 공지</h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        OPDC의 최신 소식과 공지사항을 확인하세요
+      </p>
+    </div>
+  </div>
+
+  <div class="container mx-auto px-4 py-12">
+    <div class="max-w-4xl mx-auto">
+      <BlogTabs activeTab="facebook" />
+
+      <!-- 상단 링크 바 -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mb-6 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+        <div class="flex items-center gap-3">
+          <i class="fab fa-facebook text-blue-600 text-2xl"></i>
+          <div>
+            <h2 class="font-bold text-lg">OPDC Facebook</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400">egovframe.open</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <a
+            href={FACEBOOK_PAGE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition-colors"
+          >
+            <i class="fab fa-facebook"></i>
+            페이지 방문
+          </a>
+          <a
+            href="https://youtube.com/@open-egovframe"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-2 text-gray-500 hover:text-red-600 transition-colors"
+            title="YouTube"
+          >
+            <i class="fab fa-youtube text-xl"></i>
+          </a>
+          <a
+            href="https://github.com/opdc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-2 text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors"
+            title="GitHub"
+          >
+            <i class="fab fa-github text-xl"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Facebook Page Plugin - 전체 너비 -->
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4">
+        <div class="w-full overflow-x-auto">
+          <div class="min-w-[500px] flex justify-center">
+            <iframe
+              src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fegovframe.open&tabs=timeline&width=500&height=800&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+              width="500"
+              height="800"
+              style="border:none;overflow:hidden"
+              scrolling="no"
+              frameborder="0"
+              allowfullscreen="true"
+              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

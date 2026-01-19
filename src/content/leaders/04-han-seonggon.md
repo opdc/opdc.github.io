@@ -1,11 +1,8 @@
 ---
 name: 한성곤
 role: eGovFrame
-bio: 
 image: /img/leader/04-han-seonggon.png
 order: 4
-category: Leader
-locale: ko
 email: switchover@gmail.com
 ---
 ### 🛠️ 전문분야

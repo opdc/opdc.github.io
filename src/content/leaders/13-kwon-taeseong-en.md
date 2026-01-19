@@ -1,10 +1,8 @@
 ---
 name: Taeseong Kwon
 role: eGovFrame
-bio:
 image: /img/leader/13-kwon-taeseong.png
 order: 13
-category: Leader
 locale: en
 email: taeseong@me.com
 github: "https://github.com/taeseong"

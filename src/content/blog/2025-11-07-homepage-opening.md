@@ -1,10 +1,11 @@
 ---
-title: OPDC 홈페이지 개설 취지 및 앞으로의 각오
-date: "2025-11-07 00:00:00"
-description: ""
-author: OPDC
-tags: []
+title: "OPDC 홈페이지 개설 취지 및 앞으로의 각오"
+date: 2025-11-07
+description: "오픈플랫폼 개발자커뮤니티 홈페이지를 개설하며, 커뮤니티의 목표와 앞으로의 각오를 전합니다."
+author: "OPDC"
+tags: ["공지사항", "홈페이지"]
 draft: false
+locale: ko
 ---
 
 안녕하세요, 오픈플랫폼 개발자커뮤니티(OPDC)입니다.

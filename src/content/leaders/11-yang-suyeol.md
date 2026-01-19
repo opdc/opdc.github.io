@@ -1,11 +1,8 @@
 ---
 name: 양수열
 role: eGovFrame
-bio: 
 image: /img/leader/11-yang-suyeol.png
 order: 11
-category: Leader
-locale: ko
 email: javaoracle1@outlook.com
 ---
 ### 🛠️ 전문분야
