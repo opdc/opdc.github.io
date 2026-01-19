@@ -68,7 +68,7 @@ jobs:
     runs-on: ubuntu-latest
     # YouTube 동기화가 있으면 그 후에 실행, 없으면 바로 실행
     needs: [sync-youtube]
-    if: always() && (needs.sync-youtube.result == 'success' || needs.sync-youtube.result == 'skipped')
+    if: ${{ always() && !cancelled() && !failure() }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
