@@ -19,6 +19,7 @@ const texts = {
   about: isEnglish ? 'About' : '소개',
   history: isEnglish ? 'History' : '연혁',
   news: isEnglish ? 'News' : '소식/공지',
+  compatibility: isEnglish ? 'Compatibility' : '호환성확인',
   leaders: isEnglish ? 'Leaders' : '리더',
   projects: isEnglish ? 'Projects' : '프로젝트',
   partners: isEnglish ? 'Partners' : '협력기관',
@@ -64,8 +65,8 @@ const texts = {
             </a>
           </li>
           <li>
-            <a href={`${prefix}/leaders`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
-              <i class="fas fa-users mr-1"></i> {texts.leaders}
+            <a href={`${prefix}/compatibility`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-check-circle mr-1"></i> {texts.compatibility}
             </a>
           </li>
         </ul>
@@ -78,6 +79,11 @@ const texts = {
           <li>
             <a href={`${prefix}/community`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
               <i class="fas fa-comments mr-1"></i> {texts.openCommunity}
+            </a>
+          </li>
+          <li>
+            <a href={`${prefix}/leaders`} class="text-sm text-gray-600 dark:text-gray-400 hover:text-brand-600 dark:hover:text-brand-500">
+              <i class="fas fa-users mr-1"></i> {texts.leaders}
             </a>
           </li>
           <li>
