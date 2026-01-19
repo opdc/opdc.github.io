@@ -2,21 +2,20 @@
 import { getCollection } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import BlogTabs from '@/components/blog/BlogTabs.astro'
+import VideoFilter from '@/components/VideoFilter'
 
 const allVideos = await getCollection('videos')
 const videos = allVideos.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
-// URL 파라미터로 필터링
-const url = new URL(Astro.request.url)
-const filter = url.searchParams.get('filter') || 'all'
-
-const filteredVideos = filter === 'all'
-  ? videos
-  : videos.filter(v => v.data.type === filter)
-
-const videoCount = videos.filter(v => v.data.type === 'video').length
-const shortsCount = videos.filter(v => v.data.type === 'shorts').length
-const playlistCount = videos.filter(v => v.data.type === 'playlist').length
+// Transform videos for the React component
+const videosData = videos.map(v => ({
+  slug: v.slug,
+  title: v.data.title,
+  videoId: v.data.videoId,
+  date: v.data.date.toISOString(),
+  description: v.data.description,
+  type: v.data.type,
+}))
 ---
 
 <BaseLayout title="영상" description="OPDC의 YouTube 영상을 확인하세요">
@@ -32,114 +31,7 @@ const playlistCount = videos.filter(v => v.data.type === 'playlist').length
   <div class="container mx-auto px-4 py-12">
     <div class="max-w-6xl mx-auto">
       <BlogTabs activeTab="videos" />
-
-      <!-- 영상 타입 필터 -->
-      <div class="flex gap-2 mb-8">
-        <a
-          href="/blog/videos"
-          class:list={[
-            'px-4 py-2 rounded-full text-sm font-medium transition-colors',
-            filter === 'all'
-              ? 'bg-brand-600 text-white'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-          ]}
-        >
-          전체 ({videos.length})
-        </a>
-        <a
-          href="/blog/videos?filter=video"
-          class:list={[
-            'px-4 py-2 rounded-full text-sm font-medium transition-colors',
-            filter === 'video'
-              ? 'bg-brand-600 text-white'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-          ]}
-        >
-          동영상 ({videoCount})
-        </a>
-        <a
-          href="/blog/videos?filter=shorts"
-          class:list={[
-            'px-4 py-2 rounded-full text-sm font-medium transition-colors',
-            filter === 'shorts'
-              ? 'bg-brand-600 text-white'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-          ]}
-        >
-          Shorts ({shortsCount})
-        </a>
-        <a
-          href="/blog/videos?filter=playlist"
-          class:list={[
-            'px-4 py-2 rounded-full text-sm font-medium transition-colors',
-            filter === 'playlist'
-              ? 'bg-brand-600 text-white'
-              : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-          ]}
-        >
-          재생목록 ({playlistCount})
-        </a>
-      </div>
-
-      {filteredVideos.length === 0 ? (
-        <div class="text-center py-20">
-          <p class="text-xl text-gray-600 dark:text-gray-400">
-            아직 등록된 영상이 없습니다.
-          </p>
-        </div>
-      ) : (
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredVideos.map((video) => (
-            <article class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
-              <div class:list={[
-                'relative w-full',
-                video.data.type === 'shorts' ? 'aspect-[9/16] max-h-80' : 'aspect-video'
-              ]}>
-                <iframe
-                  src={video.data.type === 'playlist'
-                    ? `https://www.youtube.com/embed/videoseries?list=${video.data.videoId}`
-                    : `https://www.youtube.com/embed/${video.data.videoId}`}
-                  title={video.data.title}
-                  class="absolute inset-0 w-full h-full"
-                  frameborder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  loading="lazy"
-                ></iframe>
-              </div>
-              <div class="p-4">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class:list={[
-                    'text-xs px-2 py-1 rounded',
-                    video.data.type === 'shorts'
-                      ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400'
-                      : video.data.type === 'playlist'
-                        ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400'
-                        : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
-                  ]}>
-                    {video.data.type === 'shorts' ? 'Shorts' : video.data.type === 'playlist' ? '재생목록' : '동영상'}
-                  </span>
-                  <time class="text-xs text-gray-500 dark:text-gray-400">
-                    {video.data.date.toLocaleDateString('ko-KR', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </time>
-                </div>
-                <h3 class="font-bold text-gray-900 dark:text-white line-clamp-2">
-                  {video.data.title}
-                </h3>
-                {video.data.description && (
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mt-2 line-clamp-2">
-                    {video.data.description}
-                  </p>
-                )}
-              </div>
-            </article>
-          ))}
-        </div>
-      )}
+      <VideoFilter client:load videos={videosData} locale="ko" />
     </div>
   </div>
 </BaseLayout>
