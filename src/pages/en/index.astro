@@ -6,10 +6,49 @@ import { SITE } from '@/config'
 
 // Get latest blog posts (English only)
 const allPosts = await getCollection('blog')
-const latestPosts = allPosts
+const posts = allPosts
   .filter(post => !post.data.draft && post.data.locale === 'en')
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  .slice(0, 3)
+
+// Get latest videos (excluding playlists)
+const allVideos = await getCollection('videos')
+const videos = allVideos
+  .filter(v => v.data.type !== 'playlist')
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+
+// Combine and sort by date, take latest 6
+type NewsItem = {
+  type: 'post' | 'video'
+  slug: string
+  title: string
+  date: Date
+  description?: string
+  tags?: string[]
+  videoId?: string
+  videoType?: 'video' | 'shorts' | 'playlist'
+}
+
+const combinedNews: NewsItem[] = [
+  ...posts.map(p => ({
+    type: 'post' as const,
+    slug: p.slug.replace(/-en$/, ''),
+    title: p.data.title,
+    date: p.data.date,
+    description: p.data.description,
+    tags: p.data.tags,
+  })),
+  ...videos.map(v => ({
+    type: 'video' as const,
+    slug: v.slug,
+    title: v.data.title,
+    date: v.data.date,
+    description: v.data.description,
+    videoId: v.data.videoId,
+    videoType: v.data.type,
+  })),
+]
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .slice(0, 6)
 
 // Get all leaders and shuffle them
 const allLeaders = await getCollection('leaders', ({ data }) => data.locale === 'en')
@@ -89,35 +128,76 @@ const leadersData = shuffledLeaders.map(leader => ({
         </a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {latestPosts.map((post) => (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {combinedNews.map((item) => (
           <article class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
-            <a href={`/en/blog/${post.slug.replace(/-en$/, '')}`} class="block p-6">
-              <time class="text-sm text-gray-500 dark:text-gray-400">
-                {post.data.date.toLocaleDateString('en-US', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
-                })}
-              </time>
-              <h3 class="text-xl font-bold mt-2 mb-3 text-gray-900 dark:text-white">
-                {post.data.title}
-              </h3>
-              {post.data.description && (
-                <p class="text-gray-600 dark:text-gray-400 line-clamp-2">
-                  {post.data.description}
-                </p>
-              )}
-              {post.data.tags.length > 0 && (
-                <div class="flex flex-wrap gap-2 mt-4">
-                  {post.data.tags.slice(0, 3).map((tag) => (
-                    <span class="text-xs px-2 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 rounded">
-                      {tag}
-                    </span>
-                  ))}
+            {item.type === 'video' ? (
+              <!-- Video Item -->
+              <a
+                href={`https://www.youtube.com/watch?v=${item.videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="block"
+              >
+                <div class="relative aspect-video bg-gray-200 dark:bg-gray-700">
+                  <img
+                    src={`https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`}
+                    alt={item.title}
+                    class="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 flex items-center justify-center">
+                    <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
+                      <i class="fas fa-play text-white text-lg ml-1"></i>
+                    </div>
+                  </div>
+                  <span class:list={[
+                    'absolute top-2 left-2 text-xs px-2 py-1 rounded font-medium',
+                    item.videoType === 'shorts'
+                      ? 'bg-red-600 text-white'
+                      : 'bg-blue-600 text-white'
+                  ]}>
+                    {item.videoType === 'shorts' ? 'Shorts' : 'Video'}
+                  </span>
                 </div>
-              )}
-            </a>
+                <div class="p-4">
+                  <time class="text-sm text-gray-500 dark:text-gray-400">
+                    {item.date.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </time>
+                  <h3 class="text-lg font-bold mt-1 text-gray-900 dark:text-white line-clamp-2">
+                    {item.title}
+                  </h3>
+                </div>
+              </a>
+            ) : (
+              <!-- Blog Post Item -->
+              <a href={`/en/blog/${item.slug}`} class="block p-6">
+                <div class="flex items-center gap-2 mb-2">
+                  <span class="text-xs px-2 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 rounded font-medium">
+                    News
+                  </span>
+                  <time class="text-sm text-gray-500 dark:text-gray-400">
+                    {item.date.toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </time>
+                </div>
+                <h3 class="text-lg font-bold mt-2 mb-2 text-gray-900 dark:text-white line-clamp-2">
+                  {item.title}
+                </h3>
+                {item.description && (
+                  <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
+                    {item.description}
+                  </p>
+                )}
+              </a>
+            )}
           </article>
         ))}
       </div>
