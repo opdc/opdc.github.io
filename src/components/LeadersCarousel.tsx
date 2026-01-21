@@ -139,7 +139,7 @@ export default function LeadersCarousel({ leaders, basePath = '/leaders' }: Lead
       </button>
 
       {/* Custom Pagination */}
-      <div className="swiper-pagination-custom mt-4 flex justify-center gap-2" role="tablist" aria-label="슬라이드 페이지"></div>
+      <div className="swiper-pagination-custom mt-4 flex justify-center gap-2" role="group" aria-label="슬라이드 페이지 선택"></div>
     </div>
   )
 }

@@ -33,8 +33,11 @@ const pageDescription = description || SITE.description
     <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <!-- Skip Links for Accessibility -->
+    <a href="#main-content" class="skip-link">본문으로 건너뛰기</a>
+    <a href="#navigation" class="skip-link">메뉴로 건너뛰기</a>
     <Header />
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
     <Footer />
