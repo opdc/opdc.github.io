@@ -89,6 +89,7 @@ const leadersData = shuffledLeaders.map(leader => ({
   <section class="relative bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-16 md:py-24">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
+        <h1 class="sr-only">OPDC - Open Platform Developer Community</h1>
         <blockquote class="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-8 leading-relaxed">
           <p class="mb-4">
             OPDC enhances the quality and productivity of open platforms.<br class="hidden md:block"/>
@@ -103,7 +104,7 @@ const leadersData = shuffledLeaders.map(leader => ({
         <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
           <a
             href="/en/blog"
-            class="px-8 py-4 bg-brand-600 text-white rounded-lg font-medium hover:bg-brand-700 transition-colors"
+            class="px-8 py-4 bg-brand-700 text-white rounded-lg font-medium hover:bg-brand-800 transition-colors"
           >
             View News
           </a>
@@ -123,7 +124,7 @@ const leadersData = shuffledLeaders.map(leader => ({
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between mb-8">
         <h2 class="text-3xl font-bold">Latest News</h2>
-        <a href="/en/blog" class="text-brand-600 hover:text-brand-700 font-medium">
+        <a href="/en/blog" class="text-brand-700 hover:text-brand-800 font-medium">
           View All →
         </a>
       </div>
@@ -154,8 +155,8 @@ const leadersData = shuffledLeaders.map(leader => ({
                   <span class:list={[
                     'absolute top-2 left-2 text-xs px-2 py-1 rounded font-medium',
                     item.videoType === 'shorts'
-                      ? 'bg-red-600 text-white'
-                      : 'bg-blue-600 text-white'
+                      ? 'bg-red-700 text-white'
+                      : 'bg-blue-800 text-white'
                   ]}>
                     {item.videoType === 'shorts' ? 'Shorts' : 'Video'}
                   </span>
@@ -177,7 +178,7 @@ const leadersData = shuffledLeaders.map(leader => ({
               <!-- Blog Post Item -->
               <a href={`/en/blog/${item.slug}`} class="block p-6">
                 <div class="flex items-center gap-2 mb-2">
-                  <span class="text-xs px-2 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 rounded font-medium">
+                  <span class="text-xs px-2 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-800 dark:text-brand-300 rounded font-medium">
                     News
                   </span>
                   <time class="text-sm text-gray-500 dark:text-gray-400">
@@ -209,7 +210,7 @@ const leadersData = shuffledLeaders.map(leader => ({
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between mb-8">
         <h2 class="text-3xl font-bold">Meet Our Leaders</h2>
-        <a href="/en/leaders" class="text-brand-600 hover:text-brand-700 font-medium">
+        <a href="/en/leaders" class="text-brand-700 hover:text-brand-800 font-medium">
           View All →
         </a>
       </div>
@@ -283,24 +284,24 @@ const leadersData = shuffledLeaders.map(leader => ({
   </section>
 
   <!-- CTA Section -->
-  <section class="py-20 bg-brand-400 dark:bg-brand-600">
+  <section class="py-20 bg-brand-700 dark:bg-brand-800">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
         A Developer Community Growing Together
       </h2>
-      <p class="text-xl text-brand-50 mb-8">
+      <p class="text-xl text-brand-100 mb-8">
         Learn and share with open platform developers
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a
           href="/en/projects"
-          class="px-8 py-4 bg-white text-brand-600 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+          class="px-8 py-4 bg-white text-brand-800 rounded-lg font-medium hover:bg-gray-100 transition-colors"
         >
           View Projects
         </a>
         <a
           href="/en/partners"
-          class="px-8 py-4 border-2 border-white text-white rounded-lg font-medium hover:bg-brand-500 transition-colors"
+          class="px-8 py-4 border-2 border-white text-white rounded-lg font-medium hover:bg-brand-600 transition-colors"
         >
           Learn About Partners
         </a>
