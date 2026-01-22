@@ -1,7 +1,7 @@
 ---
 name: Soonryu Kwon
 role: OPA
-image: /img/leader/33-kwon-soonryu.png
+image: /img/leader/33-kwon-soonryu.webp
 order: 33
 locale: en
 email: sunryul23@naver.com

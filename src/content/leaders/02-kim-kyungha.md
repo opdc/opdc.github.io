@@ -1,7 +1,7 @@
 ---
 name: 김경하
 role: eGovFrame
-image: /img/leader/02-kim-kyungha.png
+image: /img/leader/02-kim-kyungha.webp
 order: 2
 email: gstarclub@gmail.com
 ---

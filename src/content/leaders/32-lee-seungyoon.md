@@ -1,7 +1,7 @@
 ---
 name: 이승윤
 role: OPA
-image: /img/leader/32-lee-seungyoon.png
+image: /img/leader/32-lee-seungyoon.webp
 order: 32
 github: "https://github.com/RoysyLee"
 ---

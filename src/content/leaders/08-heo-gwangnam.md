@@ -1,7 +1,7 @@
 ---
 name: 허광남
 role: eGovFrame
-image: /img/leader/08-heo-gwangnam.png
+image: /img/leader/08-heo-gwangnam.webp
 order: 8
 github: "https://github.com/kenu"
 ---

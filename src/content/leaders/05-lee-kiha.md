@@ -1,7 +1,7 @@
 ---
 name: 이기하
 role: eGovFrame / OPA
-image: /img/leader/05-lee-kiha.png
+image: /img/leader/05-lee-kiha.webp
 order: 5
 email: dasomell@gmail.com
 github: "https://github.com/dasomel"

@@ -1,7 +1,7 @@
 ---
 name: 권순률
 role: OPA
-image: /img/leader/33-kwon-soonryu.png
+image: /img/leader/33-kwon-soonryu.webp
 order: 33
 email: sunryul23@naver.com
 ---

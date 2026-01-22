@@ -27,15 +27,15 @@ env:
   BUILD_PATH: "." # 프로젝트 루트에서 빌드
 
 jobs:
-  sync-youtube:
-    name: Sync YouTube
+  build:
+    name: Build
     runs-on: ubuntu-latest
-    # 스케줄 실행이거나 수동 실행일 때만 YouTube 동기화
-    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
@@ -52,26 +52,13 @@ jobs:
         env:
           YOUTUBE_CHANNEL_URL: ${{ vars.YOUTUBE_CHANNEL_URL || 'https://www.youtube.com/@open-egovframe' }}
 
-      - name: Commit changes
+      - name: Commit YouTube changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add src/content/videos/
           git diff --staged --quiet || git commit -m "chore: sync YouTube content [automated]"
           git push || true
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
-          fetch-depth: 0
-
-      - name: Pull latest changes
-        run: git pull origin ${{ github.ref_name }} || true
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4

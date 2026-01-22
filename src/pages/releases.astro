@@ -3,8 +3,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content'
 
 const releases = await getCollection('releases', ({ data }) => data.locale === 'ko')
-// 버전 역순 정렬 (최신 먼저)
-releases.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+// 버전 역순 정렬 (최신 먼저, 같은 날짜면 버전 번호로 정렬)
+releases.sort((a, b) => {
+  const dateDiff = b.data.date.getTime() - a.data.date.getTime()
+  if (dateDiff !== 0) return dateDiff
+  return b.data.version.localeCompare(a.data.version, undefined, { numeric: true })
+})
 ---
 
 <BaseLayout title="릴리즈 노트" description="OPDC 웹사이트 변경 이력">

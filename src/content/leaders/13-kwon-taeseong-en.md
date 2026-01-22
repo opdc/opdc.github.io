@@ -1,7 +1,7 @@
 ---
 name: Taeseong Kwon
 role: eGovFrame
-image: /img/leader/13-kwon-taeseong.png
+image: /img/leader/13-kwon-taeseong.webp
 order: 13
 locale: en
 email: taeseong@me.com

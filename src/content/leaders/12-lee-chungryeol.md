@@ -1,7 +1,7 @@
 ---
 name: 이충렬
 role: eGovFrame / OPA
-image: /img/leader/12-lee-chungryeol.png
+image: /img/leader/12-lee-chungryeol.webp
 order: 12
 email: coohg93@gmail.com
 github: "https://github.com/Chung10Kr"

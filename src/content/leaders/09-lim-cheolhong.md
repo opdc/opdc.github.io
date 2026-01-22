@@ -1,7 +1,7 @@
 ---
 name: 임철홍
 role: eGovFrame
-image: /img/leader/09-lim-cheolhong.png
+image: /img/leader/09-lim-cheolhong.webp
 order: 9
 email: imich@naver.com
 ---

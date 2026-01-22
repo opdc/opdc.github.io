@@ -1,7 +1,7 @@
 ---
 name: Gwangnam Heo
 role: eGovFrame
-image: /img/leader/08-heo-gwangnam.png
+image: /img/leader/08-heo-gwangnam.webp
 order: 8
 locale: en
 github: "https://github.com/kenu"

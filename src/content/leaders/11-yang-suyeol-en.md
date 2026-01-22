@@ -1,7 +1,7 @@
 ---
 name: Suyeol Yang
 role: eGovFrame
-image: /img/leader/11-yang-suyeol.png
+image: /img/leader/11-yang-suyeol.webp
 order: 11
 locale: en
 email: javaoracle1@outlook.com

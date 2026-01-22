@@ -3,8 +3,12 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content'
 
 const releases = await getCollection('releases', ({ data }) => data.locale === 'en')
-// Sort by version descending (latest first)
-releases.sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+// Sort by version descending (latest first, then by version if same date)
+releases.sort((a, b) => {
+  const dateDiff = b.data.date.getTime() - a.data.date.getTime()
+  if (dateDiff !== 0) return dateDiff
+  return b.data.version.localeCompare(a.data.version, undefined, { numeric: true })
+})
 ---
 
 <BaseLayout title="Release Notes" description="OPDC Website Change History">

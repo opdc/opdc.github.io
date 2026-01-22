@@ -1,7 +1,7 @@
 ---
 name: 김회중
 role: OPA
-image: /img/leader/35-kim-hoejung.png
+image: /img/leader/35-kim-hoejung.webp
 order: 35
 email: cathedral@nate.com
 linkedin: "https://www.linkedin.com/in/회중-김-93804b86/"

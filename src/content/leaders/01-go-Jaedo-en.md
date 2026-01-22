@@ -1,7 +1,7 @@
 ---
 name: Jaedo Go
 role: eGovFrame
-image: /img/leader/01-go-Jaedo.png
+image: /img/leader/01-go-Jaedo.webp
 order: 1
 locale: en
 email: haibane84@gmail.com

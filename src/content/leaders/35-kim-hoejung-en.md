@@ -1,7 +1,7 @@
 ---
 name: Hoejung Kim
 role: OPA
-image: /img/leader/35-kim-hoejung.png
+image: /img/leader/35-kim-hoejung.webp
 order: 35
 locale: en
 email: cathedral@nate.com

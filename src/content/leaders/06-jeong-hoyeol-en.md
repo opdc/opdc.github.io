@@ -1,7 +1,7 @@
 ---
 name: Hoyeol Jeong
 role: eGovFrame
-image: /img/leader/06-jeong-hoyeol.png
+image: /img/leader/06-jeong-hoyeol.webp
 order: 6
 locale: en
 email: wesung777@naver.com

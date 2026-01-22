@@ -40,6 +40,8 @@ async function fetchBoardContent(url: string, baseUrl: string) {
       tableHtml = tableHtml.replace(/href='\/oc\//g, `href='${baseUrl}/oc/`)
       // Open in new tab (except already has target)
       tableHtml = tableHtml.replace(/<a (?!target)/g, '<a target="_blank" ')
+      // Replace new post image with CSS badge
+      tableHtml = tableHtml.replace(/<img[^>]*src="[^"]*ico_new[^"]*"[^>]*>/gi, '<span class="new-badge">N</span>')
     }
 
     if (paginationDiv) {
@@ -175,6 +177,22 @@ const notice = await fetchBoardContent(`${baseUrl}/oc/support/notice.do`, baseUr
     margin-left: 6px;
     font-size: 14px;
   }
+  /* New post badge */
+  .board-table :global(.new-badge) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 18px;
+    height: 18px;
+    padding: 0 4px;
+    margin-left: 6px;
+    background-color: #ef4444;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 4px;
+    vertical-align: middle;
+  }
 
   /* Pagination styles */
   .pagination-wrapper {
@@ -240,6 +258,9 @@ const notice = await fetchBoardContent(`${baseUrl}/oc/support/notice.do`, baseUr
   }
   :global(.dark) .board-table :global(.attach-icon) {
     color: #9ca3af;
+  }
+  :global(.dark) .board-table :global(.new-badge) {
+    background-color: #dc2626;
   }
   :global(.dark) .pagination-wrapper {
     border-top-color: #374151;

@@ -1,7 +1,7 @@
 ---
 title: K-PaaS 경량화
 description: K-PaaS를 Local(PC) 설치를 위한 SandBox 프로젝트
-image: /img/project/k-paas/portal.png
+image: /img/project/k-paas/portal.webp
 tags: ["K-PaaS", "Vagrant", "VirtualBox"]
 status: active
 order: 1
@@ -21,9 +21,9 @@ locale: ko
 ### 구성요소
 
 <div class="my-8">
-  <img src="/img/project/k-paas/component.png" alt="K-PaaS 구성요소" class="w-full rounded-lg shadow-md" />
+  <img src="/img/project/k-paas/component.webp" alt="K-PaaS 구성요소" class="w-full rounded-lg shadow-md" />
   <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-2">
-    <img src="/img/project/k-paas/component_color.png" alt="" class="inline h-4" /> K-PaaS Local Version 제외 컴포넌트
+    <img src="/img/project/k-paas/component_color.webp" alt="" class="inline h-4" /> K-PaaS Local Version 제외 컴포넌트
   </p>
 </div>
 
@@ -33,10 +33,10 @@ locale: ko
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
   <div>
-    <img src="/img/project/k-paas/core.png" alt="Core 기능" class="w-full rounded-lg shadow-md" />
+    <img src="/img/project/k-paas/core.webp" alt="Core 기능" class="w-full rounded-lg shadow-md" />
   </div>
   <div>
-    <img src="/img/project/k-paas/non_core.png" alt="제외 컴포넌트" class="w-full rounded-lg shadow-md" />
+    <img src="/img/project/k-paas/non_core.webp" alt="제외 컴포넌트" class="w-full rounded-lg shadow-md" />
   </div>
 </div>
 <p class="text-center text-sm text-gray-600 dark:text-gray-400">core 기능 / 제외 컴포넌트</p>

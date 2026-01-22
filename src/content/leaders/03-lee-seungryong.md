@@ -1,7 +1,7 @@
 ---
 name: 이승룡
 role: eGovFrame / OPA
-image: /img/leader/03-lee-seungryong.png
+image: /img/leader/03-lee-seungryong.webp
 order: 3
 email: sleepred@gmail.com
 ---

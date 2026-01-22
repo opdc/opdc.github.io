@@ -1,7 +1,7 @@
 ---
 name: 권태성
 role: eGovFrame
-image: /img/leader/13-kwon-taeseong.png
+image: /img/leader/13-kwon-taeseong.webp
 order: 13
 email: taeseong@me.com
 github: "https://github.com/taeseong"

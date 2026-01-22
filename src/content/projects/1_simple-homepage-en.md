@@ -1,7 +1,7 @@
 ---
 title: simple-homepage
 description: simple-homepage Boot Template
-image: /img/project/simple-homepage/portal.png
+image: /img/project/simple-homepage/portal.webp
 tags: ["eGovFrame", "Spring Boot"]
 status: active
 order: 2

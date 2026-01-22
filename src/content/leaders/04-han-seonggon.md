@@ -1,7 +1,7 @@
 ---
 name: 한성곤
 role: eGovFrame
-image: /img/leader/04-han-seonggon.png
+image: /img/leader/04-han-seonggon.webp
 order: 4
 email: switchover@gmail.com
 ---

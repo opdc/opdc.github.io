@@ -1,7 +1,7 @@
 ---
 name: Kiha Lee
 role: eGovFrame / OPA
-image: /img/leader/05-lee-kiha.png
+image: /img/leader/05-lee-kiha.webp
 order: 5
 locale: en
 email: dasomell@gmail.com

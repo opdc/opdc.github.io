@@ -1,7 +1,7 @@
 ---
 name: 정호열
 role: eGovFrame
-image: /img/leader/06-jeong-hoyeol.png
+image: /img/leader/06-jeong-hoyeol.webp
 order: 6
 email: wesung777@naver.com
 ---

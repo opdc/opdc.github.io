@@ -1,7 +1,7 @@
 ---
 name: 장미영
 role: GovFrame / OPA
-image: /img/leader/07-jang-miyoung.png
+image: /img/leader/07-jang-miyoung.webp
 order: 7
 email: samediyam@gmail.com
 github: "https://github.com/iamroseyoung"

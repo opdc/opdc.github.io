@@ -1,7 +1,7 @@
 ---
 name: Seokgon Lee
 role: OPA
-image: /img/leader/31-lee-seokgon.png
+image: /img/leader/31-lee-seokgon.webp
 order: 31
 locale: en
 email: leesk55@gmail.com

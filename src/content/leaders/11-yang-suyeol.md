@@ -1,7 +1,7 @@
 ---
 name: 양수열
 role: eGovFrame
-image: /img/leader/11-yang-suyeol.png
+image: /img/leader/11-yang-suyeol.webp
 order: 11
 email: javaoracle1@outlook.com
 ---

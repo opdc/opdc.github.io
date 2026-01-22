@@ -31,6 +31,23 @@ function generateFilename(videoId, title, date) {
   return `${dateStr}-${slug}-${videoId}.md`
 }
 
+// 개별 영상의 상세 정보 가져오기 (업로드 날짜 포함)
+function fetchVideoDetails(videoId) {
+  try {
+    const result = execSync(
+      `yt-dlp --dump-json --skip-download "https://www.youtube.com/watch?v=${videoId}" 2>/dev/null`,
+      { encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024, timeout: 30000 }
+    )
+    const data = JSON.parse(result.trim())
+    return {
+      uploadDate: data.upload_date || null,
+      duration: data.duration || 0,
+    }
+  } catch {
+    return null
+  }
+}
+
 // yt-dlp로 채널 영상 목록 가져오기
 function fetchChannelVideos(channelUrl) {
   console.log(`채널 영상 목록 가져오는 중: ${channelUrl}`)
@@ -60,7 +77,7 @@ function fetchChannelVideos(channelUrl) {
       id: v.id,
       title: v.title || `영상 ${v.id}`,
       description: v.description || '',
-      uploadDate: v.upload_date || new Date().toISOString().split('T')[0].replace(/-/g, ''),
+      uploadDate: v.upload_date || null, // 나중에 개별 조회로 채움
       duration: v.duration || 0,
       type: v.duration && v.duration <= 60 ? 'shorts' : 'video',
     }))
@@ -98,13 +115,34 @@ function fetchChannelShorts(channelUrl) {
       id: v.id,
       title: v.title || `Shorts ${v.id}`,
       description: v.description || '',
-      uploadDate: v.upload_date || new Date().toISOString().split('T')[0].replace(/-/g, ''),
+      uploadDate: v.upload_date || null, // 나중에 개별 조회로 채움
       duration: v.duration || 0,
       type: 'shorts',
     }))
   } catch (error) {
     console.error('Shorts 가져오기 실패 (없을 수 있음):', error.message)
     return []
+  }
+}
+
+// 재생목록의 상세 정보 가져오기 (첫 번째 영상의 업로드 날짜 사용)
+function fetchPlaylistDetails(playlistId) {
+  try {
+    const result = execSync(
+      `yt-dlp --flat-playlist --dump-json "https://www.youtube.com/playlist?list=${playlistId}" 2>/dev/null | head -1`,
+      { encoding: 'utf-8', maxBuffer: 10 * 1024 * 1024, timeout: 30000, shell: true }
+    )
+    if (!result.trim()) return null
+
+    const data = JSON.parse(result.trim())
+    // 첫 번째 영상의 ID로 업로드 날짜 조회
+    if (data.id) {
+      const videoDetails = fetchVideoDetails(data.id)
+      return videoDetails
+    }
+    return null
+  } catch {
+    return null
   }
 }
 
@@ -136,7 +174,7 @@ function fetchChannelPlaylists(channelUrl) {
       id: p.id,
       title: p.title || `재생목록 ${p.id}`,
       description: p.description || '',
-      uploadDate: new Date().toISOString().split('T')[0].replace(/-/g, ''),
+      uploadDate: null, // 나중에 개별 조회로 채움
       type: 'playlist',
     }))
   } catch (error) {
@@ -176,7 +214,31 @@ function formatDate(dateStr) {
 
 // MDX 파일 생성
 function createContentFile(item) {
-  const date = formatDate(item.uploadDate)
+  // 업로드 날짜가 없으면 개별 조회
+  let uploadDate = item.uploadDate
+  if (!uploadDate) {
+    console.log(`    → ${item.id} 상세 정보 조회 중...`)
+    if (item.type === 'playlist') {
+      // 재생목록은 첫 번째 영상의 날짜 사용
+      const details = fetchPlaylistDetails(item.id)
+      if (details?.uploadDate) {
+        uploadDate = details.uploadDate
+      }
+    } else {
+      // 영상/Shorts
+      const details = fetchVideoDetails(item.id)
+      if (details?.uploadDate) {
+        uploadDate = details.uploadDate
+      }
+    }
+  }
+
+  // 여전히 없으면 현재 날짜 사용
+  if (!uploadDate) {
+    uploadDate = new Date().toISOString().split('T')[0].replace(/-/g, '')
+  }
+
+  const date = formatDate(uploadDate)
   const filename = generateFilename(item.id, item.title, date)
   const filepath = path.join(VIDEOS_DIR, filename)
 

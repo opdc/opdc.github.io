@@ -1,7 +1,7 @@
 ---
 name: Baekhaeng Lee
 role: eGovFrame
-image: /img/leader/14-lee-baekhang.png
+image: /img/leader/14-lee-baekhang.webp
 order: 14
 locale: en
 email: dlqorgod@naver.com

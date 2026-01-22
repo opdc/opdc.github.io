@@ -1,7 +1,7 @@
 ---
 name: 옥상훈
 role: eGovFrame
-image: /img/leader/10-ok-sanghoon.png
+image: /img/leader/10-ok-sanghoon.webp
 order: 10
 email: okgosu@gmail.com
 ---
