@@ -28,6 +28,9 @@
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.1.18"
   },
+  "overrides": {
+    "lodash": "4.17.23"
+  },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.0",
     "@axe-core/playwright": "^4.11.0",
