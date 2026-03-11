@@ -4,6 +4,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 import LeadersCarousel from '@/components/LeadersCarousel'
 import { SITE } from '@/config'
 import { parse } from 'node-html-parser'
+import { toKoSlug } from '@/lib/i18n'
 
 // Fetch posts from open.egovframe.org
 async function fetchCommunityPosts(url: string, category: string) {
@@ -89,7 +90,7 @@ type NewsItem = {
 const combinedNews: NewsItem[] = [
   ...posts.map(p => ({
     type: 'post' as const,
-    slug: p.slug.replace(/-en$/, ''),
+    slug: toKoSlug(p.slug),
     title: p.data.title,
     date: p.data.date,
     description: p.data.description,

@@ -1,12 +1,13 @@
 ---
 import { getCollection } from 'astro:content'
+import { toKoSlug } from '@/lib/i18n'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
   const englishPosts = posts.filter(post => post.data.locale === 'en')
   return englishPosts.map((post) => ({
-    params: { slug: post.slug.replace(/-en$/, '') },
+    params: { slug: toKoSlug(post.slug) },
     props: { post },
   }))
 }

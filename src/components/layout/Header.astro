@@ -5,8 +5,6 @@ interface Props {
   langSwitchHref?: string
 }
 
-const { langSwitchHref: langSwitchHrefProp } = Astro.props
-
 const currentPath = Astro.url.pathname
 const isEnglish = currentPath.startsWith('/en')
 
@@ -23,7 +21,7 @@ const menuTranslations: Record<string, string> = {
 }
 
 // 언어 전환 링크 - 현재 페이지의 다른 언어 버전으로 이동
-const langSwitchHref = langSwitchHrefProp ?? (isEnglish
+const langSwitchHref = Astro.props.langSwitchHref ?? (isEnglish
   ? currentPath.replace('/en', '') || '/'
   : `/en${currentPath === '/' ? '' : currentPath}`)
 const langLabel = isEnglish ? 'KO' : 'EN'

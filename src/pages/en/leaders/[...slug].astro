@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import { toKoSlug } from '@/lib/i18n'
 
 export async function getStaticPaths() {
   const leaders = await getCollection('leaders', ({ data }) => data.locale === 'en')
@@ -13,9 +14,7 @@ export async function getStaticPaths() {
 const { leader } = Astro.props
 const { Content } = await leader.render()
 
-// 한국어 버전 slug: -en 접미사 제거
-const koSlug = leader.slug.replace(/-en$/, '')
-const langSwitchHref = `/leaders/${koSlug}/`
+const langSwitchHref = `/leaders/${toKoSlug(leader.slug)}/`
 ---
 
 <BaseLayout title={leader.data.name} description={`${leader.data.name} - ${leader.data.role}`} langSwitchHref={langSwitchHref}>
