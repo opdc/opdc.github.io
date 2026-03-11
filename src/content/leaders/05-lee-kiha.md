@@ -23,6 +23,7 @@ linkedin: "https://www.linkedin.com/in/%EA%B8%B0%ED%95%98-%EC%9D%B4-ba909924/"
  ---
 
 ### 📂 주요 경력
+- <b>現</b> 한국공학대학교 경영학부 IT경영전공 겸임교수
 - <b>前</b> 한화시스템 차장
 - <b>前</b> SK 주식회사 수석
 - Data Platform 개발

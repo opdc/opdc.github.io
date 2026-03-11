@@ -12,9 +12,12 @@ export async function getStaticPaths() {
 
 const { leader } = Astro.props
 const { Content } = await leader.render()
+
+// 영문 버전 slug: -en 접미사 추가
+const langSwitchHref = `/en/leaders/${leader.slug}-en/`
 ---
 
-<BaseLayout title={leader.data.name} description={`${leader.data.name} - ${leader.data.role}`}>
+<BaseLayout title={leader.data.name} description={`${leader.data.name} - ${leader.data.role}`} langSwitchHref={langSwitchHref}>
   <div class="py-12">
     <!-- Header -->
     <div class="bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-16">

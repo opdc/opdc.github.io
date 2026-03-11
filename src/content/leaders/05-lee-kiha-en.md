@@ -24,6 +24,7 @@ linkedin: "https://www.linkedin.com/in/%EA%B8%B0%ED%95%98-%EC%9D%B4-ba909924/"
 ---
 
 ### Career
+- <b>Current</b> Adjunct Professor, Department of IT Business Management, Tech University of Korea
 - <b>Former</b> Hanwha Systems Manager
 - <b>Former</b> SK Inc. Principal Engineer
 - Data Platform Development
