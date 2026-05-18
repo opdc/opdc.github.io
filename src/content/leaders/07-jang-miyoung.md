@@ -1,6 +1,6 @@
 ---
 name: 장미영
-role: GovFrame / OPA
+role: eGovFrame / OPA
 image: /img/leader/07-jang-miyoung.webp
 order: 7
 email: samediyam@gmail.com
