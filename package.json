@@ -11,12 +11,12 @@
     "sync-youtube": "node scripts/sync-youtube.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "^4.3.13",
+    "@astrojs/mdx": "^6.0.3",
     "@astrojs/react": "^4.4.2",
     "@tailwindcss/vite": "^4.1.18",
     "@types/react": "^19.2.9",
     "@types/react-dom": "^19.2.3",
-    "astro": "^5.18.1",
+    "astro": "^6.4.8",
     "astro-seo": "^1.1.0",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
