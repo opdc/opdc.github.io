@@ -32,16 +32,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.ref }}
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
+          package-manager-cache: false
 
       - name: Install yt-dlp
         run: pip install yt-dlp
@@ -66,18 +67,18 @@ jobs:
           version: 10
           run_install: false
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - name: Setup Node with pnpm cache
+        uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "22"
           cache: pnpm
 
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v4
+        uses: actions/configure-pages@v6
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Build with Astro
@@ -85,7 +86,7 @@ jobs:
         working-directory: ${{ env.BUILD_PATH }}
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ${{ env.BUILD_PATH }}/dist
 
@@ -99,4 +100,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
