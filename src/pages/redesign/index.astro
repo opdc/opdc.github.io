@@ -19,8 +19,10 @@ const people = [
   ['한성곤',REDESIGN_ASSETS.leaders[3]],['이기하',REDESIGN_ASSETS.leaders[4]],['정호열',REDESIGN_ASSETS.leaders[5]],
 ]
 const allVideos = await getCollection('videos')
-const preferredIds = ['H3JVgdnBLY0','9soN2gPWdM','dhQgSIAsSeg']
-const videos = preferredIds.map(id => allVideos.find(v => v.data.videoId === id)).filter(Boolean)
+const videos = allVideos
+  .filter((video) => video.data.type !== 'playlist')
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  .slice(0, 3)
 ---
 <RedesignLayout>
 <section class="figma-hero" id="about">
@@ -48,7 +50,7 @@ const videos = preferredIds.map(id => allVideos.find(v => v.data.videoId === id)
 
 <section class="figma-section figma-muted" id="videos"><div class="redesign-container">
   <p class="section-kicker">WATCH & LEARN</p><h2>최근 영상</h2>
-  <div class="video-editorial-grid">{videos.map((video) => video && <a class="video-editorial" href={`https://www.youtube.com/watch?v=${video.data.videoId}`} target="_blank" rel="noreferrer"><div class="video-thumb"><img src={video.data.thumbnail || `https://i.ytimg.com/vi/${video.data.videoId}/hqdefault.jpg`} alt={video.data.title}/><span class="video-label">{video.data.description || 'OPDC VIDEO'}</span><span class="play">▶</span></div><h3>{video.data.title}</h3></a>)}</div>
+  <div class="video-editorial-grid">{videos.map((video) => <a class="video-editorial" href={`https://www.youtube.com/watch?v=${video.data.videoId}`} target="_blank" rel="noreferrer"><div class="video-thumb"><img src={video.data.thumbnail || `https://i.ytimg.com/vi/${video.data.videoId}/hqdefault.jpg`} alt={video.data.title}/><span class="video-label">{video.data.description || 'OPDC VIDEO'}</span><span class="play">▶</span></div><h3>{video.data.title}</h3></a>)}</div>
 </div></section>
 
 <section class="figma-section people-editorial" id="people"><div class="redesign-container people-layout">
