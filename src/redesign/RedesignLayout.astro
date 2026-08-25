@@ -1,0 +1,31 @@
+---
+interface Props {
+  title?: string
+  description?: string
+}
+const { title = 'OPDC — Open Platform Developer Community', description = '오픈플랫폼과 오픈소스를 중심으로 개발자와 프로젝트가 함께 성장하는 커뮤니티' } = Astro.props
+---
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content={description} /><meta name="theme-color" content="#111827" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<link rel="stylesheet" href="/redesign/redesign.css" />
+<title>{title}</title>
+</head>
+<body class="opdc-redesign-shell">
+<a class="redesign-skip" href="#content">본문으로 건너뛰기</a>
+<header class="redesign-header"><div class="redesign-container redesign-header-inner">
+<a class="redesign-brand" href="/redesign/" aria-label="OPDC Redesign Home"><span class="brand-mark">O</span><span><strong>OPDC</strong><small>OPEN PLATFORM DEVELOPER COMMUNITY</small></span></a>
+<nav class="redesign-nav" aria-label="리뉴얼 메뉴"><a href="#community">Community</a><a href="#projects">Projects</a><a href="#knowledge">Knowledge</a><a href="#about">About</a></nav>
+<a class="redesign-header-cta" href="/">기존 사이트</a><button class="redesign-menu" type="button" aria-expanded="false" aria-controls="redesign-mobile-nav">메뉴</button>
+</div><div id="redesign-mobile-nav" class="redesign-mobile-nav" hidden><div class="redesign-container"><a href="#community">Community</a><a href="#projects">Projects</a><a href="#knowledge">Knowledge</a><a href="#about">About</a><a href="/">기존 사이트</a></div></div></header>
+<main id="content"><slot /></main>
+<footer class="redesign-footer"><div class="redesign-container redesign-footer-grid"><div><div class="redesign-brand redesign-footer-brand"><span class="brand-mark">O</span><span><strong>OPDC</strong><small>OPEN PLATFORM DEVELOPER COMMUNITY</small></span></div><p>개발자와 프로젝트가 함께 성장하는 열린 기술 커뮤니티.</p></div><div class="footer-links"><a href="/projects/">Projects</a><a href="/community/">Community</a><a href="/blog/">Knowledge</a><a href="/about/">About</a></div></div></footer>
+<script>
+const button=document.querySelector('.redesign-menu'); const mobile=document.querySelector('#redesign-mobile-nav');
+button?.addEventListener('click',()=>{const expanded=button.getAttribute('aria-expanded')==='true'; button.setAttribute('aria-expanded',String(!expanded)); if(mobile) mobile.hidden=expanded})
+</script>
+</body></html>
