@@ -1,0 +1,109 @@
+---
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = 'OPEN PLATFORMS.<br />OPEN PEOPLE.<br /><span>OPEN FUTURE.</span>',
+  description = '오픈플랫폼과 오픈소스를 중심으로 개발자와 프로젝트가 함께 성장하는 커뮤니티',
+} = Astro.props
+---
+
+<section class="relative isolate overflow-hidden bg-white dark:bg-gray-950">
+  <div class="opdc-grid-lines absolute inset-0 opacity-70" aria-hidden="true"></div>
+
+  <div class="opdc-container relative grid min-h-[720px] items-center gap-12 py-20 lg:grid-cols-[1.15fr_0.85fr] lg:py-28">
+    <div class="max-w-4xl">
+      <p class="opdc-eyebrow mb-6">Open Platform Developer Community</p>
+
+      <h1
+        class="opdc-display max-w-4xl text-gray-950 dark:text-white"
+        set:html={title}
+      ></h1>
+
+      <p class="mt-8 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-300">
+        {description}
+      </p>
+
+      <div class="mt-10 flex flex-col gap-3 sm:flex-row">
+        <a
+          href="/projects"
+          class="inline-flex items-center justify-center rounded-xl bg-brand-700 px-6 py-3.5 font-semibold text-white transition hover:bg-brand-800 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:focus:ring-offset-gray-950"
+        >
+          프로젝트 탐색
+        </a>
+        <a
+          href="/community"
+          class="inline-flex items-center justify-center rounded-xl border border-gray-300 px-6 py-3.5 font-semibold text-gray-800 transition hover:border-brand-600 hover:text-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 dark:border-gray-700 dark:text-gray-100 dark:hover:border-brand-500 dark:hover:text-brand-400 dark:focus:ring-offset-gray-950"
+        >
+          커뮤니티 참여
+        </a>
+      </div>
+
+      <div class="mt-14 grid max-w-2xl grid-cols-2 border-y border-gray-200 py-5 sm:grid-cols-4 dark:border-gray-800">
+        <div class="border-r border-gray-200 pr-4 dark:border-gray-800">
+          <p class="text-2xl font-bold text-gray-950 dark:text-white">OPEN</p>
+          <p class="mt-1 text-xs text-gray-500">PLATFORM</p>
+        </div>
+        <div class="border-r border-gray-200 px-4 dark:border-gray-800">
+          <p class="text-2xl font-bold text-gray-950 dark:text-white">OSS</p>
+          <p class="mt-1 text-xs text-gray-500">PROJECTS</p>
+        </div>
+        <div class="border-r border-gray-200 px-4 dark:border-gray-800 sm:border-r dark:border-gray-800">
+          <p class="text-2xl font-bold text-gray-950 dark:text-white">MEET</p>
+          <p class="mt-1 text-xs text-gray-500">EVENTS</p>
+        </div>
+        <div class="pl-4">
+          <p class="text-2xl font-bold text-brand-700 dark:text-brand-400">JOIN</p>
+          <p class="mt-1 text-xs text-gray-500">COMMUNITY</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-xl" aria-hidden="true">
+      <div class="opdc-panel relative aspect-square overflow-hidden p-5 sm:p-8">
+        <svg viewBox="0 0 520 520" class="h-full w-full" role="presentation">
+          <defs>
+            <linearGradient id="hero16-orange" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#f97316" stop-opacity="0.95" />
+              <stop offset="100%" stop-color="#f97316" stop-opacity="0.18" />
+            </linearGradient>
+          </defs>
+
+          <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.22">
+            <circle cx="260" cy="260" r="185" />
+            <circle cx="260" cy="260" r="120" />
+            <path d="M80 260h360M260 80v360M132 132l256 256M388 132L132 388" />
+          </g>
+
+          <g fill="none" stroke="url(#hero16-orange)" stroke-width="3">
+            <path d="M108 200L208 136L332 176L414 264L340 378L208 400L112 318Z" />
+            <path d="M208 136L260 260L340 378M332 176L260 260L112 318M414 264L260 260L208 400" />
+          </g>
+
+          <g fill="#fff" stroke="#f97316" stroke-width="3">
+            <circle cx="108" cy="200" r="9" />
+            <circle cx="208" cy="136" r="9" />
+            <circle cx="332" cy="176" r="9" />
+            <circle cx="414" cy="264" r="9" />
+            <circle cx="340" cy="378" r="9" />
+            <circle cx="208" cy="400" r="9" />
+            <circle cx="112" cy="318" r="9" />
+          </g>
+
+          <circle cx="260" cy="260" r="38" fill="#f97316" />
+          <circle cx="260" cy="260" r="21" fill="#fff" opacity="0.95" />
+        </svg>
+
+        <div class="absolute left-6 top-6 rounded-full border border-gray-200 bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-gray-700 dark:border-gray-700 dark:bg-gray-900/90 dark:text-gray-200">
+          COMMUNITY SIGNAL
+        </div>
+        <div class="absolute bottom-6 right-6 rounded-xl border border-orange-200 bg-orange-50/90 px-4 py-3 dark:border-orange-900 dark:bg-orange-950/60">
+          <p class="text-[10px] font-bold uppercase tracking-[0.16em] text-orange-700 dark:text-orange-300">BUILD TOGETHER</p>
+          <p class="mt-1 text-sm font-semibold text-gray-900 dark:text-white">People → Projects → Impact</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
