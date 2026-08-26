@@ -1,0 +1,1 @@
+Redesign section polish pass: About, Community, Projects, Blog, History, Partners, Releases, Compatibility.
