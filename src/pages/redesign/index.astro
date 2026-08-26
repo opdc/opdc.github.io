@@ -3,36 +3,15 @@ import { getCollection } from 'astro:content'
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import { REDESIGN_ASSETS } from '@/redesign/asset-map'
 import '@/redesign/redesign.css'
-import '@/redesign/people.css'
-
-const activities = [
-  ['01','132차 세미나','커뮤니티의 최신 활동과 기록을 확인하세요.','/redesign/community/'],
-  ['02','오픈소스 컨트리뷰션','사람과 프로젝트가 함께 만드는 변화.','/redesign/blog/'],
-  ['03','프로젝트 업데이트','공개 프로젝트의 변화와 소식을 확인하세요.','/redesign/projects/'],
-]
-const projects = [
-  ['01','K-PaaS','Local · Sandbox · Kubernetes','Local 설치를 위한 경량화 / Sandbox'],
-  ['02','eGovFrame','Compatibility · Java · Spring','표준프레임워크 생태계와 호환성'],
-  ['03','Community OSS','Contribution · Open Source','커뮤니티가 함께 만드는 공개 프로젝트'],
-]
-
-const allLeaders = await getCollection('leaders', ({ data }) => data.locale === 'ko')
-const leadersData = allLeaders
-  .sort((a, b) => a.data.order - b.data.order)
-  .map((leader) => ({
-    slug: leader.slug,
-    name: leader.data.name,
-    role: leader.data.role,
-    image: leader.data.image || '',
-  }))
-
-const allVideos = await getCollection('videos')
-const videos = allVideos.filter((video) => video.data.type !== 'playlist').sort((a,b)=>b.data.date.getTime()-a.data.date.getTime()).slice(0,3)
+const leadersData=(await getCollection('leaders',({data})=>data.locale==='ko')).sort((a,b)=>a.data.order-b.data.order).map(leader=>({slug:leader.slug,name:leader.data.name,role:leader.data.role,image:leader.data.image||''}))
+const videos=(await getCollection('videos')).filter(video=>video.data.type!=='playlist').sort((a,b)=>b.data.date.getTime()-a.data.date.getTime()).slice(0,3)
+const projects=(await getCollection('projects',({data})=>data.locale==='ko')).sort((a,b)=>a.data.order-b.data.order).slice(0,3)
+const posts=(await getCollection('blog')).filter(post=>!post.data.draft&&post.data.locale!=='en').sort((a,b)=>b.data.date.getTime()-a.data.date.getTime()).slice(0,3)
 ---
 <RedesignLayout>
-<section class="figma-hero" id="about"><div class="redesign-container figma-hero-grid"><div class="figma-hero-copy"><h1>OPEN<br/>PLATFORM<br/>DEVELOPER<br/>COMMUNITY</h1></div><div class="figma-hero-side"><p>기술을 공유하고, 함께 만들고,<br/>오픈 플랫폼 생태계를 연결합니다.</p><a class="pill-cta" href="/redesign/community/">COMMUNITY에 참여하기 →</a></div></div><div class="redesign-container visual-mosaic"><a class="visual visual-main" href="/redesign/about/"><img src={REDESIGN_ASSETS.organization} alt="OPDC 커뮤니티 소개"/><span>OPDC COMMUNITY / ORGANIZATION</span></a><a class="visual visual-event" href="/redesign/community/"><img src={REDESIGN_ASSETS.history} alt="OPDC 이벤트와 연혁"/><span>EVENT<br/>ARCHIVE</span></a><a class="visual visual-small" href="/redesign/projects/"><img src={REDESIGN_ASSETS.intro} alt="OPDC 프로젝트"/><span>PROJECTS</span></a><a class="visual visual-small" href="/redesign/leaders/"><img src={REDESIGN_ASSETS.organizationEn} alt="OPDC 사람들"/><span>PEOPLE</span></a></div></section>
-<section class="figma-section figma-muted" id="community"><div class="redesign-container"><p class="section-kicker">COMMUNITY PULSE</p><h2>지금 OPDC에서 일어나는 일</h2><div class="figma-card-grid">{activities.map(([num,title,copy,href]) => <a class="pulse-card" href={href}><b>{num}</b><h3>{title}</h3><p>{copy}</p></a>)}</div></div></section>
-<section class="figma-section" id="projects"><div class="redesign-container"><p class="section-kicker">PROJECTS</p><h2>함께 만들고 공개하는 프로젝트</h2><div class="figma-card-grid">{projects.map(([num,name,tags,desc]) => <a class="project-editorial" href="/redesign/projects/"><b>{num}</b><h3>{name}</h3><p>{tags}</p><div>{desc}<span>→</span></div></a>)}</div></div></section>
-<section class="figma-section figma-muted" id="videos"><div class="redesign-container"><p class="section-kicker">WATCH & LEARN</p><h2>최근 영상</h2><div class="video-editorial-grid">{videos.map((video) => <a class="video-editorial" href={`https://www.youtube.com/watch?v=${video.data.videoId}`} target="_blank" rel="noreferrer"><div class="video-thumb"><img src={video.data.thumbnail || `https://i.ytimg.com/vi/${video.data.videoId}/hqdefault.jpg`} alt={video.data.title}/><span class="video-label">{video.data.description || 'OPDC VIDEO'}</span><span class="play">▶</span></div><h3>{video.data.title}</h3></a>)}</div><p style="margin-top:24px"><a class="pill-cta" href="/redesign/blog/">소식 전체보기 →</a></p></div></section>
-<section class="figma-section people-editorial" id="people"><div class="redesign-container people-layout"><div class="people-main"><div class="people-heading"><div><p class="section-kicker">PEOPLE</p><h2>함께 만드는 사람들</h2></div><a class="people-all-link" href="/redesign/leaders/">전체보기 →</a></div><div class="people-flow" aria-label="OPDC 리더 전체"><div class="people-flow-track">{leadersData.map((leader) => <a class="people-flow-card" href={`/redesign/leaders/${leader.slug}/`}><img src={leader.image} alt={`${leader.name} 프로필`}/><strong>{leader.name}</strong><span>{leader.role}</span></a>)}<div class="people-flow-clone" aria-hidden="true">{leadersData.map((leader) => <a tabindex="-1" class="people-flow-card" href={`/redesign/leaders/${leader.slug}/`}><img src={leader.image} alt=""/><strong>{leader.name}</strong><span>{leader.role}</span></a>)}</div></div></div></div><a class="join-card" href="/redesign/community/"><strong>OPEN COMMUNITY.<br/>OPEN FUTURE.</strong><span>OPDC와 함께하기 →</span></a></div></section>
+<section class="figma-hero" id="about"><div class="redesign-container figma-hero-grid"><div class="figma-hero-copy"><p class="section-kicker">OPEN PLATFORM DEVELOPER COMMUNITY</p><h1>OPEN<br/>PLATFORM<br/>TOGETHER.</h1></div><div class="figma-hero-side"><p>개발자가 함께 배우고 만들며,<br/>오픈 플랫폼 생태계를 연결합니다.</p><a class="pill-cta" href="/redesign/about/">OPDC 알아보기 →</a></div></div><div class="redesign-container visual-mosaic"><a class="visual visual-main" href="/redesign/about/"><img src={REDESIGN_ASSETS.organization} alt="OPDC 커뮤니티 소개"/><span>ABOUT / ORGANIZATION</span></a><a class="visual visual-event" href="/redesign/community/"><img src={REDESIGN_ASSETS.history} alt="OPDC 이벤트와 연혁"/><span>COMMUNITY<br/>ARCHIVE</span></a><a class="visual visual-small" href="/redesign/projects/"><img src={REDESIGN_ASSETS.intro} alt="OPDC 프로젝트"/><span>PROJECTS</span></a><a class="visual visual-small" href="/redesign/leaders/"><img src={REDESIGN_ASSETS.organizationEn} alt="OPDC 사람들"/><span>PEOPLE</span></a></div></section>
+<section class="figma-section figma-muted" id="community"><div class="redesign-container"><p class="section-kicker">COMMUNITY PULSE</p><h2>최근 소식과 기록</h2><div class="figma-card-grid">{posts.map((post,index)=><a class="pulse-card" href={`/redesign/blog/${post.slug}/`}><b>{String(index+1).padStart(2,'0')} · {post.data.date.toLocaleDateString('ko-KR')}</b><h3>{post.data.title}</h3><p>{post.data.description || 'OPDC의 최신 활동과 기록을 확인하세요.'}</p></a>)}</div><p style="margin-top:22px"><a class="people-all-link" href="/redesign/blog/">소식 전체보기 →</a></p></div></section>
+<section class="figma-section" id="projects"><div class="redesign-container"><p class="section-kicker">PROJECTS</p><h2>함께 만들고 공개하는 프로젝트</h2><div class="figma-card-grid">{projects.map((project,index)=><a class="project-editorial" href={`/redesign/projects/${project.slug}/`}><b>{String(index+1).padStart(2,'0')} · {project.data.status.toUpperCase()}</b><h3>{project.data.title}</h3><p>{project.data.tags.join(' · ')}</p><div>{project.data.description}<span>→</span></div></a>)}</div><p style="margin-top:22px"><a class="people-all-link" href="/redesign/projects/">프로젝트 전체보기 →</a></p></div></section>
+<section class="figma-section figma-muted" id="videos"><div class="redesign-container"><p class="section-kicker">WATCH & LEARN</p><h2>최근 영상</h2><div class="video-editorial-grid">{videos.map(video=><a class="video-editorial" href={`https://www.youtube.com/watch?v=${video.data.videoId}`} target="_blank" rel="noreferrer"><div class="video-thumb"><img src={video.data.thumbnail || `https://i.ytimg.com/vi/${video.data.videoId}/hqdefault.jpg`} alt={video.data.title}/><span class="video-label">{video.data.description || 'OPDC VIDEO'}</span><span class="play">▶</span></div><h3>{video.data.title}</h3></a>)}</div></div></section>
+<section class="figma-section people-editorial" id="people"><div class="redesign-container people-layout"><div class="people-main"><div class="people-heading"><div><p class="section-kicker">PEOPLE</p><h2>함께 만드는 사람들</h2></div><a class="people-all-link" href="/redesign/leaders/">전체보기 →</a></div><div class="people-flow" aria-label="OPDC 리더 전체"><div class="people-flow-track">{leadersData.map(leader=><a class="people-flow-card" href={`/redesign/leaders/${leader.slug}/`}><img src={leader.image} alt={`${leader.name} 프로필`}/><strong>{leader.name}</strong><span>{leader.role}</span></a>)}<div class="people-flow-clone" aria-hidden="true">{leadersData.map(leader=><a tabindex="-1" class="people-flow-card" href={`/redesign/leaders/${leader.slug}/`}><img src={leader.image} alt=""/><strong>{leader.name}</strong><span>{leader.role}</span></a>)}</div></div></div></div><a class="join-card" href="/redesign/community/"><strong>OPEN COMMUNITY.<br/>OPEN FUTURE.</strong><span>커뮤니티 활동 보기 →</span></a></div></section>
 </RedesignLayout>
