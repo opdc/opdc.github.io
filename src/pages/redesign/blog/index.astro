@@ -2,8 +2,9 @@
 import { getCollection } from 'astro:content'
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import '@/redesign/redesign.css'
+import '@/redesign/section-v3.css'
 const posts=(await getCollection('blog')).filter(p=>!p.data.draft&&p.data.locale!=='en').sort((a,b)=>b.data.date.getTime()-a.data.date.getTime())
 ---
 <RedesignLayout title="Blog | OPDC Redesign" description="OPDC 소식과 기록">
-<section class="figma-section"><div class="redesign-container"><p class="section-kicker">BLOG / NOTICE</p><h1>커뮤니티의<br/>소식과 기록</h1><p class="rd-lead">행사, 프로젝트, 공지와 커뮤니티 활동을 시간순으로 모았습니다.</p><div class="rd-list">{posts.map(post=><a class="rd-list-item" href={`/redesign/blog/${post.slug}/`}><div><span>{post.data.date.toLocaleDateString('ko-KR')} · {post.data.author}</span><h2>{post.data.title}</h2><p>{post.data.description}</p></div><b>→</b></a>)}</div></div></section>
+<section class="figma-section"><div class="redesign-container rd-blog-index"><aside class="rd-blog-index-sticky"><p class="section-kicker">BLOG / {posts.length}</p><h1>커뮤니티의<br/>소식과 기록</h1><p class="rd-lead">행사, 프로젝트, 공지와 커뮤니티 활동을 시간순으로 모았습니다.</p><div class="rd-quicklinks"><a href="/redesign/community/">Community</a><a href="/redesign/projects/">Projects</a></div></aside><div class="rd-list rd-blog-list">{posts.map(post=><a class="rd-list-item" href={`/redesign/blog/${post.slug}/`}><div><span>{post.data.date.toLocaleDateString('ko-KR')} · {post.data.author}</span><h2>{post.data.title}</h2><p>{post.data.description}</p></div><b>→</b></a>)}</div></div></section>
 </RedesignLayout>
