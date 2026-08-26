@@ -1,0 +1,8 @@
+---
+import { getCollection } from 'astro:content'
+import RedesignLayout from '@/redesign/RedesignLayout.astro'
+import '@/redesign/redesign.css'
+export async function getStaticPaths(){const leaders=await getCollection('leaders',({data})=>data.locale==='ko');return leaders.map(leader=>({params:{slug:leader.slug},props:{leader}}))}
+const {leader}=Astro.props;const {Content}=await leader.render()
+---
+<RedesignLayout title={`${leader.data.name} | OPDC Redesign`} description={`${leader.data.name} - ${leader.data.role}`}><section class="figma-section"><div class="redesign-container"><a class="rd-back" href="/redesign/leaders/">← PEOPLE</a><div class="rd-profile"><img src={leader.data.image} alt={leader.data.name}/><div><p class="section-kicker">OPDC LEADER</p><h1>{leader.data.name}</h1><p class="rd-lead">{leader.data.role}</p><div class="rd-links">{leader.data.email&&<a href={`mailto:${leader.data.email}`}>Email</a>}{leader.data.github&&<a href={leader.data.github} target="_blank">GitHub</a>}{leader.data.linkedin&&<a href={leader.data.linkedin} target="_blank">LinkedIn</a>}</div></div></div><article class="rd-content"><Content/></article></div></section></RedesignLayout>
