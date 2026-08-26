@@ -1,8 +1,14 @@
 ---
 import '@/redesign/pages.css'
-interface Props { title?: string; description?: string }
-const { title = 'OPDC — Open Platform Developer Community', description = '기술을 공유하고, 함께 만들고, 오픈 플랫폼 생태계를 연결하는 개발자 커뮤니티' } = Astro.props
+interface Props { title?: string; description?: string; image?: string }
+const {
+  title = 'OPDC — Open Platform Developer Community',
+  description = '기술을 공유하고, 함께 만들고, 오픈 플랫폼 생태계를 연결하는 개발자 커뮤니티',
+  image = '/img/about/opdc_img.webp'
+} = Astro.props
 const path = Astro.url.pathname
+const canonical = new URL(path, Astro.site ?? Astro.url.origin).toString()
+const ogImage = new URL(image, Astro.site ?? Astro.url.origin).toString()
 const nav = [
   ['About','/redesign/about/'],
   ['Projects','/redesign/projects/'],
@@ -25,8 +31,21 @@ const isActive = (href:string) => href === '/redesign/' ? path === href : path.s
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#faf8f3" />
+  <meta name="color-scheme" content="light" />
+  <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="OPDC" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
   <title>{title}</title>
 </head>
 <body class="opdc-redesign-shell">
@@ -37,23 +56,23 @@ const isActive = (href:string) => href === '/redesign/' ? path === href : path.s
       <nav class="redesign-nav" aria-label="주요 메뉴">
         {nav.map(([label,href]) => <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>)}
       </nav>
-      <a class="redesign-github" href="https://github.com/opdc" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a class="redesign-github" href="https://github.com/opdc" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       <button class="redesign-menu" type="button" aria-expanded="false" aria-controls="redesign-mobile-nav"><span>MENU</span><i aria-hidden="true"></i></button>
     </div>
     <div id="redesign-mobile-nav" class="redesign-mobile-nav" hidden>
       <div class="redesign-container redesign-mobile-nav-inner">
-        <nav aria-label="모바일 주요 메뉴">{nav.map(([label,href]) => <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}<span>→</span></a>)}</nav>
-        <div class="redesign-mobile-utility">{utility.map(([label,href]) => <a href={href}>{label}</a>)}<a href="https://github.com/opdc" target="_blank" rel="noreferrer">GitHub ↗</a><a href="/">기존 사이트</a></div>
+        <nav aria-label="모바일 주요 메뉴">{nav.map(([label,href]) => <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}<span aria-hidden="true">→</span></a>)}</nav>
+        <div class="redesign-mobile-utility">{utility.map(([label,href]) => <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>)}<a href="https://github.com/opdc" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="/">기존 사이트</a></div>
       </div>
     </div>
   </header>
-  <main id="content"><slot /></main>
+  <main id="content" tabindex="-1"><slot /></main>
   <footer class="redesign-footer">
     <div class="redesign-container redesign-footer-grid">
       <div class="redesign-footer-brand"><strong>OPDC</strong><p>기술을 공유하고, 함께 만들고,<br/>오픈 플랫폼 생태계를 연결합니다.</p></div>
       <div class="redesign-footer-col"><b>EXPLORE</b>{nav.map(([label,href]) => <a href={href}>{label}</a>)}</div>
       <div class="redesign-footer-col"><b>MORE</b>{utility.map(([label,href]) => <a href={href}>{label}</a>)}</div>
-      <div class="redesign-footer-col"><b>CONNECT</b><a href="https://github.com/opdc" target="_blank" rel="noreferrer">GitHub ↗</a><a href="mailto:opdc.kr@gmail.com">Email ↗</a><a href="/">기존 사이트</a></div>
+      <div class="redesign-footer-col"><b>CONNECT</b><a href="https://github.com/opdc" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="mailto:opdc.kr@gmail.com">Email ↗</a><a href="/">기존 사이트</a></div>
     </div>
     <div class="redesign-container redesign-footer-bottom"><span>© OPDC. Open Platform Developer Community.</span><a href="/redesign/">Back to redesign home ↑</a></div>
   </footer>
@@ -64,6 +83,7 @@ const isActive = (href:string) => href === '/redesign/' ? path === href : path.s
     button?.addEventListener('click',()=>{const expanded=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!expanded));if(mobile) mobile.hidden=expanded});
     mobile?.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
     window.addEventListener('resize',()=>{if(window.innerWidth>900) close()});
+    window.addEventListener('keydown',(event)=>{if(event.key==='Escape'){close();button?.focus()}});
   </script>
 </body>
 </html>
