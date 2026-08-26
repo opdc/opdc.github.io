@@ -1,0 +1,6 @@
+---
+import RedesignLayout from '@/redesign/RedesignLayout.astro'
+import '@/redesign/redesign.css'
+const partners=[['우분투 코리아','/img/partners/logo_ubuntu_korea.webp','https://ubuntu-kr.org/','국내 개발자 커뮤니티 협력'],['OPA','/img/partners/logo_opa.webp','https://opakorea.org/','개방형 클라우드 플랫폼 생태계 조성'],['광주대학교','/img/partners/logo_gwangju.webp','https://www.gwangju.ac.kr/main','SW 중심대학 운영 협력'],['한국상용소프트웨어협회','/img/partners/logo_kosw.webp','https://www.kosw.or.kr/','상용 SW 호환성 확인 협력'],['KT','/img/partners/logo_kt.webp','https://kt.com/','클라우드 기술 협력'],['인프라닉스','/img/partners/logo_infranics.webp','https://www.infranics.com/','개방형 클라우드 플랫폼 확산 협력']]
+---
+<RedesignLayout title="Partners | OPDC Redesign"><section class="figma-section"><div class="redesign-container"><p class="section-kicker">PARTNERS</p><h1>함께 만드는 생태계</h1><div class="rd-card-grid">{partners.map(([name,logo,url,desc])=><a class="rd-card rd-partner" href={url} target="_blank" rel="noreferrer"><img src={logo} alt={name}/><h2>{name}</h2><p>{desc}</p><b>VISIT ↗</b></a>)}</div></div></section></RedesignLayout>
