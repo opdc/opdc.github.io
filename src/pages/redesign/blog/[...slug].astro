@@ -3,6 +3,20 @@ import { getCollection } from 'astro:content'
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import '@/redesign/redesign.css'
 export async function getStaticPaths(){const posts=await getCollection('blog');return posts.filter(p=>p.data.locale!=='en'&&!p.data.draft).map(post=>({params:{slug:post.slug},props:{post}}))}
-const {post}=Astro.props;const {Content}=await post.render()
+const {post}=Astro.props
+const {Content}=await post.render()
+const description=post.data.description || `${post.data.title} — OPDC 소식과 기록`
 ---
-<RedesignLayout title={`${post.data.title} | OPDC Redesign`} description={post.data.description}><article class="figma-section"><div class="redesign-container rd-article"><a class="rd-back" href="/redesign/blog/">← BLOG</a><p class="section-kicker">{post.data.date.toLocaleDateString('ko-KR')} · {post.data.author}</p><h1>{post.data.title}</h1><div class="rd-tags">{post.data.tags.map(tag=><span>{tag}</span>)}</div><div class="rd-content"><Content/></div></div></article></RedesignLayout>
+<RedesignLayout title={`${post.data.title} | OPDC`} description={description}>
+  <article class="figma-section">
+    <div class="redesign-container rd-article">
+      <a class="rd-back" href="/redesign/blog/">← BLOG</a>
+      <div class="rd-article-meta"><span>{post.data.date.toLocaleDateString('ko-KR')}</span><span>{post.data.author}</span></div>
+      <h1>{post.data.title}</h1>
+      {post.data.description&&<p class="rd-lead">{post.data.description}</p>}
+      <div class="rd-tags" aria-label="게시물 태그">{post.data.tags.map(tag=><span>{tag}</span>)}</div>
+      <div class="rd-content"><Content/></div>
+      <nav class="rd-detail-nav" aria-label="블로그 탐색"><a href="/redesign/blog/">← 소식 전체보기</a><a href="/redesign/community/">Community →</a></nav>
+    </div>
+  </article>
+</RedesignLayout>
