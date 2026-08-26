@@ -2,23 +2,34 @@
 import { getCollection } from 'astro:content'
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import '@/redesign/redesign.css'
+import '@/redesign/detail-v3.css'
 export async function getStaticPaths(){const projects=await getCollection('projects',({data})=>data.locale==='ko');return projects.map(project=>({params:{slug:project.slug},props:{project}}))}
 const {project}=Astro.props
 const {Content}=await project.render()
 const statusLabel={active:'ACTIVE',completed:'COMPLETED',archived:'ARCHIVED'}[project.data.status]
 ---
 <RedesignLayout title={`${project.data.title} | OPDC`} description={project.data.description} image={project.data.image || '/img/about/opdc_img.webp'}>
-  <section class="figma-section">
-    <div class="redesign-container">
-      <a class="rd-back" href="/redesign/projects/">← PROJECTS</a>
-      <div class="rd-detail-head">
-        <div><p class="section-kicker">PROJECT DETAIL · {statusLabel}</p><h1>{project.data.title}</h1><p class="rd-lead">{project.data.description}</p></div>
-        <a class="rd-detail-action" href="https://github.com/opdc" target="_blank" rel="noopener noreferrer">OPDC GitHub ↗</a>
+  <section class="figma-section detail-v3">
+    <div class="redesign-container detail-v3-shell">
+      <div class="detail-v3-breadcrumb"><a href="/redesign/">OPDC</a><span>/</span><a href="/redesign/projects/">Projects</a><span>/</span><strong>{project.data.title}</strong></div>
+      <div class="detail-v3-hero">
+        <div class="detail-v3-hero-copy">
+          <p class="detail-v3-kicker detail-v3-project-status">PROJECT · {statusLabel}</p>
+          <h1 class="detail-v3-title">{project.data.title}</h1>
+          <p class="detail-v3-summary">{project.data.description}</p>
+          <div class="detail-v3-tags" aria-label="프로젝트 태그">{project.data.tags.map(tag=><span>{tag}</span>)}</div>
+          <div class="detail-v3-actions"><a href="https://github.com/opdc" target="_blank" rel="noopener noreferrer">OPDC GitHub ↗</a><a href="/redesign/community/">Community →</a></div>
+        </div>
+        <aside class="detail-v3-aside">
+          {project.data.image ? <div class="detail-v3-aside-media"><img src={project.data.image} alt={`${project.data.title} 프로젝트 화면`}/></div> : <div class="detail-v3-role-card"><p class="detail-v3-aside-label">OPEN PROJECT</p><strong>{project.data.title}</strong><p>커뮤니티와 함께 만들고 공개하는 OPDC 프로젝트입니다.</p></div>}
+          <div class="detail-v3-meta-list"><div class="detail-v3-meta-row"><span>Status</span><span>{statusLabel}</span></div><div class="detail-v3-meta-row"><span>Tags</span><span>{project.data.tags.length}</span></div><div class="detail-v3-meta-row"><span>Community</span><span>OPDC</span></div></div>
+        </aside>
       </div>
-      <div class="rd-tags" aria-label="프로젝트 태그">{project.data.tags.map(tag=><span>{tag}</span>)}</div>
-      {project.data.image&&<img class="rd-wide-image" src={project.data.image} alt={`${project.data.title} 프로젝트 화면`}/>} 
-      <article class="rd-content"><Content/></article>
-      <nav class="rd-detail-nav" aria-label="프로젝트 탐색"><a href="/redesign/projects/">← 전체 프로젝트</a><a href="/redesign/community/">Community →</a></nav>
+      <div class="detail-v3-main">
+        <div class="detail-v3-content">{project.data.image&&<img class="detail-v3-cover" src={project.data.image} alt={`${project.data.title} 대표 이미지`}/>}<article class="rd-content"><Content/></article></div>
+        <aside class="detail-v3-toc" aria-label="Project detail navigation"><b>EXPLORE</b><a href="/redesign/projects/">전체 Projects</a><a href="/redesign/community/">Community</a><a href="/redesign/blog/">Blog</a></aside>
+      </div>
+      <nav class="detail-v3-footer-nav" aria-label="프로젝트 탐색"><a href="/redesign/projects/">← 전체 프로젝트 보기</a><a href="/redesign/community/">Community 살펴보기 →</a></nav>
     </div>
   </section>
 </RedesignLayout>
