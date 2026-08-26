@@ -1,44 +1,9 @@
 ---
-interface Props {
-  title?: string
-  description?: string
-}
+interface Props { title?: string; description?: string }
 const { title = 'OPDC — Open Platform Developer Community', description = '기술을 공유하고, 함께 만들고, 오픈 플랫폼 생태계를 연결하는 개발자 커뮤니티' } = Astro.props
+const nav = [
+  ['About','/redesign/about/'],['Projects','/redesign/projects/'],['Events','/redesign/community/'],['People','/redesign/leaders/'],['Blog','/redesign/blog/']
+]
 ---
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="description" content={description} />
-<meta name="theme-color" content="#f9f7f2" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
-<title>{title}</title>
-</head>
-<body class="opdc-redesign-shell">
-<a class="redesign-skip" href="#content">본문으로 건너뛰기</a>
-<header class="redesign-header">
-  <div class="redesign-container redesign-header-inner">
-    <a class="redesign-wordmark" href="/redesign/">OPDC</a>
-    <nav class="redesign-nav" aria-label="리뉴얼 메뉴">
-      <a href="#about">About</a><a href="#projects">Projects</a><a href="#community">Events</a><a href="#people">People</a><a href="#videos">Blog</a>
-    </nav>
-    <button class="redesign-menu" type="button" aria-expanded="false" aria-controls="redesign-mobile-nav">MENU</button>
-  </div>
-  <div id="redesign-mobile-nav" class="redesign-mobile-nav" hidden>
-    <div class="redesign-container"><a href="#about">About</a><a href="#projects">Projects</a><a href="#community">Events</a><a href="#people">People</a><a href="#videos">Blog</a><a href="/">기존 사이트</a></div>
-  </div>
-</header>
-<main id="content"><slot /></main>
-<footer class="redesign-footer">
-  <div class="redesign-container redesign-footer-inner">
-    <div><strong>OPDC</strong><span>Open Platform Developer Community</span></div>
-    <nav><a href="/about/">About</a><a href="/projects/">Projects</a><a href="/community/">Events</a><a href="/leaders/">People</a><a href="/blog/">Blog</a><a href="https://github.com/opdc">GitHub</a></nav>
-  </div>
-</footer>
-<script>
-const button=document.querySelector('.redesign-menu'); const mobile=document.querySelector('#redesign-mobile-nav');
-button?.addEventListener('click',()=>{const expanded=button.getAttribute('aria-expanded')==='true'; button.setAttribute('aria-expanded',String(!expanded)); if(mobile) mobile.hidden=expanded})
-</script>
-</body></html>
+<!doctype html><html lang="ko"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#f9f7f2"/><link rel="icon" type="image/svg+xml" href="/favicon.svg"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"/><title>{title}</title></head>
+<body class="opdc-redesign-shell"><a class="redesign-skip" href="#content">본문으로 건너뛰기</a><header class="redesign-header"><div class="redesign-container redesign-header-inner"><a class="redesign-wordmark" href="/redesign/">OPDC</a><nav class="redesign-nav" aria-label="리뉴얼 메뉴">{nav.map(([label,href]) => <a href={href}>{label}</a>)}</nav><button class="redesign-menu" type="button" aria-expanded="false" aria-controls="redesign-mobile-nav">MENU</button></div><div id="redesign-mobile-nav" class="redesign-mobile-nav" hidden><div class="redesign-container">{nav.map(([label,href]) => <a href={href}>{label}</a>)}<a href="/redesign/history/">History</a><a href="/redesign/partners/">Partners</a><a href="/redesign/releases/">Releases</a><a href="/redesign/compatibility/">Compatibility</a><a href="/">기존 사이트</a></div></div></header><main id="content"><slot /></main><footer class="redesign-footer"><div class="redesign-container redesign-footer-inner"><div><strong>OPDC</strong><span>Open Platform Developer Community</span></div><nav>{nav.map(([label,href]) => <a href={href}>{label}</a>)}<a href="/redesign/history/">History</a><a href="/redesign/partners/">Partners</a><a href="/redesign/releases/">Releases</a><a href="https://github.com/opdc">GitHub</a></nav></div></footer><script>const button=document.querySelector('.redesign-menu');const mobile=document.querySelector('#redesign-mobile-nav');button?.addEventListener('click',()=>{const expanded=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!expanded));if(mobile) mobile.hidden=expanded})</script></body></html>
