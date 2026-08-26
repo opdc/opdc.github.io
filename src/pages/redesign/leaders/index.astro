@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content'
+import RedesignLayout from '@/redesign/RedesignLayout.astro'
+import '@/redesign/redesign.css'
+const leaders=(await getCollection('leaders',({data})=>data.locale==='ko')).sort((a,b)=>a.data.order-b.data.order)
+---
+<RedesignLayout title="People | OPDC Redesign"><section class="figma-section"><div class="redesign-container"><p class="section-kicker">PEOPLE</p><h1>함께 만드는 사람들</h1><div class="rd-people-grid">{leaders.map((leader)=><a class="rd-person-card" href={`/redesign/leaders/${leader.slug}/`}><img src={leader.data.image} alt={leader.data.name}/><div><h2>{leader.data.name}</h2><p>{leader.data.role}</p></div></a>)}</div></div></section></RedesignLayout>
