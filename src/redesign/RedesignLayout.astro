@@ -60,7 +60,7 @@ const isActive = (href:string) => href === '/redesign/' ? path === href : path.s
         {nav.map(([label,href]) => <a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a>)}
       </nav>
       <a class="redesign-github" href="https://github.com/opdc" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-      <button class="redesign-menu" type="button" aria-expanded="false" aria-controls="redesign-mobile-nav"><span>MENU</span><i aria-hidden="true"></i></button>
+      <button class="redesign-menu" type="button" aria-expanded="false" aria-controls="redesign-mobile-nav" aria-label="메뉴 열기"><span>MENU</span><i aria-hidden="true"></i></button>
     </div>
     <div id="redesign-mobile-nav" class="redesign-mobile-nav" hidden>
       <div class="redesign-container redesign-mobile-nav-inner">
@@ -80,13 +80,36 @@ const isActive = (href:string) => href === '/redesign/' ? path === href : path.s
     <div class="redesign-container redesign-footer-bottom"><span>© OPDC. Open Platform Developer Community.</span><a href="/redesign/">Back to redesign home ↑</a></div>
   </footer>
   <script>
-    const button=document.querySelector('.redesign-menu');
-    const mobile=document.querySelector('#redesign-mobile-nav');
-    const close=()=>{button?.setAttribute('aria-expanded','false');if(mobile) mobile.hidden=true};
-    button?.addEventListener('click',()=>{const expanded=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!expanded));if(mobile) mobile.hidden=expanded});
-    mobile?.querySelectorAll('a').forEach(a=>a.addEventListener('click',close));
-    window.addEventListener('resize',()=>{if(window.innerWidth>900) close()});
-    window.addEventListener('keydown',(event)=>{if(event.key==='Escape'){close();button?.focus()}});
+    const button=document.querySelector<HTMLButtonElement>('.redesign-menu');
+    const mobile=document.querySelector<HTMLElement>('#redesign-mobile-nav');
+    const focusables=()=>mobile ? Array.from(mobile.querySelectorAll<HTMLElement>('a,button,[tabindex]:not([tabindex="-1"])')) : [];
+    const close=(restoreFocus=false)=>{
+      button?.setAttribute('aria-expanded','false');
+      button?.setAttribute('aria-label','메뉴 열기');
+      document.body.classList.remove('redesign-menu-open');
+      if(mobile) mobile.hidden=true;
+      if(restoreFocus) button?.focus();
+    };
+    const open=()=>{
+      button?.setAttribute('aria-expanded','true');
+      button?.setAttribute('aria-label','메뉴 닫기');
+      document.body.classList.add('redesign-menu-open');
+      if(mobile) mobile.hidden=false;
+      requestAnimationFrame(()=>focusables()[0]?.focus());
+    };
+    button?.addEventListener('click',()=>button.getAttribute('aria-expanded')==='true' ? close(true) : open());
+    mobile?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>close(false)));
+    window.addEventListener('resize',()=>{if(window.innerWidth>900) close(false)});
+    window.addEventListener('keydown',(event)=>{
+      if(event.key==='Escape' && button?.getAttribute('aria-expanded')==='true'){event.preventDefault();close(true);return}
+      if(event.key!=='Tab' || button?.getAttribute('aria-expanded')!=='true') return;
+      const items=focusables(); if(!items.length) return;
+      const first=items[0],last=items[items.length-1];
+      if(event.shiftKey && document.activeElement===first){event.preventDefault();button?.focus()}
+      else if(!event.shiftKey && document.activeElement===last){event.preventDefault();button?.focus()}
+      else if(event.shiftKey && document.activeElement===button){event.preventDefault();last.focus()}
+      else if(!event.shiftKey && document.activeElement===button){event.preventDefault();first.focus()}
+    });
   </script>
 </body>
 </html>
