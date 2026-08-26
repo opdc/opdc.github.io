@@ -1,0 +1,12 @@
+@media(max-width:720px){
+  .people-flow{overflow:hidden;margin-inline:-16px;padding-inline:16px;mask-image:none;-webkit-mask-image:none}
+  .people-flow-track,.people-flow-group{gap:14px}
+  .people-flow-card{width:104px;flex:0 0 104px;padding:8px 6px 10px;border-radius:12px;background:#fff;border:1px solid var(--line)}
+  .people-flow-card img{width:92px;height:108px;margin:0 auto 9px;border-radius:10px;object-fit:contain;object-position:center;background:#f2eee6}
+  .people-flow-card strong{font-size:12px;line-height:1.25}
+  .people-flow-card span{font-size:9px;line-height:1.25;-webkit-line-clamp:2}
+}
+@media(max-width:390px){
+  .people-flow-card{width:100px;flex-basis:100px}
+  .people-flow-card img{width:88px;height:104px}
+}
