@@ -1,6 +1,7 @@
 ---
 import '@/redesign/pages.css'
 import '@/redesign/final.css'
+import '@/redesign/color-system-v4.css'
 interface Props { title?: string; description?: string; image?: string }
 const {
   title = 'OPDC — Open Platform Developer Community',
@@ -31,7 +32,7 @@ const isActive = (href:string) => href === '/redesign/' ? path === href : path.s
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
-  <meta name="theme-color" content="#faf8f3" />
+  <meta name="theme-color" content="#f7f8fa" />
   <meta name="color-scheme" content="light" />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
