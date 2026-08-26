@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content'
+import RedesignLayout from '@/redesign/RedesignLayout.astro'
+import '@/redesign/redesign.css'
+const releases=(await getCollection('releases',({data})=>data.locale==='ko')).sort((a,b)=>b.data.date.getTime()-a.data.date.getTime())
+---
+<RedesignLayout title="Releases | OPDC Redesign"><section class="figma-section"><div class="redesign-container"><p class="section-kicker">RELEASES</p><h1>릴리스와 변경 기록</h1><div class="rd-list">{releases.map(release=><div class="rd-list-item"><div><span>{release.data.date.toLocaleDateString('ko-KR')}</span><h2>{release.data.version}</h2><p>{release.data.title}</p></div></div>)}</div></div></section></RedesignLayout>
