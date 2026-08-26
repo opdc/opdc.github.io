@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content'
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
-import LeadersCarousel from '@/components/LeadersCarousel'
 import { REDESIGN_ASSETS } from '@/redesign/asset-map'
 import '@/redesign/redesign.css'
+import '@/redesign/people.css'
 
 const activities = [
   ['01','132차 세미나','커뮤니티의 최신 활동과 기록을 확인하세요.','/redesign/community/'],
@@ -34,5 +34,5 @@ const videos = allVideos.filter((video) => video.data.type !== 'playlist').sort(
 <section class="figma-section figma-muted" id="community"><div class="redesign-container"><p class="section-kicker">COMMUNITY PULSE</p><h2>지금 OPDC에서 일어나는 일</h2><div class="figma-card-grid">{activities.map(([num,title,copy,href]) => <a class="pulse-card" href={href}><b>{num}</b><h3>{title}</h3><p>{copy}</p></a>)}</div></div></section>
 <section class="figma-section" id="projects"><div class="redesign-container"><p class="section-kicker">PROJECTS</p><h2>함께 만들고 공개하는 프로젝트</h2><div class="figma-card-grid">{projects.map(([num,name,tags,desc]) => <a class="project-editorial" href="/redesign/projects/"><b>{num}</b><h3>{name}</h3><p>{tags}</p><div>{desc}<span>→</span></div></a>)}</div></div></section>
 <section class="figma-section figma-muted" id="videos"><div class="redesign-container"><p class="section-kicker">WATCH & LEARN</p><h2>최근 영상</h2><div class="video-editorial-grid">{videos.map((video) => <a class="video-editorial" href={`https://www.youtube.com/watch?v=${video.data.videoId}`} target="_blank" rel="noreferrer"><div class="video-thumb"><img src={video.data.thumbnail || `https://i.ytimg.com/vi/${video.data.videoId}/hqdefault.jpg`} alt={video.data.title}/><span class="video-label">{video.data.description || 'OPDC VIDEO'}</span><span class="play">▶</span></div><h3>{video.data.title}</h3></a>)}</div><p style="margin-top:24px"><a class="pill-cta" href="/redesign/blog/">소식 전체보기 →</a></p></div></section>
-<section class="figma-section people-editorial" id="people"><div class="redesign-container people-layout"><div><p class="section-kicker">PEOPLE</p><h2>함께 만드는 사람들</h2><div class="redesign-leaders-carousel"><LeadersCarousel client:load leaders={leadersData} basePath="/redesign/leaders" /></div></div><a class="join-card" href="/redesign/community/"><strong>OPEN COMMUNITY.<br/>OPEN FUTURE.</strong><span>OPDC와 함께하기 →</span></a></div></section>
+<section class="figma-section people-editorial" id="people"><div class="redesign-container people-layout"><div class="people-main"><div class="people-heading"><div><p class="section-kicker">PEOPLE</p><h2>함께 만드는 사람들</h2></div><a class="people-all-link" href="/redesign/leaders/">전체보기 →</a></div><div class="people-flow" aria-label="OPDC 리더 전체"><div class="people-flow-track">{leadersData.map((leader) => <a class="people-flow-card" href={`/redesign/leaders/${leader.slug}/`}><img src={leader.image} alt={`${leader.name} 프로필`}/><strong>{leader.name}</strong><span>{leader.role}</span></a>)}<div class="people-flow-clone" aria-hidden="true">{leadersData.map((leader) => <a tabindex="-1" class="people-flow-card" href={`/redesign/leaders/${leader.slug}/`}><img src={leader.image} alt=""/><strong>{leader.name}</strong><span>{leader.role}</span></a>)}</div></div></div></div><a class="join-card" href="/redesign/community/"><strong>OPEN COMMUNITY.<br/>OPEN FUTURE.</strong><span>OPDC와 함께하기 →</span></a></div></section>
 </RedesignLayout>
