@@ -2,9 +2,10 @@
 import { getCollection } from 'astro:content'
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import '@/redesign/redesign.css'
+import '@/redesign/section-v3.css'
 const projects=(await getCollection('projects',({data})=>data.locale==='ko')).sort((a,b)=>a.data.order-b.data.order)
 const active=projects.filter(project=>project.data.status==='active').length
 ---
 <RedesignLayout title="Projects | OPDC Redesign" description="OPDC 오픈소스 프로젝트">
-<section class="figma-section"><div class="redesign-container"><p class="section-kicker">PROJECTS / {active} ACTIVE</p><h1>직접 만들고<br/>공개하는 프로젝트</h1><p class="rd-lead">커뮤니티가 실제 문제를 해결하기 위해 만들고 공개한 프로젝트입니다. 상태, 기술 태그, 상세 구현 기록을 함께 확인할 수 있습니다.</p><div class="rd-card-grid">{projects.map(project=><a class="rd-card" href={`/redesign/projects/${project.slug}/`}>{project.data.image&&<img src={project.data.image} alt={project.data.title}/>}<b>{project.data.status.toUpperCase()}</b><h2>{project.data.title}</h2><p>{project.data.description}</p><div class="rd-tags">{project.data.tags.map(tag=><span>{tag}</span>)}</div></a>)}</div></div></section>
+<section class="figma-section"><div class="redesign-container"><div class="rd-page-hero"><div><p class="section-kicker">PROJECTS / {active} ACTIVE</p><h1>직접 만들고<br/>공개하는 프로젝트</h1><p class="rd-lead">커뮤니티가 실제 문제를 해결하기 위해 만들고 공개한 프로젝트입니다. 상태, 기술 태그, 상세 구현 기록을 함께 확인할 수 있습니다.</p></div><aside class="rd-page-aside"><b>OPEN SOURCE</b><strong>{projects.length} Projects</strong><p>프로젝트 상세에서 배경, 기술 스택, 구현 내용과 관련 기록을 확인할 수 있습니다.</p></aside></div><div class="rd-project-grid">{projects.map(project=><a class="rd-project-card" href={`/redesign/projects/${project.slug}/`}>{project.data.image?<img src={project.data.image} alt={project.data.title}/>:<div></div>}<div><b>{project.data.status.toUpperCase()}</b><h2>{project.data.title}</h2><p>{project.data.description}</p><div class="rd-tags">{project.data.tags.map(tag=><span>{tag}</span>)}</div></div></a>)}</div></div></section>
 </RedesignLayout>
