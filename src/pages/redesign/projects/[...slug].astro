@@ -1,0 +1,8 @@
+---
+import { getCollection } from 'astro:content'
+import RedesignLayout from '@/redesign/RedesignLayout.astro'
+import '@/redesign/redesign.css'
+export async function getStaticPaths(){const projects=await getCollection('projects',({data})=>data.locale==='ko');return projects.map(project=>({params:{slug:project.slug},props:{project}}))}
+const {project}=Astro.props;const {Content}=await project.render()
+---
+<RedesignLayout title={`${project.data.title} | OPDC Redesign`} description={project.data.description}><section class="figma-section"><div class="redesign-container"><a class="rd-back" href="/redesign/projects/">← PROJECTS</a><p class="section-kicker">PROJECT DETAIL</p><h1>{project.data.title}</h1><p class="rd-lead">{project.data.description}</p><div class="rd-tags">{project.data.tags.map(tag=><span>{tag}</span>)}</div>{project.data.image&&<img class="rd-wide-image" src={project.data.image} alt={project.data.title}/>}<article class="rd-content"><Content/></article></div></section></RedesignLayout>
