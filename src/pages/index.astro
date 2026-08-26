@@ -29,12 +29,10 @@ async function fetchCommunityPosts(url: string, category: string) {
         if (link) {
           const title = link.textContent?.trim() || ''
           const href = link.getAttribute('href') || ''
-          // 날짜는 보통 4번째 셀에 있음 (0-indexed: 3)
           const dateText = cells[3]?.textContent?.trim() || ''
           const dateMatch = dateText.match(/\d{4}-\d{2}-\d{2}/)
 
           if (title && dateMatch) {
-            // jsessionid 제거
             const cleanHref = href.replace(/;jsessionid=[^?]*/, '')
             posts.push({
               type: 'community',
@@ -55,26 +53,22 @@ async function fetchCommunityPosts(url: string, category: string) {
   }
 }
 
-// Fetch community posts
 const [noticePosts, seminarPosts, resourcePosts] = await Promise.all([
   fetchCommunityPosts('https://open.egovframe.org/oc/support/notice.do', '공지'),
   fetchCommunityPosts('https://open.egovframe.org/oc/products/seminar.do', '세미나'),
   fetchCommunityPosts('https://open.egovframe.org/oc/docs/pds.do', '자료'),
 ])
 
-// Get latest blog posts (Korean only)
 const allPosts = await getCollection('blog')
 const posts = allPosts
   .filter(post => !post.data.draft && post.data.locale !== 'en')
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
-// Get latest videos (excluding playlists)
 const allVideos = await getCollection('videos')
 const videos = allVideos
   .filter(v => v.data.type !== 'playlist')
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 
-// Combine and sort by date, take latest 6
 type NewsItem = {
   type: 'post' | 'video' | 'community'
   slug?: string
@@ -131,9 +125,7 @@ const combinedNews: NewsItem[] = [
   .sort((a, b) => b.date.getTime() - a.date.getTime())
   .slice(0, 6)
 
-// Get all leaders and shuffle them
 const allLeaders = await getCollection('leaders', ({ data }) => data.locale === 'ko')
-// Fisher-Yates shuffle algorithm
 const shuffleArray = <T,>(array: T[]): T[] => {
   const shuffled = [...array]
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -144,7 +136,6 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 }
 const shuffledLeaders = shuffleArray(allLeaders)
 
-// Prepare leaders data for carousel
 const leadersData = shuffledLeaders.map(leader => ({
   slug: leader.slug,
   name: leader.data.name,
@@ -154,7 +145,6 @@ const leadersData = shuffledLeaders.map(leader => ({
 ---
 
 <BaseLayout>
-  <!-- Main Image -->
   <section class="bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4 pt-8">
       <img
@@ -166,7 +156,6 @@ const leadersData = shuffledLeaders.map(leader => ({
     </div>
   </section>
 
-  <!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 py-16 md:py-24">
     <div class="container mx-auto px-4">
       <div class="max-w-4xl mx-auto text-center">
@@ -183,128 +172,52 @@ const leadersData = shuffledLeaders.map(leader => ({
           </p>
         </blockquote>
         <div class="flex flex-col sm:flex-row gap-4 justify-center mt-12">
-          <a
-            href="/blog"
-            class="px-8 py-4 bg-brand-700 text-white rounded-lg font-medium hover:bg-brand-800 transition-colors"
-          >
-            소식 보기
-          </a>
-          <a
-            href="/about"
-            class="px-8 py-4 border-2 border-brand-600 text-brand-600 dark:text-white dark:border-white rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 transition-colors"
-          >
-            더 알아보기
-          </a>
+          <a href="/blog" class="px-8 py-4 bg-brand-700 text-white rounded-lg font-medium hover:bg-brand-800 transition-colors">소식 보기</a>
+          <a href="/about" class="px-8 py-4 border-2 border-brand-600 text-brand-600 dark:text-white dark:border-white rounded-lg font-medium hover:bg-brand-50 dark:hover:bg-brand-900/20 transition-colors">더 알아보기</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Latest News -->
-  <section class="py-16 bg-white dark:bg-gray-900">
+  <section id="latest-news" class="py-12 md:py-16 bg-white dark:bg-gray-900">
     <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold">최신 소식</h2>
-        <a href="/blog" class="text-brand-700 hover:text-brand-800 font-medium">
-          전체보기 →
-        </a>
+      <div class="flex items-center justify-between gap-4 mb-6 md:mb-8">
+        <h2 class="text-2xl md:text-3xl font-bold">최신 소식</h2>
+        <a href="/blog" class="shrink-0 text-sm md:text-base text-brand-700 hover:text-brand-800 font-medium">전체보기 →</a>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         {combinedNews.map((item) => (
-          <article class="bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+          <article class="min-w-0 bg-gray-50 dark:bg-gray-800 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
             {item.type === 'video' ? (
-              <!-- Video Item -->
-              <a
-                href={`https://www.youtube.com/watch?v=${item.videoId}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="block"
-              >
+              <a href={`https://www.youtube.com/watch?v=${item.videoId}`} target="_blank" rel="noopener noreferrer" class="block min-w-0">
                 <div class="relative aspect-video bg-gray-200 dark:bg-gray-700">
-                  <img
-                    src={`https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`}
-                    alt={item.title}
-                    class="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 flex items-center justify-center">
-                    <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg">
-                      <i class="fas fa-play text-white text-lg ml-1"></i>
-                    </div>
-                  </div>
-                  <span class:list={[
-                    'absolute top-2 left-2 text-xs px-2 py-1 rounded font-medium',
-                    item.videoType === 'shorts'
-                      ? 'bg-red-700 text-white'
-                      : 'bg-blue-800 text-white'
-                  ]}>
-                    {item.videoType === 'shorts' ? 'Shorts' : '영상'}
-                  </span>
+                  <img src={`https://img.youtube.com/vi/${item.videoId}/mqdefault.jpg`} alt={item.title} class="w-full h-full object-cover" loading="lazy" />
+                  <div class="absolute inset-0 flex items-center justify-center"><div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center shadow-lg"><i class="fas fa-play text-white text-lg ml-1"></i></div></div>
+                  <span class:list={['absolute top-2 left-2 text-xs px-2 py-1 rounded font-medium', item.videoType === 'shorts' ? 'bg-red-700 text-white' : 'bg-blue-800 text-white']}>{item.videoType === 'shorts' ? 'Shorts' : '영상'}</span>
                 </div>
                 <div class="p-4">
-                  <time class="text-sm text-gray-500 dark:text-gray-400">
-                    {item.date.toLocaleDateString('ko-KR', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </time>
-                  <h3 class="text-lg font-bold mt-1 text-gray-900 dark:text-white line-clamp-2">
-                    {item.title}
-                  </h3>
+                  <time class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{item.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
+                  <h3 class="text-base sm:text-lg font-bold mt-1 text-gray-900 dark:text-white line-clamp-1 sm:line-clamp-2 break-words" title={item.title}>{item.title}</h3>
                 </div>
               </a>
             ) : item.type === 'community' ? (
-              <!-- Community Post Item -->
-              <a href={item.url} target="_blank" rel="noopener noreferrer" class="block p-6">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class:list={[
-                    'text-xs px-2 py-1 rounded font-medium',
-                    item.category === '공지' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' :
-                    item.category === '세미나' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300' :
-                    'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300'
-                  ]}>
-                    {item.category}
-                  </span>
-                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded">
-                    오픈커뮤니티
-                  </span>
-                  <time class="text-sm text-gray-500 dark:text-gray-400">
-                    {item.date.toLocaleDateString('ko-KR', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </time>
+              <a href={item.url} target="_blank" rel="noopener noreferrer" class="block min-w-0 p-4 sm:p-6">
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-2">
+                  <span class:list={['text-xs px-2 py-1 rounded font-medium shrink-0', item.category === '공지' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300' : item.category === '세미나' ? 'bg-purple-100 dark:bg-purple-900/30 text-purple-800 dark:text-purple-300' : 'bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300']}>{item.category}</span>
+                  <span class="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-400 rounded shrink-0">오픈커뮤니티</span>
+                  <time class="w-full sm:w-auto text-xs sm:text-sm text-gray-500 dark:text-gray-400">{item.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
                 </div>
-                <h3 class="text-lg font-bold mt-2 mb-2 text-gray-900 dark:text-white line-clamp-2">
-                  {item.title}
-                </h3>
+                <h3 class="text-base sm:text-lg font-bold mt-2 mb-1 text-gray-900 dark:text-white line-clamp-1 sm:line-clamp-2 break-words" title={item.title}>{item.title}</h3>
               </a>
             ) : (
-              <!-- Blog Post Item -->
-              <a href={`/blog/${item.slug}`} class="block p-6">
-                <div class="flex items-center gap-2 mb-2">
-                  <span class="text-xs px-2 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-800 dark:text-brand-300 rounded font-medium">
-                    공지
-                  </span>
-                  <time class="text-sm text-gray-500 dark:text-gray-400">
-                    {item.date.toLocaleDateString('ko-KR', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric'
-                    })}
-                  </time>
+              <a href={`/blog/${item.slug}`} class="block min-w-0 p-4 sm:p-6">
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-1 mb-2">
+                  <span class="text-xs px-2 py-1 bg-brand-100 dark:bg-brand-900/30 text-brand-800 dark:text-brand-300 rounded font-medium shrink-0">공지</span>
+                  <time class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{item.date.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' })}</time>
                 </div>
-                <h3 class="text-lg font-bold mt-2 mb-2 text-gray-900 dark:text-white line-clamp-2">
-                  {item.title}
-                </h3>
-                {item.description && (
-                  <p class="text-gray-600 dark:text-gray-400 text-sm line-clamp-2">
-                    {item.description}
-                  </p>
-                )}
+                <h3 class="text-base sm:text-lg font-bold mt-2 mb-2 text-gray-900 dark:text-white line-clamp-1 sm:line-clamp-2 break-words" title={item.title}>{item.title}</h3>
+                {item.description && <p class="hidden sm:block text-gray-600 dark:text-gray-400 text-sm line-clamp-2">{item.description}</p>}
               </a>
             )}
           </article>
@@ -313,115 +226,36 @@ const leadersData = shuffledLeaders.map(leader => ({
     </div>
   </section>
 
-  <!-- Leaders Preview -->
   <section class="py-16 bg-gray-50 dark:bg-gray-800">
     <div class="container mx-auto px-4">
       <div class="flex items-center justify-between mb-8">
         <h2 class="text-3xl font-bold">리더 소개</h2>
-        <a href="/leaders" class="text-brand-700 hover:text-brand-800 font-medium">
-          전체보기 →
-        </a>
+        <a href="/leaders" class="text-brand-700 hover:text-brand-800 font-medium">전체보기 →</a>
       </div>
-
       <LeadersCarousel client:load leaders={leadersData} />
     </div>
   </section>
 
-  <!-- Contact & Social -->
   <section class="py-16 bg-white dark:bg-gray-900">
-    <div class="container mx-auto px-4">
-      <div class="max-w-4xl mx-auto">
-        <!-- Social Icons -->
-        <div class="flex flex-wrap justify-center gap-8 items-center" role="navigation" aria-label="소셜 미디어 링크">
-          <a
-            href="mailto:opdc.kr@gmail.com"
-            title="이메일 문의"
-            class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl"
-            aria-label="이메일로 문의하기"
-          >
-            <i class="fas fa-envelope" aria-hidden="true"></i>
-          </a>
-          <a
-            href="https://facebook.com/egovframe.open"
-            title="Facebook 페이지 방문"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl"
-            aria-label="페이스북 페이지 방문"
-          >
-            <i class="fab fa-facebook" aria-hidden="true"></i>
-          </a>
-          <a
-            href="https://github.com/opdc"
-            title="GitHub 저장소 방문"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl"
-            aria-label="깃허브 저장소 방문"
-          >
-            <i class="fab fa-github" aria-hidden="true"></i>
-          </a>
-          <a
-            href="https://youtube.com/@open-egovframe"
-            title="YouTube 채널 방문"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl"
-            aria-label="유튜브 채널 방문"
-          >
-            <i class="fab fa-youtube" aria-hidden="true"></i>
-          </a>
-          <a
-            href="https://open.egovframe.org"
-            title="오픈 커뮤니티 바로가기"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center transition-opacity hover:opacity-70"
-            aria-label="오픈 커뮤니티 사이트 방문"
-          >
-            <img
-              src="/img/opencommunity_logo_light.png"
-              alt="오픈 커뮤니티 로고"
-              class="w-12 h-12 object-contain dark:invert dark:opacity-85"
-              loading="lazy"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
+    <div class="container mx-auto px-4"><div class="max-w-4xl mx-auto"><div class="flex flex-wrap justify-center gap-8 items-center" role="navigation" aria-label="소셜 미디어 링크">
+      <a href="mailto:opdc.kr@gmail.com" title="이메일 문의" class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl" aria-label="이메일로 문의하기"><i class="fas fa-envelope" aria-hidden="true"></i></a>
+      <a href="https://facebook.com/egovframe.open" title="Facebook 페이지 방문" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl" aria-label="페이스북 페이지 방문"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+      <a href="https://github.com/opdc" title="GitHub 저장소 방문" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl" aria-label="깃허브 저장소 방문"><i class="fab fa-github" aria-hidden="true"></i></a>
+      <a href="https://youtube.com/@open-egovframe" title="YouTube 채널 방문" target="_blank" rel="noopener noreferrer" class="text-gray-700 dark:text-gray-300 hover:text-brand-600 dark:hover:text-brand-500 transition-colors text-5xl" aria-label="유튜브 채널 방문"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+      <a href="https://open.egovframe.org" title="오픈 커뮤니티 바로가기" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center transition-opacity hover:opacity-70" aria-label="오픈 커뮤니티 사이트 방문"><img src="/img/opencommunity_logo_light.png" alt="오픈 커뮤니티 로고" class="w-12 h-12 object-contain dark:invert dark:opacity-85" loading="lazy" /></a>
+    </div></div></div>
   </section>
 
-  <!-- CTA Section -->
   <section class="py-20 bg-brand-700 dark:bg-brand-800">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-        함께 성장하는 개발자 커뮤니티
-      </h2>
-      <p class="text-xl text-brand-100 mb-8">
-        오픈플랫폼 개발자들과 함께 배우고 나누세요
-      </p>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">함께 성장하는 개발자 커뮤니티</h2>
+      <p class="text-xl text-brand-100 mb-8">오픈플랫폼 개발자들과 함께 배우고 나누세요</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a
-          href="/projects"
-          class="px-8 py-4 bg-white text-brand-800 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-        >
-          프로젝트 보기
-        </a>
-        <a
-          href="/partners"
-          class="px-8 py-4 border-2 border-white text-white rounded-lg font-medium hover:bg-brand-600 transition-colors"
-        >
-          협력기관 알아보기
-        </a>
+        <a href="/projects" class="px-8 py-4 bg-white text-brand-800 rounded-lg font-medium hover:bg-gray-100 transition-colors">프로젝트 보기</a>
+        <a href="/partners" class="px-8 py-4 border-2 border-white text-white rounded-lg font-medium hover:bg-brand-600 transition-colors">협력기관 알아보기</a>
       </div>
     </div>
   </section>
 
-  <!-- Browser Compatibility Notice -->
-  <div class="bg-gray-100 dark:bg-gray-800 py-3 text-center text-xs text-gray-500 dark:text-gray-400">
-    <p>
-      <i class="fas fa-info-circle mr-1"></i>
-      일부 이미지는 최신 포맷(WebP)을 사용합니다. 오래된 브라우저(IE, Safari 13 이하, 2019년 이전 브라우저)에서는 이미지가 표시되지 않을 수 있습니다.
-    </p>
-  </div>
+  <div class="bg-gray-100 dark:bg-gray-800 py-3 text-center text-xs text-gray-500 dark:text-gray-400"><p><i class="fas fa-info-circle mr-1"></i>일부 이미지는 최신 포맷(WebP)을 사용합니다. 오래된 브라우저(IE, Safari 13 이하, 2019년 이전 브라우저)에서는 이미지가 표시되지 않을 수 있습니다.</p></div>
 </BaseLayout>

@@ -15,8 +15,12 @@ const projects = [
   ['03','Community OSS','Contribution · Open Source','커뮤니티가 함께 만드는 공개 프로젝트'],
 ]
 const people = [
-  ['고재도',REDESIGN_ASSETS.leaders[0]],['김경하',REDESIGN_ASSETS.leaders[1]],['이승룡',REDESIGN_ASSETS.leaders[2]],
-  ['한성곤',REDESIGN_ASSETS.leaders[3]],['이기하',REDESIGN_ASSETS.leaders[4]],['정호열',REDESIGN_ASSETS.leaders[5]],
+  ['고재도', REDESIGN_ASSETS.leaders[0], '/leaders/01-go-jaedo/'],
+  ['김경하', REDESIGN_ASSETS.leaders[1], '/leaders/02-kim-kyungha/'],
+  ['이승룡', REDESIGN_ASSETS.leaders[2], '/leaders/03-lee-seungryong/'],
+  ['한성곤', REDESIGN_ASSETS.leaders[3], '/leaders/04-han-seonggon/'],
+  ['이기하', REDESIGN_ASSETS.leaders[4], '/leaders/05-lee-kiha/'],
+  ['정호열', REDESIGN_ASSETS.leaders[5], '/leaders/06-jeong-hoyeol/'],
 ]
 const allVideos = await getCollection('videos')
 const videos = allVideos
@@ -54,7 +58,7 @@ const videos = allVideos
 </div></section>
 
 <section class="figma-section people-editorial" id="people"><div class="redesign-container people-layout">
-  <div><p class="section-kicker">PEOPLE</p><h2>함께 만드는 사람들</h2><div class="people-row">{people.map(([name,image]) => <a href="/leaders/" class="person-mini"><img src={image} alt={name}/><span>{name}</span></a>)}</div></div>
+  <div><p class="section-kicker">PEOPLE</p><h2>함께 만드는 사람들</h2><div class="people-row">{people.map(([name,image,href]) => <a href={href} class="person-mini"><img src={image} alt={name}/><span>{name}</span></a>)}</div></div>
   <a class="join-card" href="/community/"><strong>OPEN COMMUNITY.<br/>OPEN FUTURE.</strong><span>OPDC와 함께하기 →</span></a>
 </div></section>
 </RedesignLayout>
