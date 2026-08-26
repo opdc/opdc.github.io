@@ -2,13 +2,14 @@
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import { parse } from 'node-html-parser'
 import '@/redesign/redesign.css'
+import '@/redesign/section-v3.css'
 async function fetchPosts(url:string,category:string){try{const response=await fetch(url);const root=parse(await response.text());return root.querySelectorAll('.board_list02 tr.body').slice(0,10).map(row=>{const cells=row.querySelectorAll('td');const link=row.querySelector('a.go');const href=(link?.getAttribute('href')||'').replace(/;jsessionid=[^?]*/,'');return {category,title:link?.textContent?.trim()||'',date:cells[3]?.textContent?.trim()||'',url:`https://open.egovframe.org${href}`}}).filter(x=>x.title)}catch{return []}}
 const [notice,seminar,resources]=await Promise.all([fetchPosts('https://open.egovframe.org/oc/support/notice.do','공지사항'),fetchPosts('https://open.egovframe.org/oc/products/seminar.do','기술세미나'),fetchPosts('https://open.egovframe.org/oc/docs/pds.do','자료실')])
 const groups=[['공지사항',notice,'notice'],['기술세미나',seminar,'seminar'],['자료실',resources,'resources']] as const
 ---
 <RedesignLayout title="Community | OPDC Redesign" description="OPDC 공지, 기술세미나, 자료실">
 <section class="figma-section"><div class="redesign-container">
-  <p class="section-kicker">COMMUNITY</p><h1>배우고 나누는<br/>오픈커뮤니티</h1><p class="rd-lead">공지사항, 기술세미나, 자료실의 최신 콘텐츠를 한 화면에서 확인합니다. 원문은 전자정부 표준프레임워크 오픈커뮤니티로 연결됩니다.</p>
+  <div class="rd-community-intro"><div><p class="section-kicker">COMMUNITY</p><h1>배우고 나누는<br/>오픈커뮤니티</h1><p class="rd-lead">공지사항, 기술세미나, 자료실의 최신 콘텐츠를 한 화면에서 확인합니다. 원문은 전자정부 표준프레임워크 오픈커뮤니티로 연결됩니다.</p></div><aside class="rd-community-note"><strong>{notice.length+seminar.length+resources.length}개의 최신 항목</strong><p>공식 오픈커뮤니티의 최근 게시물을 빌드 시점에 읽어와 한 곳에서 보여줍니다.</p></aside></div>
   <nav class="rd-tags" aria-label="커뮤니티 섹션 바로가기">{groups.map(([title,,id])=><a href={`#${id}`}><span>{title}</span></a>)}</nav>
   {groups.map(([title,items,id])=><section class="rd-board" id={id}><h2>{title}<small>{items.length} items</small></h2><div class="rd-list">{items.length ? items.map(item=><a class="rd-list-item" href={item.url} target="_blank" rel="noreferrer"><div><span>{item.date || title}</span><h3>{item.title}</h3></div><b>↗</b></a>) : <div class="rd-empty">현재 불러온 콘텐츠가 없습니다.</div>}</div></section>)}
 </div></section>
