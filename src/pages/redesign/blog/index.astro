@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content'
+import RedesignLayout from '@/redesign/RedesignLayout.astro'
+import '@/redesign/redesign.css'
+const posts=(await getCollection('blog')).filter(p=>!p.data.draft&&p.data.locale!=='en').sort((a,b)=>b.data.date.getTime()-a.data.date.getTime())
+---
+<RedesignLayout title="Blog | OPDC Redesign"><section class="figma-section"><div class="redesign-container"><p class="section-kicker">BLOG / NOTICE</p><h1>소식과 기록</h1><div class="rd-list">{posts.map(post=><a class="rd-list-item" href={`/redesign/blog/${post.slug}/`}><div><span>{post.data.date.toLocaleDateString('ko-KR')}</span><h2>{post.data.title}</h2><p>{post.data.description}</p></div><b>→</b></a>)}</div></div></section></RedesignLayout>

@@ -1,0 +1,7 @@
+---
+import { getCollection } from 'astro:content'
+import RedesignLayout from '@/redesign/RedesignLayout.astro'
+import '@/redesign/redesign.css'
+const projects=(await getCollection('projects',({data})=>data.locale==='ko')).sort((a,b)=>a.data.order-b.data.order)
+---
+<RedesignLayout title="Projects | OPDC Redesign"><section class="figma-section"><div class="redesign-container"><p class="section-kicker">PROJECTS</p><h1>함께 만들고 공개하는 프로젝트</h1><div class="rd-card-grid">{projects.map((project)=><a class="rd-card" href={`/redesign/projects/${project.slug}/`}>{project.data.image&&<img src={project.data.image} alt={project.data.title}/>}<b>{project.data.status.toUpperCase()}</b><h2>{project.data.title}</h2><p>{project.data.description}</p><div class="rd-tags">{project.data.tags.map(tag=><span>{tag}</span>)}</div></a>)}</div></div></section></RedesignLayout>

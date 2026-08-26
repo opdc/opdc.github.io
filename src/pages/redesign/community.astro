@@ -1,0 +1,8 @@
+---
+import RedesignLayout from '@/redesign/RedesignLayout.astro'
+import { parse } from 'node-html-parser'
+import '@/redesign/redesign.css'
+async function fetchPosts(url:string,category:string){try{const response=await fetch(url);const root=parse(await response.text());return root.querySelectorAll('.board_list02 tr.body').slice(0,10).map(row=>{const cells=row.querySelectorAll('td');const link=row.querySelector('a.go');const href=(link?.getAttribute('href')||'').replace(/;jsessionid=[^?]*/,'');return {category,title:link?.textContent?.trim()||'',date:cells[3]?.textContent?.trim()||'',url:`https://open.egovframe.org${href}`}}).filter(x=>x.title)}catch{return []}}
+const [notice,seminar,resources]=await Promise.all([fetchPosts('https://open.egovframe.org/oc/support/notice.do','공지사항'),fetchPosts('https://open.egovframe.org/oc/products/seminar.do','기술세미나'),fetchPosts('https://open.egovframe.org/oc/docs/pds.do','자료실')])
+---
+<RedesignLayout title="Community | OPDC Redesign"><section class="figma-section"><div class="redesign-container"><p class="section-kicker">COMMUNITY</p><h1>오픈커뮤니티</h1><p class="rd-lead">공지, 기술세미나, 자료를 한 화면에서 확인합니다.</p>{[['공지사항',notice],['기술세미나',seminar],['자료실',resources]].map(([title,items])=><section class="rd-board"><h2>{title}</h2><div class="rd-list">{(items as any[]).map(item=><a class="rd-list-item" href={item.url} target="_blank" rel="noreferrer"><div><span>{item.date}</span><h3>{item.title}</h3></div><b>↗</b></a>)}</div></section>)}</div></section></RedesignLayout>
