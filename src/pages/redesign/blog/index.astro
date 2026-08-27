@@ -4,7 +4,8 @@ import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import '@/redesign/redesign.css'
 import '@/redesign/section-v3.css'
 const posts=(await getCollection('blog')).filter(p=>!p.data.draft&&p.data.locale!=='en').sort((a,b)=>b.data.date.getTime()-a.data.date.getTime())
+const latest=posts[0]
 ---
 <RedesignLayout title="Blog | OPDC Redesign" description="OPDC 소식과 기록">
-<section class="figma-section"><div class="redesign-container rd-blog-index"><aside class="rd-blog-index-sticky"><p class="section-kicker">BLOG / {posts.length}</p><h1>커뮤니티의<br/>소식과 기록</h1><p class="rd-lead">행사, 프로젝트, 공지와 커뮤니티 활동을 시간순으로 모았습니다.</p><div class="rd-quicklinks"><a href="/redesign/community/">Community</a><a href="/redesign/projects/">Projects</a></div></aside><div class="rd-list rd-blog-list">{posts.map(post=><a class="rd-list-item" href={`/redesign/blog/${post.slug}/`}><div><span>{post.data.date.toLocaleDateString('ko-KR')} · {post.data.author}</span><h2>{post.data.title}</h2><p>{post.data.description}</p></div><b>→</b></a>)}</div></div></section>
+<section class="figma-section"><div class="redesign-container rd-blog-index"><aside class="rd-blog-index-sticky"><p class="section-kicker">BLOG / {posts.length}</p><h1>기술과 활동을<br/>기록합니다</h1><p class="rd-lead">행사, 프로젝트, 공지와 커뮤니티 경험을 시간순으로 축적합니다.</p>{latest&&<a class="rd-blog-feature" href={`/redesign/blog/${latest.slug}/`}><small>LATEST</small><strong>{latest.data.title}</strong><span>{latest.data.date.toLocaleDateString('ko-KR')} →</span></a>}<div class="rd-quicklinks"><a href="/redesign/community/">Community</a><a href="/redesign/projects/">Projects</a></div></aside><div class="rd-list rd-blog-list">{posts.map((post,index)=><a class="rd-list-item" href={`/redesign/blog/${post.slug}/`}><div><span>{String(index+1).padStart(2,'0')} · {post.data.date.toLocaleDateString('ko-KR')} · {post.data.author}</span><h2>{post.data.title}</h2><p>{post.data.description}</p></div><b>→</b></a>)}</div></div></section>
 </RedesignLayout>
