@@ -1,70 +1,105 @@
-# OPDC Redesign Design System v5
+# OPDC Redesign Design System v6
 
-## Direction
+## Product direction
 
-OPDC의 리뉴얼은 `community + open technology + public trust`를 핵심 인상으로 둔다. 기존의 warm beige / pure black editorial 조합은 제거하고 cool neutral canvas, white surface, charcoal typography를 기본으로 사용한다. OPDC Orange는 브랜드 신호로 남기되 큰 면적을 채우는 색이 아니라 CTA, kicker, active state와 작은 강조에만 사용한다.
+OPDC 리뉴얼 v6의 핵심은 `community + open technology + public trust + continuity`다. 화면마다 다른 장식을 추가하는 방식보다, **사람 → 프로젝트 → 기록 → 다시 참여**로 이어지는 탐색 흐름을 하나의 제품 경험으로 만든다.
 
-## Color tokens
+## Visual language
 
 - Canvas: `#F7F8FA`
-- Subtle canvas: `#EEF1F4`
 - Surface: `#FFFFFF`
 - Surface soft: `#F3F5F7`
 - Ink: `#17191C`
 - Muted: `#667085`
 - Border: `#DCE1E7`
-- Border strong: `#C7CED8`
 - Brand orange: `#F15A24`
-- Brand orange hover: `#D94A17`
-- Brand soft: `#FFF0E9`
 - Inverse: `#14181F`
-- Inverse muted: `#AAB2BD`
 - Success/status: `#217A4B`
+
+Orange는 브랜드 신호이며 넓은 배경색의 기본값이 아니다. 큰 면적은 neutral surface를 사용하고, orange는 kicker, current state, CTA edge, small emphasis에 사용한다.
 
 ## Typography
 
-Pretendard Variable을 한국어/영문 공통 기본 서체로 사용한다. 큰 Hero는 강한 크기 대비를 허용하지만 본문과 상세 페이지에서는 읽기 흐름을 우선한다. 제목은 `word-break: keep-all`, 본문은 1.7~1.85 line-height를 기준으로 한다. 과도한 900+ weight와 지나친 negative tracking은 작은 UI 텍스트에서 피한다.
+Pretendard Variable을 기본으로 한다. Hero는 강한 크기 대비를 허용하지만 작은 텍스트는 가독성을 우선한다.
 
-## Shape and elevation
+- Hero: `clamp(44px, 6~7vw, 88px)`
+- Section heading: 30~40px
+- Card title: 18~24px
+- Body: 15~17px / 1.65~1.82
+- Metadata: 9~11px
+- Korean heading: `word-break: keep-all`
 
-- Small radius: 10px
-- Default card radius: 14px
-- Large panel radius: 18px
-- Pills: 999px
-- 일반 카드는 얕은 shadow만 사용하고 hover 시에만 elevation을 높인다.
+## Spacing & shape
+
+- Desktop section: 88px
+- Mobile section: 56px, narrow 390px: 48px
+- Radius: 10 / 14 / 18 / 22 / pill
+- Shadow는 기본적으로 얕게, hover와 중요한 floating panel에만 강화한다.
 - Border와 shadow를 동시에 과도하게 강조하지 않는다.
 
-## Spacing
+## V6 information architecture
 
-- Desktop section spacing: 88px
-- Mobile section spacing: 56px
-- 콘텐츠 그룹 내부 간격은 8/12/16/24/32 계열을 우선한다.
-- 모바일에서 데스크톱의 큰 여백을 단순 축소하지 말고 콘텐츠 우선순위에 맞춰 재배치한다.
+### Home
+
+`About → Community Pulse → Projects → Watch & Learn → People` 순서로 OPDC를 처음 방문한 사람이 정체성, 현재 활동, 결과물, 학습 자료와 사람까지 자연스럽게 이해하게 한다.
+
+### People
+
+목록은 얼굴과 역할을 빠르게 스캔할 수 있어야 하며, 상세에서는 프로필 → 역할 → 본문 → 이전/다음 리더로 이어진다. 인물 사진은 `4:5 + cover`를 기본으로 하여 불필요한 letterbox를 만들지 않는다.
+
+### Projects
+
+상태와 기술 맥락이 첫 화면에서 보이고, 상세에서 설명 → 대표 이미지 → 본문 → 인접 프로젝트로 탐색한다.
+
+### Blog
+
+목록에서 최신 글을 강조하고, 상세는 metadata → title → reading content → 이전/다음 글 순으로 읽기 흐름을 유지한다.
+
+### Community
+
+공지/세미나/자료실을 별개의 페이지처럼 느끼지 않도록 하나의 live index로 제공한다. 외부 원문 링크임을 명확히 표현한다.
+
+### Archive pages
+
+History, Partners, Releases, Compatibility는 단순 나열이 아니라 현재 활동과 다음 행동으로 연결해야 한다.
 
 ## Component rules
 
 1. Orange is an accent, not a default section background.
-2. Main canvas uses cool neutral; content cards remain white.
-3. Image frames and partner/logo wells use `surface-soft`, never warm beige.
-4. Dark sections use charcoal `inverse`, not pure black.
-5. Body text uses `ink`; supporting copy uses `muted`.
-6. Primary CTA may use orange. Secondary CTA uses white/neutral surface with border.
-7. Community join/promotional blocks use inverse charcoal to avoid excessive orange.
-8. Project cards remain light on mobile as well as desktop; mobile must not switch arbitrarily to black cards.
-9. Status indicators use semantic colors where possible rather than brand orange.
-10. Focus rings remain clearly visible and keyboard navigation must be preserved.
+2. Cards stay white on light neutral canvas.
+3. Image wells use `surface-soft`.
+4. Dark areas use charcoal inverse, not pure black.
+5. Every major card or list item should expose a clear next action.
+6. Detail pages provide adjacent-content navigation when meaningful.
+7. Touch targets should be approximately 44px or larger.
+8. Keyboard focus must remain visible.
+9. Long Korean titles wrap by phrase; code/tables scroll horizontally on narrow screens.
+10. Reduced-motion preference disables non-essential animation.
 
-## Responsive rules
+## Responsive checkpoints
 
-- Breakpoints currently follow existing redesign CSS: 900/720px with narrow-device adjustments around 390px.
-- People images use contained portrait frames on mobile so faces are not cropped.
-- Long Korean titles should wrap by phrase (`keep-all`) and list titles may clamp only where the surrounding component provides another path to the full content.
-- Touch targets should remain approximately 44px or larger for primary controls.
+Mandatory review widths:
+
+- 360px
+- 390px
+- 430px
+- 720px
+- 900px
+- 1280px+
+
+Verify People photo crop, mobile menu, long titles, cards, tables/code, footer, and detail navigation at these widths.
+
+## SEO / semantics
+
+- Every page uses canonical, Open Graph and Twitter metadata.
+- The shared layout exposes Organization JSON-LD.
+- Main navigation uses semantic `nav`, detail navigation uses descriptive aria labels.
+- External links open with safe `rel` attributes.
 
 ## Implementation hierarchy
 
-`redesign.css` provides the historical base component structure. `color-system-v4.css` owns the neutral color palette. `design-system-v5.css` is the final global polish layer for typography, spacing, shape, elevation and cross-page consistency. New redesign work should use tokens rather than introduce page-local hex colors.
+`redesign.css` is the historical base. `color-system-v4.css` owns the neutral palette. `design-system-v5.css` now contains the global v6 token/polish layer for compatibility with existing imports. `section-v3.css` and `detail-v3.css` contain v6 page patterns while file names remain stable to avoid unnecessary migration risk.
 
 ## License / asset policy
 
-Design references from other communities are for pattern research only. Do not copy proprietary illustrations, photographs, icons, CSS, component source, or brand assets. Reuse only OPDC-owned/repository assets or assets with a verified compatible license, and record attribution when the license requires it.
+External community sites may be researched for information architecture and common UX patterns only. Do not copy proprietary illustrations, photographs, icons, CSS, component source, or brand assets. Reuse OPDC-owned repository assets or verified compatible-license assets only, and record attribution when required.
