@@ -3,8 +3,8 @@ import { getCollection } from 'astro:content'
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import '@/redesign/redesign.css'
 import '@/redesign/detail-v3.css'
-export async function getStaticPaths(){const leaders=await getCollection('leaders',({data})=>data.locale==='ko');return leaders.map(leader=>({params:{slug:leader.slug},props:{leader}}))}
-const {leader}=Astro.props
+export async function getStaticPaths(){const leaders=(await getCollection('leaders',({data})=>data.locale==='ko')).sort((a,b)=>a.data.order-b.data.order);return leaders.map((leader,index)=>({params:{slug:leader.slug},props:{leader,prev:leaders[(index-1+leaders.length)%leaders.length],next:leaders[(index+1)%leaders.length]}}))}
+const {leader,prev,next}=Astro.props
 const {Content}=await leader.render()
 ---
 <RedesignLayout title={`${leader.data.name} | OPDC`} description={`${leader.data.name} — ${leader.data.role}`} image={leader.data.image || '/img/about/opdc_img.webp'}>
@@ -12,26 +12,11 @@ const {Content}=await leader.render()
     <div class="redesign-container detail-v3-shell">
       <div class="detail-v3-breadcrumb"><a href="/redesign/">OPDC</a><span>/</span><a href="/redesign/leaders/">People</a><span>/</span><strong>{leader.data.name}</strong></div>
       <div class="detail-v3-hero">
-        <div class="detail-v3-hero-copy">
-          <p class="detail-v3-kicker">COMMUNITY LEADER</p>
-          <h1 class="detail-v3-title">{leader.data.name}</h1>
-          <p class="detail-v3-summary">OPDC에서 {leader.data.role} 분야의 활동을 이어가는 커뮤니티 리더입니다. 활동 영역과 경력, 커뮤니티 기록을 한 화면에서 확인할 수 있습니다.</p>
-          <div class="detail-v3-actions">{leader.data.email&&<a href={`mailto:${leader.data.email}`}>Email ↗</a>}{leader.data.github&&<a href={leader.data.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}{leader.data.linkedin&&<a href={leader.data.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>}</div>
-        </div>
-        <aside class="detail-v3-aside">
-          <div class="detail-v3-aside-media"><img src={leader.data.image || '/img/about/opdc_img.webp'} alt={`${leader.data.name} 프로필 사진`}/></div>
-          <div>
-            <p class="detail-v3-aside-label">ROLE / COMMUNITY</p>
-            <strong>{leader.data.role}</strong>
-            <div class="detail-v3-meta-list"><div class="detail-v3-meta-row"><span>Community</span><span>OPDC</span></div><div class="detail-v3-meta-row"><span>Profile</span><span>Leader</span></div></div>
-          </div>
-        </aside>
+        <div class="detail-v3-hero-copy"><p class="detail-v3-kicker">COMMUNITY LEADER</p><h1 class="detail-v3-title">{leader.data.name}</h1><p class="detail-v3-summary"><strong>{leader.data.role}</strong><br/>오픈 기술 생태계에서 경험을 나누고 커뮤니티와 함께 성장하는 OPDC 리더입니다.</p><div class="detail-v3-actions">{leader.data.email&&<a href={`mailto:${leader.data.email}`}>Email ↗</a>}{leader.data.github&&<a href={leader.data.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>}{leader.data.linkedin&&<a href={leader.data.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>}</div></div>
+        <aside class="detail-v3-aside"><div class="detail-v3-aside-media"><img src={leader.data.image || '/img/about/opdc_img.webp'} alt={`${leader.data.name} 프로필 사진`}/></div><div><p class="detail-v3-aside-label">ROLE / COMMUNITY</p><strong>{leader.data.role}</strong><div class="detail-v3-meta-list"><div class="detail-v3-meta-row"><span>Community</span><span>OPDC</span></div><div class="detail-v3-meta-row"><span>Profile</span><span>Leader</span></div></div></div></aside>
       </div>
-      <div class="detail-v3-main">
-        <div class="detail-v3-content"><article class="rd-content"><Content/></article></div>
-        <aside class="detail-v3-toc" aria-label="People detail navigation"><b>EXPLORE</b><a href="/redesign/leaders/">전체 People</a><a href="/redesign/community/">Community</a><a href="/redesign/projects/">Projects</a></aside>
-      </div>
-      <nav class="detail-v3-footer-nav" aria-label="People 탐색"><a href="/redesign/leaders/">← 전체 People 보기</a><a href="/redesign/community/">Community 살펴보기 →</a></nav>
+      <div class="detail-v3-main"><div class="detail-v3-content"><article class="rd-content"><Content/></article></div><aside class="detail-v3-toc" aria-label="People detail navigation"><b>EXPLORE</b><a href="/redesign/leaders/">전체 People</a><a href="/redesign/community/">Community</a><a href="/redesign/projects/">Projects</a></aside></div>
+      <nav class="detail-v3-footer-nav" aria-label="다른 리더 탐색"><a href={`/redesign/leaders/${prev.slug}/`}>← {prev.data.name}</a><a href={`/redesign/leaders/${next.slug}/`}>{next.data.name} →</a></nav>
     </div>
   </section>
 </RedesignLayout>
