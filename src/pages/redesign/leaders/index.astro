@@ -37,8 +37,8 @@ const leaders=(await getCollection('leaders',({data})=>data.locale==='ko')).sort
   .people-directory-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
   .people-directory-card{display:block;min-width:0;padding:12px 12px 16px;border:1px solid var(--line);border-radius:14px;background:#fff;text-decoration:none;transition:transform .2s,box-shadow .2s,border-color .2s}
   .people-directory-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#c8bfb2}
-  .people-directory-photo{display:grid;place-items:center;width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:11px;background:#f1ede6}
-  .people-directory-photo img{display:block!important;width:100%!important;height:100%!important;max-width:100%!important;aspect-ratio:auto!important;object-fit:contain!important;object-position:center!important;border-radius:0!important;background:transparent!important}
+  .people-directory-photo{width:100%;aspect-ratio:4/5;overflow:hidden;border-radius:11px;background:#f1ede6}
+  .people-directory-photo img{display:block!important;width:100%!important;height:100%!important;max-width:none!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:center!important;border-radius:0!important;background:transparent!important}
   .people-directory-meta{padding:13px 4px 0}
   .people-directory-meta h2{margin:0 0 5px;font-size:18px;line-height:1.2;letter-spacing:-.025em}
   .people-directory-meta p{min-height:34px;margin:0;color:var(--muted);font-size:11px;line-height:1.45}
