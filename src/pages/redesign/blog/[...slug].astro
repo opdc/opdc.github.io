@@ -3,33 +3,16 @@ import { getCollection } from 'astro:content'
 import RedesignLayout from '@/redesign/RedesignLayout.astro'
 import '@/redesign/redesign.css'
 import '@/redesign/detail-v3.css'
-export async function getStaticPaths(){const posts=await getCollection('blog');return posts.filter(p=>p.data.locale!=='en'&&!p.data.draft).map(post=>({params:{slug:post.slug},props:{post}}))}
-const {post}=Astro.props
+export async function getStaticPaths(){const posts=(await getCollection('blog')).filter(p=>p.data.locale!=='en'&&!p.data.draft).sort((a,b)=>b.data.date.getTime()-a.data.date.getTime());return posts.map((post,index)=>({params:{slug:post.slug},props:{post,prev:posts[(index-1+posts.length)%posts.length],next:posts[(index+1)%posts.length]}}))}
+const {post,prev,next}=Astro.props
 const {Content}=await post.render()
 const description=post.data.description || `${post.data.title} — OPDC 소식과 기록`
 ---
 <RedesignLayout title={`${post.data.title} | OPDC`} description={description}>
-  <article class="figma-section detail-v3">
-    <div class="redesign-container detail-v3-shell">
-      <div class="detail-v3-breadcrumb"><a href="/redesign/">OPDC</a><span>/</span><a href="/redesign/blog/">Blog</a><span>/</span><strong>Article</strong></div>
-      <div class="detail-v3-hero">
-        <div class="detail-v3-hero-copy">
-          <p class="detail-v3-kicker">COMMUNITY NOTE</p>
-          <div class="detail-v3-post-meta"><span>{post.data.date.toLocaleDateString('ko-KR')}</span><span>{post.data.author}</span></div>
-          <h1 class="detail-v3-title">{post.data.title}</h1>
-          {post.data.description&&<p class="detail-v3-summary">{post.data.description}</p>}
-          <div class="detail-v3-tags" aria-label="게시물 태그">{post.data.tags.map(tag=><span>{tag}</span>)}</div>
-        </div>
-        <aside class="detail-v3-aside">
-          <div class="detail-v3-role-card"><p class="detail-v3-aside-label">OPDC BLOG</p><strong>기술과 활동의 기록</strong><p>커뮤니티에서 공유한 경험과 프로젝트, 세미나, 기술 이야기를 정리합니다.</p></div>
-          <div class="detail-v3-meta-list"><div class="detail-v3-meta-row"><span>Published</span><span>{post.data.date.toLocaleDateString('ko-KR')}</span></div><div class="detail-v3-meta-row"><span>Author</span><span>{post.data.author}</span></div><div class="detail-v3-meta-row"><span>Tags</span><span>{post.data.tags.length}</span></div></div>
-        </aside>
-      </div>
-      <div class="detail-v3-main">
-        <div class="detail-v3-content"><div class="rd-content"><Content/></div></div>
-        <aside class="detail-v3-toc" aria-label="Blog detail navigation"><b>EXPLORE</b><a href="/redesign/blog/">전체 Blog</a><a href="/redesign/community/">Community</a><a href="/redesign/projects/">Projects</a></aside>
-      </div>
-      <nav class="detail-v3-footer-nav" aria-label="블로그 탐색"><a href="/redesign/blog/">← 소식 전체보기</a><a href="/redesign/community/">Community 살펴보기 →</a></nav>
-    </div>
-  </article>
+<article class="figma-section detail-v3"><div class="redesign-container detail-v3-shell">
+<div class="detail-v3-breadcrumb"><a href="/redesign/">OPDC</a><span>/</span><a href="/redesign/blog/">Blog</a><span>/</span><strong>Article</strong></div>
+<div class="detail-v3-hero"><div class="detail-v3-hero-copy"><p class="detail-v3-kicker">COMMUNITY NOTE</p><div class="detail-v3-post-meta"><span>{post.data.date.toLocaleDateString('ko-KR')}</span><span>{post.data.author}</span></div><h1 class="detail-v3-title">{post.data.title}</h1>{post.data.description&&<p class="detail-v3-summary">{post.data.description}</p>}<div class="detail-v3-tags" aria-label="게시물 태그">{post.data.tags.map(tag=><span>{tag}</span>)}</div></div><aside class="detail-v3-aside"><div class="detail-v3-role-card"><p class="detail-v3-aside-label">OPDC BLOG</p><strong>기술과 활동의 기록</strong><p>커뮤니티가 직접 경험한 프로젝트, 세미나와 기술 이야기를 공개적으로 축적합니다.</p></div><div><div class="detail-v3-meta-list"><div class="detail-v3-meta-row"><span>Published</span><span>{post.data.date.toLocaleDateString('ko-KR')}</span></div><div class="detail-v3-meta-row"><span>Author</span><span>{post.data.author}</span></div><div class="detail-v3-meta-row"><span>Tags</span><span>{post.data.tags.length}</span></div></div></div></aside></div>
+<div class="detail-v3-main"><div class="detail-v3-content"><div class="rd-content"><Content/></div></div><aside class="detail-v3-toc" aria-label="Blog detail navigation"><b>EXPLORE</b><a href="/redesign/blog/">전체 Blog</a><a href="/redesign/community/">Community</a><a href="/redesign/projects/">Projects</a></aside></div>
+<nav class="detail-v3-footer-nav" aria-label="다른 글 탐색"><a href={`/redesign/blog/${prev.slug}/`}>← {prev.data.title}</a><a href={`/redesign/blog/${next.slug}/`}>{next.data.title} →</a></nav>
+</div></article>
 </RedesignLayout>
