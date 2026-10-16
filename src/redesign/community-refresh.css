@@ -66,3 +66,25 @@
 .opdc-redesign-shell .figma-card-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
 .opdc-redesign-shell .redesign-footer { background: #182b45; }
 .opdc-redesign-shell .redesign-footer-brand strong { color: #fdba74; }
+
+/* D4: Let short preview pages fill the viewport so the footer ends at the bottom.
+   Cost: spare height moves into main; remove flex growth if a content-height layout is needed. */
+.opdc-redesign-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+.opdc-redesign-shell > main { flex: 1; min-width: 0; }
+.opdc-redesign-shell .redesign-footer { margin-top: 0; padding: 28px 0 18px; }
+.opdc-redesign-shell .redesign-footer-grid { gap: 24px; }
+.opdc-redesign-shell .redesign-footer-brand p { font-size: 15px; line-height: 1.6; }
+.opdc-redesign-shell .redesign-footer-col { gap: 4px; }
+.opdc-redesign-shell .redesign-footer-col b { font-size: 12px; }
+.opdc-redesign-shell .redesign-footer-col a { font-size: 15px; line-height: 1.6; }
+.opdc-redesign-shell .redesign-footer-bottom { margin-top: 20px; padding-top: 14px; font-size: 12px; }
+@media (max-width: 720px) {
+  .opdc-redesign-shell .redesign-footer { padding-top: 24px; }
+  .opdc-redesign-shell .redesign-footer-grid { gap: 20px 18px; }
+  .opdc-redesign-shell .redesign-footer-col a { padding-block: 3px; }
+}
