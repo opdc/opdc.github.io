@@ -1,0 +1,68 @@
+.home-hero { background: var(--paper-2); border-bottom: 1px solid var(--line); }
+.hero-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: center; padding-block: clamp(3rem, 7vw, 6rem); }
+.hero-intro { color: #9a3412; font-size: 0.95rem; font-weight: 650; margin-bottom: 1.5rem; }
+.hero-copy h1 { font-size: clamp(2.65rem, 4.5vw, 4.15rem); font-weight: 780; color: var(--ink); letter-spacing: -0.055em; line-height: 1.2; }
+.hero-description { color: var(--muted); margin-top: 1.75rem; max-width: 44ch; font-size: 1.08rem; }
+.hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 2rem; }
+.hero-actions a { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; padding: 0.8rem 1.25rem; border-radius: 6px; font-weight: 650; }
+.opdc-redesign-shell .hero-primary { color: #fff; background: #c2410c; border: 1px solid #c2410c; }
+.hero-primary:hover { background: #9a3412; }
+.opdc-redesign-shell .hero-secondary { background: var(--surface); color: var(--ink); border: 1px solid var(--line); }
+.hero-secondary:hover { border-color: #c2410c; }
+.hero-paths { background: #182b45; color: #fff; border-radius: 18px 18px 64px 18px; padding: 1.75rem; }
+.hero-paths-heading { display: flex; gap: 0.9rem; align-items: center; font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; }
+.platform-symbol { display: grid; place-items: center; width: 36px; height: 36px; background: #ffedd5; color: #9a3412; border-radius: 50%; font-size: 1.8rem; }
+.hero-path { display: flex; align-items: center; gap: 1rem; padding: 1.15rem 0; border-top: 1px solid #41516a; }
+.hero-path > span:nth-child(2) { flex: 1; }
+.hero-path strong { font-size: 1rem; font-weight: 650; }
+.hero-path small { display: block; color: #c7d3e2; margin-top: 0.3rem; font-size: 0.85rem; }
+.hero-path:hover strong { text-decoration: underline; text-underline-offset: 5px; }
+.path-icon { width: 36px; color: #fdba74; font-size: 1.35rem; font-weight: 600; text-align: center; }
+.hero-paths-note { color: #c7d3e2; font-size: 0.75rem; margin-top: 1rem; }
+
+@media (max-width: 767px) {
+  .hero-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-paths { padding: 1.5rem; border-bottom-right-radius: 40px; }
+  .hero-copy h1 { font-size: clamp(2.4rem, 8.7vw, 3.6rem); }
+
+
+}
+
+
+/* D2: Scope the refresh to the preview shell; existing production routes keep their styles.
+   Cost: legacy preview rules remain; component-specific selectors allow later consolidation. */
+.opdc-redesign-shell {
+  --paper: #fff;
+  --paper-2: #f5f7fa;
+  --ink: #182b45;
+  --muted: #526174;
+  --orange: #c2410c;
+  --orange-dark: #9a3412;
+  --focus: #c2410c;
+  --type-meta: .875rem;
+  --text-sm: .9375rem;
+  --type-mobile-meta: .875rem;
+}
+.opdc-redesign-shell .redesign-container { max-width: 1200px; }
+.opdc-redesign-shell .redesign-header { background: #fff; }
+.opdc-redesign-shell .redesign-nav a { text-transform: none; }
+.opdc-redesign-shell .redesign-wordmark { color: var(--orange); }
+.opdc-redesign-shell .section-kicker { color: var(--muted); letter-spacing: .025em !important; }
+.opdc-redesign-shell .hero-copy h1 { margin: 0; }
+.opdc-redesign-shell .hero-actions a { text-decoration: none; }
+.opdc-redesign-shell .hero-path { text-decoration: none; }
+.opdc-redesign-shell .hero-paths-note { margin-bottom: 0; }
+.opdc-redesign-shell .redesign-footer-col b,
+.opdc-redesign-shell .redesign-footer-bottom { color: #b7c5d7; }
+/* D3: Manual scrolling keeps every leader reachable without involuntary motion.
+   Cost: no automatic discovery; the full directory link remains the fallback. */
+.opdc-redesign-shell .people-flow { overflow-x: auto; mask-image: none; -webkit-mask-image: none; padding-bottom: 16px; }
+.opdc-redesign-shell .people-flow-track { animation: none; }
+.opdc-redesign-shell .people-flow-group[aria-hidden="true"] { display: none; }
+.opdc-redesign-shell .people-flow-card { flex-shrink: 0; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.opdc-redesign-shell { --line: #dce3eb; --surface-soft: #f5f7fa; }
+.opdc-redesign-shell .join-card span { color: #fff; opacity: 1; }
+.opdc-redesign-shell .figma-card-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.opdc-redesign-shell .redesign-footer { background: #182b45; }
+.opdc-redesign-shell .redesign-footer-brand strong { color: #fdba74; }

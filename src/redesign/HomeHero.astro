@@ -1,0 +1,38 @@
+---
+interface Props { english?: boolean }
+const { english = false } = Astro.props
+const prefix = '/redesign'
+const paths = [
+  { href: '/projects', name: english ? 'Build in the open' : '함께 만드는 프로젝트', detail: english ? 'Explore open source projects' : '오픈소스 프로젝트 살펴보기', icon: '{ }' },
+  { href: '/community', name: english ? 'Share what you know' : '경험을 나누는 커뮤니티', detail: english ? 'Connect, learn and contribute' : '개발자 교류와 기술 세미나', icon: '< >' },
+  { href: '/compatibility', name: english ? 'Connect with confidence' : '신뢰로 연결하는 플랫폼', detail: english ? 'Platform compatibility verification' : '오픈플랫폼 호환성확인', icon: '✓' },
+]
+---
+
+<!-- D1: Share the hero across locales to keep navigation consistent; localized copy adds branching, isolated here for later extraction. -->
+<section class="home-hero">
+  <div class="redesign-container hero-layout">
+    <div class="hero-copy">
+      <p class="hero-intro">{english ? 'Open Platform Developer Community' : '오픈플랫폼 개발자커뮤니티'}</p>
+      <h1>{english ? 'Open technology.' : '열린 기술,'}<br />{english ? 'Shared possibilities.' : '함께 만드는 가능성.'}</h1>
+      <p class="hero-description">{english
+        ? 'We learn, build and share together. Join developers shaping an open ecosystem through open source, technical exchange and collaboration.'
+        : '배우고, 만들고, 나누는 개발자들의 연결. 오픈소스와 기술 교류를 통해 더 열린 기술 생태계를 함께 만들어갑니다.'}</p>
+      <div class="hero-actions">
+        <a class="hero-primary" href={`${prefix}/blog`}>{english ? 'Explore the latest' : '커뮤니티 소식 보기'}</a>
+        <a class="hero-secondary" href={`${prefix}/about`}>{english ? 'Meet OPDC' : 'OPDC 소개'}</a>
+      </div>
+    </div>
+    <div class="hero-paths">
+      <div class="hero-paths-heading"><span class="platform-symbol" aria-hidden="true">＋</span><span>{english ? 'A place to grow, together.' : '우리의 기술이 만나는 곳'}</span></div>
+      {paths.map(path => (
+        <a class="hero-path" href={`${prefix}${path.href}`}>
+          <span class="path-icon" aria-hidden="true">{path.icon}</span>
+          <span><strong>{path.name}</strong><small>{path.detail}</small></span>
+          <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 5 7 7-7 7" /></svg>
+        </a>
+      ))}
+      <p class="hero-paths-note">{english ? 'Open source. Open knowledge. Open community.' : '기술을 열고, 지식을 나누고, 함께 성장합니다.'}</p>
+    </div>
+  </div>
+</section>
