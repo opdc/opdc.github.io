@@ -3,6 +3,14 @@ import BaseLayout from '@/layouts/BaseLayout.astro'
 ---
 
 <BaseLayout title="페이지를 찾을 수 없습니다" description="요청하신 페이지를 찾을 수 없습니다">
+  <!-- 구 Jekyll 사이트의 대문자 URL(예: /leaders/01-go-Jaedo/)을 Astro 소문자 slug로 이동 -->
+  <script is:inline>
+    (function () {
+      var path = location.pathname
+      var lower = path.toLowerCase()
+      if (path !== lower) location.replace(lower + location.search + location.hash)
+    })()
+  </script>
   <div class="min-h-[70vh] flex items-center justify-center bg-gradient-to-br from-brand-50 to-blue-50 dark:from-gray-800 dark:to-gray-900">
     <div class="container mx-auto px-4 text-center">
       <div class="max-w-2xl mx-auto">
