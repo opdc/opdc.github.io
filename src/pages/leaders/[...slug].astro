@@ -59,17 +59,8 @@ const langSwitchHref = `/en/leaders/${toEnSlug(leader.slug)}/`
             </p>
 
             <!-- Contact Info -->
-            {(leader.data.email || leader.data.github || leader.data.linkedin) && (
+            {(leader.data.github || leader.data.linkedin) && (
               <div class="mb-6 flex flex-wrap gap-4 text-gray-700 dark:text-gray-300">
-                {leader.data.email && (
-                  <a
-                    href={`mailto:${leader.data.email}`}
-                    class="inline-flex items-center gap-2 hover:text-brand-600 dark:hover:text-brand-500 transition-colors"
-                  >
-                    <i class="fas fa-envelope"></i>
-                    <span>{leader.data.email}</span>
-                  </a>
-                )}
                 {leader.data.github && (
                   <a
                     href={leader.data.github}
