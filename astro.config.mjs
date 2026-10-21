@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 import { fileURLToPath } from 'url'
 
 export default defineConfig({
-  site: 'https://opdc.kr',
+  site: 'https://opdc.or.kr',
   devToolbar: {
     enabled: false
   },
